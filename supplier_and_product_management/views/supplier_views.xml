@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!--supplier compute view-->
+    <record model="ir.ui.view" id="supplier_compute_view">
+        <field name="name">supplier_compute_view</field>
+        <field name="model">supplier.compute</field>
+        <field name="arch" type="xml">
+                 <form class="oe_form_configuration">
+                     <sheet>
+                            <group>
+                                <field name="parent_id_group" string="Group" widget="selection"/>
+                                <field name="parent_id_cate" string="Category" widget="selection" />
+                                <field name="parent_id_type" string="Type" widget="selection"/>
+                            </group>
+                     </sheet>
+               </form>
+        </field>
+    </record>
+    <!--supplier compute view-->
+
+    <!--Vendors view-->
+    <record model="ir.ui.view" id="supplier_vendors_view">
+        <field name="name">supplier_vendors_view</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='sales_purchases']//field[@name='ref']" position="before">
+                <field name="supplier_compute_complete" options="{'no_create': True, 'no_create_edit': True}" />
+            </xpath>
+<!--            <xpath expr="//field[@name='ref']" position="attributes">-->
+<!--                <attribute name="readonly">1</attribute>-->
+<!--            </xpath>-->
+        </field>
+    </record>
+    <!--Vendors view-->
+
+    <!-- supplier menu-->
+    <record model="ir.ui.view" id="supplier_group_form">
+        <field name="name">supplier_group_form</field>
+        <field name="model">supplier.group</field>
+        <field name="arch" type="xml">
+            <form class="oe_form_configuration">
+                <sheet>
+                    <group class="group_details">
+                        <field name="name_group" class="oe_inline" string="รหัสกลุ่ม" />
+                        <field name="code_group" class="oe_inline" string="ID" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+     <record model="ir.ui.view" id="supplier_cate_form">
+        <field name="name">supplier_cate_form</field>
+        <field name="model">supplier.category</field>
+        <field name="arch" type="xml">
+            <form class="oe_form_configuration">
+                <sheet>
+                    <group class="cate_details">
+                        <field name="name_cate" class="oe_inline" string="Category Name" />
+                        <field name="code_cate" class="oe_inline" string="ID" />
+                        <field name="parent_id_group" class="oe_inline" string="Group"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+     <record model="ir.ui.view" id="supplier_type_form">
+        <field name="name">supplier_type_form</field>
+        <field name="model">supplier.type</field>
+        <field name="arch" type="xml">
+            <form class="oe_form_configuration">
+                <sheet>
+                    <group class="type_details">
+                        <field name="name_type" class="oe_inline" string="Type Name" />
+                        <field name="code_type" class="oe_inline" string="ID" />
+                        <field name="parent_id_cate" class="oe_inline" string="Category"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_supplier_group" model="ir.actions.act_window">
+            <field name="name">Supplier group</field>
+            <field name="res_model">supplier.group</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_supplier_cate" model="ir.actions.act_window">
+            <field name="name">Supplier category</field>
+            <field name="res_model">supplier.category</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_supplier_type" model="ir.actions.act_window">
+            <field name="name">Supplier type</field>
+            <field name="res_model">supplier.type</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_supplier_compute" model="ir.actions.act_window">
+            <field name="name">Supplier compute</field>
+            <field name="res_model">supplier.compute</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <menuitem name="Supplier" id="main_menu_supplier" sequence="30" parent="purchase.menu_purchase_config"/>
+            <menuitem action="action_supplier_group" id="main_menu_supplier_group"  parent="main_menu_supplier" sequence="1"/>
+            <menuitem action="action_supplier_cate" id="main_menu_supplier_cate"  parent="main_menu_supplier" sequence="2"/>
+            <menuitem action="action_supplier_type" id="main_menu_supplier_type"  parent="main_menu_supplier" sequence="3"/>
+            <menuitem action="action_supplier_compute" id="main_menu_supplier_compute"  parent="main_menu_supplier" sequence="4"/>
+    <!--supplier menu-->
+    <!--end-->
+
+
+</odoo>

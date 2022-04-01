@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <template id="external_layout_full_invoice_custom2">
+            <t t-call="hanna_report.external_layout_header_HANNA_custom"/>
+            <t t-raw="0"/>
+            <t t-call="hanna_report.external_layout_footer_HANNA_custom"/>
+        </template>
+        <template id="external_layout_header_HANNA_custom">
+
+            <div class="header" t-att-style="report_header_style">
+                <div class="row font">
+                    <div class="header-info">
+                        <div class="container-fluid triple_block  report-container" style="padding-left: 0px; ">
+                            <div>
+                                <span class="report-well"
+                                      style=" padding-left:11em;background-color: transparent; color: rgb(0,0,0); font-size: 12px;"/>
+                            </div>
+                            <div class="container-fluid single_block  report-container">
+                                <div class="row">
+                                    <div class="col-8">
+                                        <div class="t_block  mb8">
+                                            <div style="padding-left:6em;padding-top: 20px;">
+                                                <span class="report-well"
+                                                      style=" background-color: transparent; color: rgb(0,0,0); font-size: 12px;"/>
+                                                <br/>
+                                                <br/>
+                                                <span class="report-well"
+                                                      style=" font-size: 12px;"/>
+                                                <span class="report-well"
+                                                      style="background-color: transparent; color: rgb(0,0,0); font-size: 12px;"/>
+                                                <span class="report-well"
+                                                      style="background-color: transparent; color: rgb(0,0,0); font-size: 12px;"/>
+                                                <span class="o_default_snippet_text report-well"
+                                                      style="background-color: transparent; color: rgb(0,0,0); font-size: 12px;"/>
+                                                <br/>
+                                                <br/>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <div class="col-4">
+                                        <div class="d_block mb8 mt8">
+                                            <span class="report-well">
+
+                                                <td style="padding:0.20rem; padding-bottom:0.0;border:none; ">
+                                                    <p class="report-well product"
+                                                       style=" padding-left: 16em; padding-top:20px; font-size: 12px; text-align: left;"/>
+                                                </td>
+                                                <td style="padding:0.20rem; padding-bottom:0.0;border:none; ">
+                                                    <p class="report-well product"
+                                                       style=" padding-left: 16em; padding-top:16px; font-size: 12px; text-align: left;"/>
+                                                </td>
+                                                <td style="padding:0.20rem; padding-bottom:0.0;border:none; ">
+                                                    <p class="report-well product"
+                                                       style=" padding-left: 16em;  padding-top:16px; font-size: 12px; text-align: left;"/>
+                                                </td>
+                                                <td style="padding:0.20rem; padding-bottom:0.0;border:none; ">
+                                                    <p class="report-well product"
+                                                       style=" padding-left: 16em;  padding-top:16px; font-size: 12px; text-align: left;"/>
+                                                </td>
+                                                <td style="padding:0.20rem; padding-bottom:0.0;border:none; ">
+                                                    <p class="report-well product"
+                                                       style=" padding-left: 16em;  padding-top:16px; font-size: 12px; text-align: left;"/>
+                                                </td>
+                                                <td style="padding:0.20rem; padding-bottom:0.0;border:none; ">
+                                                    <p class="report-well product"
+                                                       style=" padding-left: 16em;  padding-top:16px; font-size: 12px; text-align: left;"/>
+                                                </td>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="d_block mt8 mb8"/>
+                                </div>
+
+                                <dr/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row font">
+                    <div class="header-info">
+                        <div class="container-fluid triple_block  report-container" style="padding-left: 0px; ">
+                            <div>
+                                <span class="report-well" t-field="doc.partner_id.ref"
+                                      style=" padding-left:11em;background-color: transparent; color:rgb(0,0,0); font-size: 12px;"/>
+                            </div>
+                            <div class="container-fluid single_block  report-container">
+                                <div class="row">
+                                    <div  class="col-8" style="width:40rem">
+                                        <div class="t_block  mb8">
+                                            <div style="padding-left:6em;padding-top: 20px;">
+                                                <span class="report-well" t-field="doc.partner_id.name"
+                                                      style=" background-color: transparent; color:rgb(0,0,0); font-size: 12px;"/>
+                                                <br/>
+                                                <br/>
+                                                <span class="report-well" t-field="doc.partner_id.street"
+                                                      style="background-color: transparent; color:rgb(0,0,0); font-size: 12px;"/>
+                                                <span class="report-well" t-field="doc.partner_id.street2"
+                                                      style="background-color: transparent; color:rgb(0,0,0); font-size: 12px;"/>
+                                                <span class="report-well" t-field="doc.partner_id.zip"
+                                                      style="background-color: transparent; color:rgb(0,0,0); font-size: 12px;"/>
+                                                <span class="o_default_snippet_text report-well"
+                                                      t-field="doc.partner_id.city"
+                                                      style="background-color: transparent; color:rgb(0,0,0); font-size: 12px;"/>
+                                                <br/>
+                                                <br/>
+                                                <br/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <div  class="col-4">
+                                        <div class="d_block mb8 mt8">
+                                            <span class="report-well">
+
+                                                <td style="padding:0.20rem; padding-bottom:0.0;border:none; ">
+                                                    <p class="report-well product" t-field="doc.partner_id.vat"
+                                                       style=" padding-left: 16em; padding-top:20px; font-size: 12px; text-align: left;"/>
+                                                </td>
+                                                <td style="padding:0.20rem; padding-bottom:0.0;border:none; ">
+                                                    <p class="report-well product" t-field="doc.invoice_date"
+                                                       style=" padding-left: 16em; padding-top:2px; font-size: 12px; text-align: left;"/>
+                                                </td>
+                                                <td style="padding:0.20rem; padding-bottom:0.0;border:none; ">
+                                                    <p class="report-well product" t-field="doc.payment_reference"
+                                                       style=" padding-left: 16em;  padding-top:2px; font-size: 12px; text-align: left;"/>
+                                                </td>
+                                                <td style="padding:0.20rem; padding-bottom:0.0;border:none; ">
+                                                    <p class="report-well product" t-field="doc.invoice_payment_term_id"
+                                                       style=" padding-left: 16em;  padding-top:2px; font-size: 12px; text-align: left;"/>
+                                                </td>
+                                                <td style="padding:0.20rem; padding-bottom:0.0;border:none; ">
+                                                    <p class="report-well product" t-field="doc.invoice_date_due"
+                                                       style=" padding-left: 16em;  padding-top:2px; font-size: 12px; text-align: left;"/>
+                                                </td>
+                                                <td style="padding:0.20rem; padding-bottom:0.0;border:none; ">
+                                                    <p class="report-well product" t-field="doc.team_id"
+                                                       style=" padding-left: 16em;  padding-top:2px; font-size: 12px; text-align: left;"/>
+                                                </td>
+                                                <div class="col-6">
+                                                    <div class="d_block mt8 mb8"/>
+                                                </div>
+
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+        <template id="external_layout_footer_HANNA_custom">
+            <div class="o_boxed_footwer">
+                <div class="footer">
+                    <div class="last-page">
+
+
+                    <div class="container-fluid triple_block  report-container" style="padding-right:15px">
+                        <div class="row">
+
+                            <div class="col-2"
+                                 style="  ;border-bottom:none;border-right:none;  padding:0.0rem; border-top:none;height:50px; ">
+                                <div style="text-align: center;"></div>
+                                <div style="text-align: center;"></div>
+                                <div class="mb8 mt8 t_block"/>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-8" style="">
+                                <div class="t_block mt8 mb8"/>
+                            </div>
+                            <div class="col-2 " style="  ;border-bottom:none;border-right:none; padding:0.0rem;">
+                                <div style="text-align: center;">
+
+                                </div>                                     <!--                                    <div style="text-align: center;">-->                                     <!--                                        <font style="color:rgb(0,0,0); font-size: 12px;">TAX RATE</font>-->                                     <!--                                    </div>-->
+                                <div class="mb8 mt8 t_block"/>
+                            </div>
+                            <div class="col-2"
+                                 style="text-align: right;    border-image: initial; border-bottom: none; padding-right: 9px;">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-fluid triple_block  report-container" style="padding-right:15px">
+                        <div class="row">
+                            <div class="col-8" style="">
+                                <span style="font-size: 15px; padding-left: 2.5em;"
+                                      t-esc="doc.get_baht_text()"/>
+                                <div class="t_block mt8 mb8"/>
+                            </div>
+                            <div class="col-2"
+                                 style="  ;border-bottom:none;border-right:none;  padding:0.0rem; border-top:none;height:50px; ">
+                                <div style="text-align: center;"></div>
+                                <div style="text-align: center;"></div>
+                                <div class="mb8 mt8 t_block"/>
+                            </div>
+
+                            <div class="col-2" style="  ;border-top:none;border-bottom:none; ">
+                                <p class="report-well" t-field="doc.amount_untaxed"
+                                   style="text-align: right; width: 9sem; margin-bottom: 0px; font-size: 12px; float:right"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-8" style="">
+                                <div class="t_block mt8 mb8"/>
+                            </div>
+
+                            <div class="col-2 " style="  ;border-bottom:none;border-right:none; padding:0.0rem;">
+                                <div style="text-align: center;padding-top: 10px;">
+
+                                    <t t-foreach="doc.tax_invoice_ids" t-as="line">
+                                        <span class="report-well" style="padding-left:50px; font-size: 12px; "
+                                              t-field="line.tax_line_id.description"/>
+                                    </t>
+                                </div>                                     <!--                                    <div style="text-align: center;">-->                                     <!--                                        <font style="color:rgb(0,0,0); font-size: 12px;">TAX RATE</font>-->                                     <!--                                    </div>-->
+                                <div class="mb8 mt8 t_block"/>
+                            </div>
+                            <div class="col-2"
+                                 style="text-align: right;    border-image: initial; border-bottom: none; padding-right: 9px;">
+                                <t t-foreach="doc.amount_by_group" t-as="line">
+                                    <span class="o_default_snippet_text report-well" t-esc="line[1]"
+                                          style="font-size: 12px;"/>
+                                    <span style="font-size: 12px;">฿</span>
+                                    <br/>
+                                </t>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6"
+                                 style=" ;border-bottom-left-radius:10px; padding:0.0rem; text-align:center;  padding-top:15px;">                                      <!--              <t t-foreach="docs" t-as="o" style="">-->                                     <!--                <t t-set="currency" t-value="o.currency_id" style=""/>-->                                     <!--                <t t-esc="currency.amount_to_text(doc.amount_total)" style=""/>-->                                     <!--              </t>-->                                 </div>
+                            <div class="col-2" style=""></div>
+                            <div class="col-2" style="  ;black;border-right:none;black; padding:0.0rem;">
+                                <div style="text-align: center;"></div>
+                                <div style="text-align: center;"></div>
+                                <div class="mb8 mt8 t_block"/>
+                            </div>
+                            <div class="col-2" style="  ; border-bottom-right-radius:10px; padding-right: 9px;">
+                                <br/>
+                                <p class="report-well" t-field="doc.amount_total"
+                                   style="text-align: right; width: 136px; margin-bottom: 0px; font-size: 12px;"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </template>          <!--     ===========                 add designer id header and Footer       ================              -->
+    </data>
+</odoo>

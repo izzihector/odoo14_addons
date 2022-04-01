@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="search_template_product_brand">
+            <button type="button" class="o_dropdown_toggler_btn btn btn-secondary dropdown-toggle"
+                    data-toggle="dropdown">
+                <span class="fa fa-bitcoin"/>
+                Brand:
+                <t t-set="brand_value">All</t>
+                <t t-foreach="options['brand']" t-as="a">
+                    <t t-if="a.get('selected') == True">
+                        <t t-set="brand_value" t-value="''"/>
+                        <t t-esc="a.get('name')"/>
+                    </t>
+                </t>
+                <t t-esc="brand_value"/>
+            </button>
+            <div class="dropdown-menu o_filter_menu" role="menu">
+                <t t-foreach="options['brand']" t-as="a">
+                    <a role="menuitem" class="dropdown-item js_account_report_choice_filter" t-att-title="a.get('name')"
+                       t-att-data-id="a.get('id')" data-filter="brand">
+                        <t t-esc="a.get('name')"/>
+                    </a>
+                </t>
+            </div>
+        </template>
+
+        <template id="search_template_inherit" inherit_id="account_reports.search_template">
+            <xpath expr="//div[@class='btn-group o_dropdown o_account_reports_filter_operating_unit']" position="after">
+                <div class="btn-group o_dropdown o_account_reports_filter_brand"
+                     t-if="options.get('brand') != None">
+                    <t t-call="product_brand_sale.search_template_product_brand"/>
+                </div>
+            </xpath>
+        </template>
+
+
+    </data>
+</odoo>

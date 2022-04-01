@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="product_variant_seq" model="ir.sequence">
+            <field name="name">product_variant_seq</field>
+            <field name="code">product.variant.seq</field>
+            <field name="active">TRUE</field>
+            <field name="padding">2</field>
+        </record>
+    </data>
+
+</odoo>

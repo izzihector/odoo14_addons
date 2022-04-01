@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.18.1.final using JasperReports Library version 6.18.1-9d75d1969e774d4f179fb3be8401e98a0e6d1611  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="sale_order_report" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="39dc065d-3fe2-4b64-9097-2ffb36aa896f">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="ODOO_RELATIONS">
+		<![CDATA[['order_line']]]>
+	</property>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Jasper Quotation XML"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<queryString language="xPath">
+		<![CDATA[data/record]]>
+	</queryString>
+	<field name="Date-date_order" class="java.lang.String">
+		<fieldDescription><![CDATA[Date-date_order]]></fieldDescription>
+	</field>
+	<field name="Order_Reference-name" class="java.lang.String">
+		<fieldDescription><![CDATA[Order_Reference-name]]></fieldDescription>
+	</field>
+	<field name="Name-display_name" class="java.lang.String">
+		<fieldDescription><![CDATA[Customer-partner_id/Name-display_name]]></fieldDescription>
+	</field>
+	<field name="Name-name" class="java.lang.String">
+		<fieldDescription><![CDATA[Order_Lines-order_line/Product-product_id/Name-name]]></fieldDescription>
+	</field>
+	<field name="Unit_Price-price_unit" class="java.lang.String">
+		<fieldDescription><![CDATA[Order_Lines-order_line/Unit_Price-price_unit]]></fieldDescription>
+	</field>
+	<field name="Total-amount_total" class="java.lang.String">
+		<fieldDescription><![CDATA[Total-amount_total]]></fieldDescription>
+	</field>
+	<field name="Quantity-product_uom_qty" class="java.lang.String">
+		<fieldDescription><![CDATA[Order_Lines-order_line/Quantity-product_uom_qty]]></fieldDescription>
+	</field>
+	<field name="Subtotal-price_subtotal" class="java.lang.String">
+		<fieldDescription><![CDATA[Order_Lines-order_line/Subtotal-price_subtotal]]></fieldDescription>
+	</field>
+	<field name="Reference-code" class="java.lang.String">
+		<fieldDescription><![CDATA[Order_Lines-order_line/Product-product_id/Reference-code]]></fieldDescription>
+	</field>
+	<sortField name="Order_Reference-name"/>
+	<title>
+		<band height="72">
+			<staticText>
+				<reportElement x="90" y="0" width="168" height="29" forecolor="#C70704" uuid="08533cf6-1070-4360-b23e-2fcf9504a899"/>
+				<textElement verticalAlignment="Middle">
+					<font size="18" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Sale Order Lines]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="702" y="0" width="100" height="20" uuid="171f2b05-1bad-4f5a-84f8-0f199f8e2ba2"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="1" y="1" width="135" height="47" uuid="c3a5e392-574c-483d-be4d-9a5312d7b0ca"/>
+				<imageExpression><![CDATA["logo-serpents.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="39">
+			<staticText>
+				<reportElement x="305" y="12" width="77" height="20" uuid="57c35277-2c1e-4548-9983-1c4d792165e5"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Product]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="629" y="12" width="50" height="20" uuid="3a2172f2-1802-4a67-8eb7-fa774ddd131d"/>
+				<textElement textAlignment="Right">
+					<font size="15" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Price]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="721" y="12" width="81" height="20" uuid="3c1ce701-22d9-4cfe-8629-03b704bfc369"/>
+				<textElement textAlignment="Right">
+					<font size="15" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Subtotal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="543" y="12" width="37" height="20" uuid="6e0d14b9-425a-44b8-9c4a-03f459ad2e6f"/>
+				<textElement textAlignment="Right">
+					<font size="15" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Qty.]]></text>
+			</staticText>
+			<line>
+				<reportElement x="-2" y="38" width="803" height="1" uuid="6906cf74-9079-4a9d-a5dc-b4aa94d81dd7"/>
+			</line>
+			<staticText>
+				<reportElement x="1" y="12" width="49" height="20" uuid="0327e0b0-e156-410f-b1e5-d2d8be5ab099"/>
+				<textElement verticalAlignment="Middle">
+					<font size="15" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Order ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="81" y="12" width="82" height="20" uuid="a79e2ac2-7fd8-4ce7-b7bb-e3fe92254b49"/>
+				<textElement verticalAlignment="Middle">
+					<font size="15" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Customer]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="191" y="12" width="95" height="20" uuid="4f7f9ac0-7873-42b8-a87c-7bb61b51c534"/>
+				<textElement verticalAlignment="Middle">
+					<font size="15" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Order Date]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21">
+			<textField>
+				<reportElement x="610" y="1" width="69" height="20" isRemoveLineWhenBlank="true" uuid="5661cb5a-1efd-4d7b-b546-c59496b9efc9"/>
+				<textElement textAlignment="Right">
+					<font size="13"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Unit_Price-price_unit}.equals("Unit_Price-price_unit") ? "" :  String.format("%.2f", Float.parseFloat($F{Unit_Price-price_unit}))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="721" y="1" width="81" height="20" isRemoveLineWhenBlank="true" uuid="33ac3b67-ce2e-4da5-8858-5239ed0a2efe"/>
+				<textElement textAlignment="Right">
+					<font size="13"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Subtotal-price_subtotal}.equals("Subtotal-price_subtotal") ? "" : String.format("%.2f", Float.parseFloat($F{Subtotal-price_subtotal}))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="1" width="59" height="20" uuid="f7a05af5-00df-4b1e-93a0-c29dc9d6a258">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f43ece14-7e87-473b-a295-cf6a53a90848"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="13"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Order_Reference-name}.equals("Order_Reference-name") ? "" : $F{Order_Reference-name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="540" y="1" width="55" height="20" isRemoveLineWhenBlank="true" uuid="f755c515-d530-4f6b-8d76-b7af1963820f"/>
+				<textElement textAlignment="Center">
+					<font size="13"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Quantity-product_uom_qty}.equals("Quantity-product_uom_qty") ? "" : String.format("%.2f", Float.parseFloat($F{Quantity-product_uom_qty}))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="305" y="1" width="234" height="20" isRemoveLineWhenBlank="true" uuid="e949223f-f77a-4c96-88fd-b1071554ed18"/>
+				<textElement textAlignment="Left">
+					<font size="13"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Name-name}.equals("Name-name") ? "" : $F{Reference-code}.equals('') ? $F{Name-name} : "["+$F{Reference-code}+"] "+$F{Name-name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="80" y="1" width="92" height="20" uuid="18be8c7a-8439-4558-b097-f6d7b36e8bfd"/>
+				<textElement verticalAlignment="Middle">
+					<font size="13"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Name-display_name}.equals("Name-display_name") ? "" : $F{Name-display_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="191" y="0" width="94" height="20" uuid="49a0de7d-4e5c-474a-8308-48dd2448ee5b"/>
+				<textElement verticalAlignment="Middle">
+					<font size="13"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Date-date_order}.equals("Date-date_order") ? "" : new SimpleDateFormat("dd/MM/yyyy").format(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse($F{Date-date_order}))]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="58">
+			<textField>
+				<reportElement x="680" y="19" width="80" height="20" uuid="e2b20ca7-908e-4053-9113-c2c473344b24"/>
+				<textElement textAlignment="Right">
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="760" y="19" width="40" height="20" uuid="789cd93b-a922-4dbf-8f16-7d2a041f784a"/>
+				<textElement>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

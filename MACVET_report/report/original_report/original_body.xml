@@ -1,0 +1,1075 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <template id="full-original-invoice-custom_document">
+
+            <t t-if="'partner_id' in doc.fields_get()">
+                <t t-set="doc" t-value="doc.with_context({'lang':doc.partner_id.lang})"/>
+            </t>
+
+
+            <style>
+                .font{
+                font-family: <t t-esc="doc.company_id.font"/>;
+                }
+            </style>
+            <div class="page font">
+                <link rel="stylesheet" href="/MACVET_report/static/src/css/color.css"/>
+                <link rel="stylesheet" href="/MACVET_report/static/src/css/my_style.css"/>
+                <div class="oe_structure font">
+                    <div class="header-info">
+                    </div>
+                    <div class="container-fluid triple_block  report-container" style="padding-left: 0px; ">
+
+                        <div class="container-fluid single_block  report-container">
+                            <div class="row">
+                                <div class="col-6" style="border: 1px solid #4a5057; border-radius:10px; ">
+                                    <div class="t_block  mb8">
+                                        <div>
+                                            <span style="background-color: transparent; color: rgb(66, 66, 66); font-size: 12px;">
+                                                นามผู้ซื้อ (Bill To):
+                                            </span>
+                                            <br style="background-color: rgb(255, 255, 255);"/>
+                                            <span class="report-well" t-field="doc.partner_id.name"
+                                                  style="background-color: transparent; color: rgb(66, 66, 66); font-size: 12px;"/>
+                                            <br/>
+                                            <span class="report-well" t-field="doc.partner_id.street"
+                                                  style="background-color: transparent; color: rgb(66, 66, 66); font-size: 12px;"/>
+                                            <span class="report-well" t-field="doc.partner_id.street2"
+                                                  style="background-color: transparent; color: rgb(66, 66, 66); font-size: 12px;"/>
+                                            <span class="report-well" t-field="doc.partner_id.zip"
+                                                  style="background-color: transparent; color: rgb(66, 66, 66); font-size: 12px;"/>
+                                            <span class="o_default_snippet_text report-well"
+                                                  t-field="doc.partner_id.city"
+                                                  style="background-color: transparent; color: rgb(66, 66, 66); font-size: 12px;"/>
+                                            <br/>
+                                            <span style="background-color: transparent; color: rgb(66, 66, 66); font-size: 12px;">
+                                                เลขประจำตัวผู้เสียภาษีอากร:
+                                            </span>
+                                            <span class="report-well" t-field="doc.partner_id.vat"
+                                                  style="background-color: transparent; color: rgb(66, 66, 66); font-size: 12px;"/>
+                                            <br/>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+
+                                    <div class="d_block mb8 mt8">
+
+                                        <span class="report-well">
+                                            <font style="color: rgb(0, 0, 0); font-size: 12px; ">
+                                                สถานที่ออกใบกำกับภาษี:
+                                            </font>
+                                            <span style="color: rgb(66, 66, 66); font-size: 12px; "></span>
+                                            <span t-field="doc.branch_id.branch_code"/>
+                                            <br/>
+                                            <font style="color: rgb(0, 0, 0); font-size: 12px; ">NO.:</font>
+                                            <span class="report-well" t-field="doc.payment_reference"/>
+
+                                            <br/>
+                                            <font style="color: rgb(0, 0, 0); font-size: 12px; ">DATE:</font>
+                                            <span class="report-well" t-field="doc.invoice_date"/>
+
+                                        </span>
+                                        <br/>
+                                        <br style="background-color: rgba(0, 0, 0, 0.075);"/>
+                                        <div style="border: 1px solid #4a5057;border-bottom: none;border-right: none;border-left: none;">
+                                            <div class="report-well" style="background-color: rgb(255, 255, 255);">
+                                                <span class="report-well">
+                                                    <font style="color: rgb(0, 0, 0); font-size: 12px; ">สถานที่ส่ง
+                                                    </font>
+                                                    <br/>
+                                                    <font style="color: rgb(0, 0, 0); font-size: 12px; ">SHIP TO:</font>
+                                                </span>
+                                                <span class="report-well" t-field="doc.partner_shipping_id"/>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="d_block mt8 mb8"/>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="container-fluid single_block mt16 mb16 report-container padding1"
+                    >
+                        <div class="row">
+                            <div class="col" style="padding-left: 0px;padding-right: 0px;">
+                                <div class="s_block mt8 mb8 ">
+                                    <table style="width:100%;">
+                                        <thead class="color-original"
+                                               style="border-bottom:1px solid #4a5057; text-align:center;   border-left:1px solid #4a5057;">
+                                            <tr>
+                                                <td colspan="2"
+                                                    style="padding:0rem;border-left:1px solid #4a5057;border-right:1px solid #4a5057;border-bottom:1px solid #4a5057">
+                                                    <font style="color: rgb(66, 66, 66); font-size: 12px;">ใบสั่งซื้อ
+                                                        (P/O)
+                                                    </font>
+                                                </td>
+                                                <td rowspan="2" colspan="2"
+                                                    style="padding:0rem;border-right:1px solid #4a5057">
+                                                    <font style="color: rgb(66, 66, 66); font-size: 12px;">
+                                                        เอกสารอ้างอิง
+                                                    </font>
+                                                    <br/>
+                                                    <font style="color: rgb(66, 66, 66); font-size: 12px;">ORDER REF
+                                                    </font>
+                                                </td>
+                                                <td rowspan="2" colspan="2"
+                                                    style=" padding:0rem;border-right:1px solid #4a5057">
+                                                    <font style="color: rgb(66, 66, 66); font-size: 12px;">กำหนดชำระ
+                                                        (วัน)
+                                                    </font>
+                                                    <br/>
+                                                    <font style="color: rgb(66, 66, 66); font-size: 12px;">CR.TERM
+                                                    </font>
+                                                </td>
+                                                <td rowspan="2" colspan="1"
+                                                    style=" padding:0rem;border-right:1px solid #4a5057">
+                                                    <font style="color: rgb(66, 66, 66); font-size: 12px;">
+                                                        วันครบกำหนดชำระ
+                                                    </font>
+                                                    <br/>
+                                                    <font style="color: rgb(66, 66, 66); font-size: 12px;">DUE DATE
+                                                    </font>
+                                                </td>
+                                                <td rowspan="2" colspan="1"
+                                                    style=" padding:0rem;border-right:1px solid #4a5057">
+                                                    <font style="color: rgb(66, 66, 66); font-size: 12px;">แผนกขาย
+                                                    </font>
+                                                    <br/>
+                                                    <font style="color: rgb(66, 66, 66); font-size: 12px;">DEPARTMENT
+                                                    </font>
+                                                </td>
+                                                <td rowspan="2" colspan="2"
+                                                    style=" padding:0rem;border-right:1px solid #4a5057;width:150px;">
+                                                    <font style="color: rgb(66, 66, 66); font-size: 12px;">พนักงานขาย
+                                                    </font>
+                                                    <br/>
+                                                    <font style="color: rgb(66, 66, 66); font-size: 12px;">SALESMAN
+                                                    </font>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2" style="border-right:1px solid #4a5057">
+                                                    <font style="color: rgb(66, 66, 66); font-size: 12px; margin-right: 8px;">
+                                                        เลขที่ (NO.)
+                                                    </font>
+                                                </td>
+                                                <!--                    <td style="border-right:1px solid #4a5057">-->
+                                                <!--                      <font style="color: rgb(66, 66, 66); font-size: 12px; margin-left: 15px;">วันที่(DATE)</font>-->
+                                                <!--                    </td>-->
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="2" style="text-align: center; padding: 0.50rem;">
+                                                    <span class="o_default_snippet_text report-well"
+                                                          t-field="doc.ref"/>
+                                                </td>
+                                                <!--                    <td colspan="1" style="text-align: center; padding: 0.50rem;">-->
+                                                <!--                      <span class="o_default_snippet_text report-well" t-field="doc.invoice_date"/>-->
+                                                <!--                    </td>-->
+                                                <td colspan="2" style="padding:0.50rem;text-align:center;">
+                                                    <span class="o_default_snippet_text report-well"
+                                                          t-field="doc.invoice_origin"/>
+                                                </td>
+                                                <td colspan="2" style=" padding:0.50rem;text-align: center;">
+                                                    <span class="o_default_snippet_text report-well"
+                                                          t-field="doc.invoice_payment_term_id"/>
+                                                </td>
+                                                <td colspan="1" style=" padding:0.50rem;text-align: center;">
+                                                    <span class="o_default_snippet_text report-well"
+                                                          t-field="doc.invoice_date_due"/>
+                                                </td>
+                                                <td colspan="1" style=" padding:0.50rem;text-align: center;">
+                                                    <span class="o_default_snippet_text report-well"
+                                                          t-field="doc.team_id"/>
+                                                </td>
+                                                <td colspan="2" style=" padding:0.50rem;text-align: center;">
+                                                    <span class="o_default_snippet_text report-well"
+                                                          t-field="doc.user_id"/>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-fluid single_block mt16  report-container">
+                        <div class="row">
+                            <div class="col-md-12 col-xs-12"
+                                 style="padding-bottom:0px   ;  padding-left: 0px;     padding-right: 0px; ">
+                                <div class=" mt8 s_block">
+                                    <table class="report-well table table-borderless table-invoice"
+                                    >
+                                        <thead style="border-bottom: 1px solid #495057;">
+                                            <tr class="color-original" style="height:30px; ">
+                                                <td style=" padding:0.0rem; border-right:1px solid #4a5057;">
+                                                    <font style="color: rgb(66, 66, 66); font-size: 12px;">รหัสสินค้า
+                                                    </font>
+                                                    <br/>
+                                                    <font style="color: rgb(66, 66, 66); font-size: 12px;">CODE</font>
+                                                </td>
+                                                <td style=" padding:0.0rem; width:340px; border-right:1px solid #4a5057">
+                                                    <span style="background-color: transparent; color: rgb(66, 66, 66); font-size: 12px;">
+                                                        รายการ
+                                                    </span>
+                                                    <br/>
+                                                    <font style="color: rgb(66, 66, 66); font-size: 12px;">DESCRIPTION
+                                                    </font>
+                                                </td>
+                                                <td style=" padding:0.0rem; border-right:1px solid #4a5057">
+                                                    <span style="background-color: transparent; color: rgb(66, 66, 66); font-size: 12px;">
+                                                        จำนวน
+                                                    </span>
+                                                    <br/>
+                                                    <font style="color: rgb(66, 66, 66); font-size: 12px;">QUANTITY
+                                                    </font>
+                                                </td>
+                                                <td style=" padding:0.0rem; border-right:1px solid #4a5057">
+                                                    <span style="background-color: transparent; color: rgb(66, 66, 66); font-size: 12px;">
+                                                        ราคาต่อหน่วย
+                                                    </span>
+                                                    <br/>
+                                                    <font style="color: rgb(66, 66, 66); font-size: 12px;">PRICE</font>
+                                                    <br/>
+                                                </td>
+                                                <td style=" padding:0.0rem; border-right:1px solid #4a5057; ">
+                                                    <font style="color: rgb(66, 66, 66); font-size: 12px;">ส่วนลด%
+                                                    </font>
+                                                    <br/>
+                                                    <font style="color: rgb(66, 66, 66); font-size: 12px;">DISCOUNT
+                                                    </font>
+                                                </td>
+                                                <td style=" padding:0.0rem; border-right:1px solid #4a5057">
+                                                    <font style="color: rgb(66, 66, 66); font-size: 12px;">
+                                                        ราคาสุทธิ/หน่วย
+                                                    </font>
+                                                    <br/>
+                                                    <font style="color: rgb(66, 66, 66); font-size: 12px;">NET PRICE
+                                                    </font>
+                                                </td>
+                                                <td style=" padding:0.0rem; border-right:1px solid #4a5057">
+                                                    <font style="color: rgb(66, 66, 66); font-size: 12px;">จำนวนเงิน
+                                                    </font>
+                                                    <br/>
+                                                    <font style="color: rgb(66, 66, 66); font-size: 12px;">AMOUNT</font>
+                                                </td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            <div class="watermark"
+                                                 style="position:absolute;opacity:0.25;font-size:25em;width:100%; text-align:center;z-index:1000;">
+                                                <img t-if="doc.company_id.logo"
+                                                     t-att-src="image_data_uri(doc.company_id.logo)" alt="Logo"
+                                                     style="height:400px;"/>
+                                            </div>
+                                            <tr t-if="line.name != ''" t-foreach="doc.invoice_line_ids" t-as="line"
+                                                style="height:10px; page-break-after:always ">
+                                                <td style=" text-align: left; padding:0.20rem; padding-bottom:0.0 ">
+                                                    <span class="report-well o_default_snippet_text"
+                                                          t-field="line.product_id.default_code"/>
+                                                </td>
+                                                <td style="padding:0.20rem; padding-bottom:0.0 ">
+                                                    <p class="report-well product" t-field="line.product_id"
+                                                    />
+                                                </td>
+                                                <td style="padding:0.20rem; padding-bottom:0.0 ">
+                                                    <p class="report-well" t-field="line.quantity"
+                                                       style="text-align: right; width: 100px; word-wrap:break-all;margin-bottom: 0px; ;"/>
+                                                </td>
+                                                <td style="padding:0.40rem; padding-bottom:0.0 ">
+                                                    <p class="report-well" t-field="line.price_unit"
+                                                       style="text-align: right; width: 100px; word-wrap:break-all;margin-bottom: 0px; "/>
+                                                </td>
+                                                <td style="padding:0.40rem; padding-bottom:0.0 ">
+                                                    <p class="report-well" t-field="line.discount"
+                                                       style="text-align: right; width: 100px; word-wrap:break-all;margin-bottom: 0px; "/>
+                                                </td>
+                                                <td style=" padding:0.40rem;padding-bottom:0.0 ">
+                                                    <p class="report-well"
+                                                       t-esc="'{0:,.2f}'.format(line.price_subtotal/line.quantity)+' ฿'"
+                                                       widget="monetary"
+                                                       style="text-align: right; width: 100px; word-wrap:break-all;margin-bottom: 0px; "/>
+                                                </td>
+                                                <td style="padding:0.40rem;padding-bottom:0.0 ">
+                                                    <p class="report-well" t-field="line.price_subtotal"
+                                                       style="text-align: right; width: 100px; word-wrap:break-all;margin-bottom: 0px;"/>
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+
+                                                <td/>
+                                                <td/>
+                                                <td/>
+                                                <td/>
+                                                <td/>
+                                                <td/>
+                                                <td/>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="page-break-inside: avoid;">
+                        <div class="container-fluid triple_block  report-container" style="padding-right:15px">
+                            <div class="row">
+                                <div class="col-8" style="border-left: 1px solid #4a5057;">
+                                    <div class="t_block mt8 mb8"/>
+                                </div>
+                                <div class="col-2 color-original"
+                                     style="  border: 1px solid #4a5057;border-bottom:none;border-right:none;  padding:0.0rem; border-top:none;height:50px; ">
+                                    <div style="text-align: center;">
+                                        <font style="color: rgb(66, 66, 66); font-size: 12px;">รวมมูลค่าสินค้า</font>
+                                    </div>
+                                    <div style="text-align: center;">
+                                        <font style="color: rgb(66, 66, 66); font-size: 12px;">TOTAL</font>
+                                    </div>
+                                    <div class="mb8 mt8 t_block"/>
+                                </div>
+                                <div class="col-2"
+                                     style="  border: 1px solid #4a5057;border-top:none;border-bottom:none; ">
+                                    <br/>
+                                    <p class="report-well" t-field="doc.amount_untaxed"
+                                       style="text-align: right; width: 9sem; margin-bottom: 0px;"/>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-8" style="border-left: 1px solid #4a5057;">
+                                    <div class="t_block mt8 mb8"/>
+                                </div>
+                                <div class="col-2 color-original"
+                                     style="  border: 1px solid #4a5057;border-bottom:none;border-right:none; padding:0.0rem;">
+                                    <div style="text-align: center;">
+                                        <font style="color: rgb(66, 66, 66); font-size: 12px;">ภาษีมูลค่าเพิ่มอัตรา
+                                        </font>
+                                        <t t-foreach="doc.tax_invoice_ids" t-as="line">
+
+
+                                            <br/>
+                                            <span class="report-well" t-field="line.tax_line_id.description"/>
+
+                                        </t>
+                                    </div>
+                                    <!--                                    <div style="text-align: center;">-->
+                                    <!--                                        <font style="color: rgb(66, 66, 66); font-size: 12px;">TAX RATE</font>-->
+                                    <!--                                    </div>-->
+                                    <div class="mb8 mt8 t_block"/>
+                                </div>
+                                <div class="col-2"
+                                     style="text-align: right; border-top: 1px solid #4a5057; border-right: 1px solid #4a5057; border-left: 1px solid #4a5057; border-image: initial; border-bottom: none; padding-right: 9px;">
+                                    <br/>
+                                    <t t-foreach="doc.amount_by_group" t-as="line">
+
+                                        <span class="o_default_snippet_text report-well" t-esc="line[1]"/> ฿
+                                        <br/>
+                                    </t>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6 color-original"
+                                     style=" border: 1px solid #4a5057;border-bottom-left-radius:10px; padding:0.0rem; text-align:center;  padding-top:15px;">
+                                    <span style="font-size: 15px;" t-esc="doc.baht_to_text(doc.amount_total)"/>
+                                    <!--              <t t-foreach="docs" t-as="o" style="">-->
+                                    <!--                <t t-set="currency" t-value="o.currency_id" style=""/>-->
+                                    <!--                <t t-esc="currency.amount_to_text(doc.amount_total)" style=""/>-->
+                                    <!--              </t>-->
+                                </div>
+                                <div class="col-2" style="border-bottom:1px solid #4a5057;">
+
+                                </div>
+                                <div class="col-2 color-original"
+                                     style="  border: 1px solid #4a5057;black;border-right:none;black; padding:0.0rem;">
+                                    <div style="text-align: center;">
+                                        <font style="color: rgb(66, 66, 66); font-size: 12px;">ยอดรวม</font>
+                                    </div>
+                                    <div style="text-align: center;">
+                                        <font style="color: rgb(66, 66, 66); font-size: 12px;">GRAND TOTAL</font>
+                                    </div>
+                                    <div class="mb8 mt8 t_block"/>
+                                </div>
+                                <div class="col-2"
+                                     style="  border: 1px solid #4a5057; border-bottom-right-radius:10px;">
+                                    <br/>
+                                    <p class="report-well" t-field="doc.amount_total"
+                                       style="text-align: right; width: 9em; margin-bottom: 0px;"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="page-break-inside: avoid;">
+                        <div class="container-fluid single_block mt16 mb16 report-container padding2">
+                            <div class="row">
+                                <div class="col-8 "
+                                     style="padding-bottom: 10px;padding-right: 15px;padding-left: 15px;  ">
+                                    <div class="row"
+                                         style="padding-bottom: 10px;padding-right: 16px;padding-left: 0px;">
+                                        <div class="col-12 "
+                                             style="   border: 1px solid #4a5057;     border-radius:10px; height: 110px">
+                                                                                        <span class="report-well" t-field="doc.branch_id.note_tax"/>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-7" style="     padding-left: 0px;  ">
+                                            <div style="border: 1px solid #4a5057;border-radius:10px;padding-bottom: 10px;padding-left: 10px;padding-right: 10px;padding-top: 6px; ">
+                                                <div style="text-align: center;">
+                                                    <span style="background-color: transparent; color: rgb(66, 66, 66); font-size: 12px;   ">
+                                                        ได้ตรวจรับสินค้าตามรายการข้างต้นโดยถูกต้องเรียบร้อยแล้ว
+                                                    </span>
+                                                </div>
+                                                <br/>
+                                                <br/>
+                                                <br/>
+                                                <br/>
+                                                <span style="background-color: transparent; color: rgb(66, 66, 66); font-size: 12px;  font-weight: bold;">
+                                                    ผู้รับของ......................................................................วันที่...............................................
+                                                </span>
+                                                <br style="background-color: rgb(255, 255, 255); color: rgb(73, 80, 87); font-size: 12px;"/>
+
+
+                                                <div style="text-align: center;">
+                                                    <span style="background-color: transparent; color: rgb(66, 66, 66); font-size: 12px;">
+                                                        (ลงลายมือชื่อและประทับตรา)
+                                                    </span>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-5" style="     padding-left: 0px;  ">
+                                            <div style="border: 1px solid #4a5057;border-radius:10px;padding-top: 10px;padding-left: 20px;padding-bottom: 6px;padding-right: 10px;  ">
+                                                <br/>
+                                                <font style="background-color: transparent; color: rgb(66, 66, 66); font-size: 12px;  font-weight: bold;">
+                                                    ผู้ตรวจสอบ.............................................................................
+                                                </font>
+
+                                                <br/>
+                                                <br/>
+                                                <br/>
+                                                <br/>
+                                                <font style="background-color: transparent; color: rgb(66, 66, 66); font-size: 12px;">
+                                                    <span style="background-color: transparent; color: rgb(66, 66, 66);  font-weight: bold;">
+                                                        ผู้ส่งของ...................................................................................
+                                                    </span>
+                                                    <br style="color: rgb(33, 37, 41); font-size: 14px;"/>
+                                                    <span style="background-color: transparent; color: rgb(66, 66, 66);">
+                                                        วันที่ส่งของ
+                                                    </span>
+
+                                                </font>
+                                            </div>
+                                        </div>
+                                        <br style="background-color: rgb(255, 255, 255);"/>
+                                        <br style="background-color: rgb(255, 255, 255);"/>
+                                        <br style="background-color: rgb(255, 255, 255);"/>
+                                        <span style="background-color: transparent; color: rgb(66, 66, 66); font-size: 12px;">
+                                            <br/>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-4" style="padding-right: 0px;padding-left: 0px;  ">
+                                    <div style="border: 1px solid #4a5057;border-radius:10px;padding-bottom: 3px;">
+                                        <div style="text-align: center;  ">
+                                            <font style="color: rgb(66, 66, 66); font-size: 12px;">
+                                                <br/>
+                                            </font>
+                                            <font style="color: rgb(66, 66, 66); font-size: 12px;">ในนาม (For)</font>
+                                        </div>
+                                        <div>
+                                            <div style="text-align: center;">
+                                                <font style="color: rgb(66, 66, 66); font-size: 12px;  font-weight: bold;">
+                                                    <span class="report-well" t-field="doc.branch_id.company_id"/>
+                                                    <br/>
+                                                                                                        <span class="report-well" t-field="doc.branch_id.company_eng"/>
+                                                </font>
+
+                                            </div>
+                                            <div style="text-align: center;">
+                                                <br/>
+                                                <br/>
+                                                <br/>
+                                                <br/>
+                                                <br/>
+                                                <br/>
+                                                <br/>
+                                                <br/>
+                                            </div>
+                                            <div>
+                                                <div style="text-align: center;">
+                                                    <font style="color: rgb(66, 66, 66); font-size: 12px;padding-bottom: 2px;">
+                                                        ..............................................................................................................................................
+                                                    </font>
+
+                                                    <br/>
+
+                                                    <font style="color: rgb(66, 66, 66); font-size: 12px;">
+                                                        <span style="background-color: rgb(255, 255, 255); color: rgb(66, 66, 66);">
+                                                            ผู้มีอํานาจลงนาม/Authorized Signature
+                                                        </span>
+                                                        <br/>
+                                                    </font>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </template>
+
+        <!--     ===========                 add designer id body       ================              -->
+
+        <template id="full_copy_original_invoice-custom_document">
+
+            <t t-if="'partner_id' in doc.fields_get()">
+                <t t-set="doc" t-value="doc.with_context({'lang':doc.partner_id.lang})"/>
+            </t>
+
+            <style>
+                .font{
+                font-family: <t t-esc="doc.company_id.font"/>;
+                }
+            </style>
+
+            <div class="page">
+                <link rel="stylesheet" href="/MACVET_report/static/src/css/color.css"/>
+                <link rel="stylesheet" href="/MACVET_report/static/src/css/my_style.css"/>
+                <div class="oe_structure font">
+                    <div class="header-info">
+                    </div>
+                    <div class="container-fluid triple_block  report-container" style="padding-left: 0px; ">
+
+                        <div class="container-fluid single_block  report-container">
+                            <div class="row">
+                                <div class="col-6" style="border: 1px solid #4a5057; border-radius:10px; ">
+                                    <div class="t_block  mb8">
+                                        <div>
+                                            <span style="background-color: transparent; color: rgb(66, 66, 66); font-size: 12px;">
+                                                นามผู้ซื้อ (Bill To):
+                                            </span>
+                                            <br style="background-color: rgb(255, 255, 255);"/>
+                                            <span class="report-well" t-field="doc.partner_id.name"
+                                                  style="background-color: transparent; color: rgb(66, 66, 66); font-size: 12px;"/>
+                                            <br/>
+                                            <span class="report-well" t-field="doc.partner_id.street"
+                                                  style="background-color: transparent; color: rgb(66, 66, 66); font-size: 12px;"/>
+                                            <span class="report-well" t-field="doc.partner_id.street2"
+                                                  style="background-color: transparent; color: rgb(66, 66, 66); font-size: 12px;"/>
+                                            <span class="report-well" t-field="doc.partner_id.zip"
+                                                  style="background-color: transparent; color: rgb(66, 66, 66); font-size: 12px;"/>
+                                            <span class="o_default_snippet_text report-well"
+                                                  t-field="doc.partner_id.city"
+                                                  style="background-color: transparent; color: rgb(66, 66, 66); font-size: 12px;"/>
+                                            <br/>
+                                            <span style="background-color: transparent; color: rgb(66, 66, 66); font-size: 12px;">
+                                                เลขประจำตัวผู้เสียภาษีอากร:
+                                            </span>
+                                            <span class="report-well" t-field="doc.partner_id.vat"
+                                                  style="background-color: transparent; color: rgb(66, 66, 66); font-size: 12px;"/>
+                                            <br/>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+
+                                    <div class="d_block mb8 mt8">
+
+                                        <span class="report-well">
+                                            <font style="color: rgb(0, 0, 0); font-size: 12px; ">
+                                                สถานที่ออกใบกำกับภาษี:
+                                            </font>
+                                            <span style="color: rgb(66, 66, 66); font-size: 12px; "></span>
+                                            <!--                                                  t-field="doc.branch_id.branch_code"/>-->
+                                            <br/>
+                                            <font style="color: rgb(0, 0, 0); font-size: 12px; ">NO.:</font>
+                                            <span class="report-well" t-field="doc.payment_reference"/>
+
+                                            <br/>
+                                            <font style="color: rgb(0, 0, 0); font-size: 12px; ">DATE:</font>
+                                            <span class="report-well" t-field="doc.invoice_date"/>
+
+                                        </span>
+                                        <br/>
+                                        <br style="background-color: rgba(0, 0, 0, 0.075);"/>
+                                        <div style="border: 1px solid #4a5057;border-bottom: none;border-right: none;border-left: none;">
+                                            <div class="report-well" style="background-color: rgb(255, 255, 255);">
+                                                <span class="report-well">
+                                                    <font style="color: rgb(0, 0, 0); font-size: 12px; ">สถานที่ส่ง
+                                                    </font>
+                                                    <br/>
+                                                    <font style="color: rgb(0, 0, 0); font-size: 12px; ">SHIP TO:</font>
+                                                </span>
+                                                <span class="report-well" t-field="doc.partner_shipping_id"/>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="d_block mt8 mb8"/>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="container-fluid single_block mt16 mb16 report-container padding1"
+                    >
+                        <div class="row">
+                            <div class="col" style="padding-left: 0px;padding-right: 0px;">
+                                <div class="s_block mt8 mb8 ">
+                                    <table style="width:100%;">
+                                        <thead class="color-copy"
+                                               style="border-bottom:1px solid #4a5057; text-align:center;   border-left:1px solid #4a5057;">
+                                            <tr>
+                                                <td colspan="2"
+                                                    style="padding:0rem;border-left:1px solid #4a5057;border-right:1px solid #4a5057;border-bottom:1px solid #4a5057">
+                                                    <font style="color: rgb(66, 66, 66); font-size: 12px;">ใบสั่งซื้อ
+                                                        (P/O)
+                                                    </font>
+                                                </td>
+                                                <td rowspan="2" colspan="2"
+                                                    style="padding:0rem;border-right:1px solid #4a5057">
+                                                    <font style="color: rgb(66, 66, 66); font-size: 12px;">
+                                                        เอกสารอ้างอิง
+                                                    </font>
+                                                    <br/>
+                                                    <font style="color: rgb(66, 66, 66); font-size: 12px;">ORDER REF
+                                                    </font>
+                                                </td>
+                                                <td rowspan="2" colspan="2"
+                                                    style=" padding:0rem;border-right:1px solid #4a5057">
+                                                    <font style="color: rgb(66, 66, 66); font-size: 12px;">กำหนดชำระ
+                                                        (วัน)
+                                                    </font>
+                                                    <br/>
+                                                    <font style="color: rgb(66, 66, 66); font-size: 12px;">CR.TERM
+                                                    </font>
+                                                </td>
+                                                <td rowspan="2" colspan="1"
+                                                    style=" padding:0rem;border-right:1px solid #4a5057">
+                                                    <font style="color: rgb(66, 66, 66); font-size: 12px;">
+                                                        วันครบกำหนดชำระ
+                                                    </font>
+                                                    <br/>
+                                                    <font style="color: rgb(66, 66, 66); font-size: 12px;">DUE DATE
+                                                    </font>
+                                                </td>
+                                                <td rowspan="2" colspan="1"
+                                                    style=" padding:0rem;border-right:1px solid #4a5057">
+                                                    <font style="color: rgb(66, 66, 66); font-size: 12px;">แผนกขาย
+                                                    </font>
+                                                    <br/>
+                                                    <font style="color: rgb(66, 66, 66); font-size: 12px;">DEPARTMENT
+                                                    </font>
+                                                </td>
+                                                <td rowspan="2" colspan="2"
+                                                    style=" padding:0rem;border-right:1px solid #4a5057;width:150px;">
+                                                    <font style="color: rgb(66, 66, 66); font-size: 12px;">พนักงานขาย
+                                                    </font>
+                                                    <br/>
+                                                    <font style="color: rgb(66, 66, 66); font-size: 12px;">SALESMAN
+                                                    </font>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2" style="border-right:1px solid #4a5057">
+                                                    <font style="color: rgb(66, 66, 66); font-size: 12px; margin-right: 8px;">
+                                                        เลขที่ (NO.)
+                                                    </font>
+                                                </td>
+                                                <!--                    <td style="border-right:1px solid #4a5057">-->
+                                                <!--                      <font style="color: rgb(66, 66, 66); font-size: 12px; margin-left: 15px;">วันที่(DATE)</font>-->
+                                                <!--                    </td>-->
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="2" style="text-align: center; padding: 0.50rem;">
+                                                    <span class="o_default_snippet_text report-well"
+                                                          t-field="doc.ref"/>
+                                                </td>
+                                                <!--                    <td colspan="1" style="text-align: center; padding: 0.50rem;">-->
+                                                <!--                      <span class="o_default_snippet_text report-well" t-field="doc.invoice_date"/>-->
+                                                <!--                    </td>-->
+                                                <td colspan="2" style="padding:0.50rem;text-align:center;">
+                                                    <span class="o_default_snippet_text report-well"
+                                                          t-field="doc.invoice_origin"/>
+                                                </td>
+                                                <td colspan="2" style=" padding:0.50rem;text-align: center;">
+                                                    <span class="o_default_snippet_text report-well"
+                                                          t-field="doc.invoice_payment_term_id"/>
+                                                </td>
+                                                <td colspan="1" style=" padding:0.50rem;text-align: center;">
+                                                    <span class="o_default_snippet_text report-well"
+                                                          t-field="doc.invoice_date_due"/>
+                                                </td>
+                                                <td colspan="1" style=" padding:0.50rem;text-align: center;">
+                                                    <span class="o_default_snippet_text report-well"
+                                                          t-field="doc.team_id"/>
+                                                </td>
+                                                <td colspan="2" style=" padding:0.50rem;text-align: center;">
+                                                    <span class="o_default_snippet_text report-well"
+                                                          t-field="doc.user_id"/>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-fluid single_block mt16  report-container">
+                        <div class="row">
+                            <div class="col-md-12 col-xs-12"
+                                 style="padding-bottom:0px   ;  padding-left: 0px;     padding-right: 0px; ">
+                                <div class=" mt8 s_block">
+                                    <table class="report-well table table-borderless table-invoice"
+                                    >
+                                        <thead style="border-bottom: 1px solid #495057;">
+                                            <tr class="color-copy" style="height:30px; ">
+                                                <td style=" padding:0.0rem; border-right:1px solid #4a5057;">
+                                                    <font style="color: rgb(66, 66, 66); font-size: 12px;">รหัสสินค้า
+                                                    </font>
+                                                    <br/>
+                                                    <font style="color: rgb(66, 66, 66); font-size: 12px;">CODE</font>
+                                                </td>
+                                                <td style=" padding:0.0rem; width:340px; border-right:1px solid #4a5057">
+                                                    <span style="background-color: transparent; color: rgb(66, 66, 66); font-size: 12px;">
+                                                        รายการ
+                                                    </span>
+                                                    <br/>
+                                                    <font style="color: rgb(66, 66, 66); font-size: 12px;">DESCRIPTION
+                                                    </font>
+                                                </td>
+                                                <td style=" padding:0.0rem; border-right:1px solid #4a5057">
+                                                    <span style="background-color: transparent; color: rgb(66, 66, 66); font-size: 12px;">
+                                                        จำนวน
+                                                    </span>
+                                                    <br/>
+                                                    <font style="color: rgb(66, 66, 66); font-size: 12px;">QUANTITY
+                                                    </font>
+                                                </td>
+                                                <td style=" padding:0.0rem; border-right:1px solid #4a5057">
+                                                    <span style="background-color: transparent; color: rgb(66, 66, 66); font-size: 12px;">
+                                                        ราคาต่อหน่วย
+                                                    </span>
+                                                    <br/>
+                                                    <font style="color: rgb(66, 66, 66); font-size: 12px;">PRICE</font>
+                                                    <br/>
+                                                </td>
+                                                <td style=" padding:0.0rem; border-right:1px solid #4a5057; ">
+                                                    <font style="color: rgb(66, 66, 66); font-size: 12px;">ส่วนลด%
+                                                    </font>
+                                                    <br/>
+                                                    <font style="color: rgb(66, 66, 66); font-size: 12px;">DISCOUNT
+                                                    </font>
+                                                </td>
+                                                <td style=" padding:0.0rem; border-right:1px solid #4a5057">
+                                                    <font style="color: rgb(66, 66, 66); font-size: 12px;">
+                                                        ราคาสุทธิ/หน่วย
+                                                    </font>
+                                                    <br/>
+                                                    <font style="color: rgb(66, 66, 66); font-size: 12px;">NET PRICE
+                                                    </font>
+                                                </td>
+                                                <td style=" padding:0.0rem; border-right:1px solid #4a5057">
+                                                    <font style="color: rgb(66, 66, 66); font-size: 12px;">จำนวนเงิน
+                                                    </font>
+                                                    <br/>
+                                                    <font style="color: rgb(66, 66, 66); font-size: 12px;">AMOUNT</font>
+                                                </td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            <div class="watermark"
+                                                 style="position:absolute;opacity:0.25;font-size:25em;width:100%; text-align:center;z-index:1000;">
+                                                <img t-if="doc.company_id.logo"
+                                                     t-att-src="image_data_uri(doc.company_id.logo)" alt="Logo"
+                                                     style="height:400px;"/>
+                                            </div>
+                                            <tr t-if="line.name != ''" t-foreach="doc.invoice_line_ids" t-as="line"
+                                                style="height:10px; page-break-after:always ">
+                                                <td style=" text-align: left; padding:0.20rem; padding-bottom:0.0 ">
+                                                    <span class="report-well o_default_snippet_text"
+                                                          t-field="line.product_id.default_code"/>
+                                                </td>
+                                                <td style="padding:0.20rem; padding-bottom:0.0 ">
+                                                    <p class="report-well product" t-field="line.product_id"
+                                                    />
+                                                </td>
+                                                <td style="padding:0.20rem; padding-bottom:0.0 ">
+                                                    <p class="report-well" t-field="line.quantity"
+                                                       style="text-align: right; width: 100px; word-wrap:break-all;margin-bottom: 0px; ;"/>
+                                                </td>
+                                                <td style="padding:0.40rem; padding-bottom:0.0 ">
+                                                    <p class="report-well" t-field="line.price_unit"
+                                                       style="text-align: right; width: 100px; word-wrap:break-all;margin-bottom: 0px; "/>
+                                                </td>
+                                                <td style="padding:0.40rem; padding-bottom:0.0 ">
+                                                    <p class="report-well" t-field="line.discount"
+                                                       style="text-align: right; width: 100px; word-wrap:break-all;margin-bottom: 0px; "/>
+                                                </td>
+                                                <td style=" padding:0.40rem;padding-bottom:0.0 ">
+                                                    <p class="report-well"
+                                                       t-esc="'{0:,.2f}'.format(line.price_subtotal/line.quantity)+' ฿'"
+                                                       widget="monetary"
+                                                       style="text-align: right; width: 100px; word-wrap:break-all;margin-bottom: 0px; "/>
+                                                </td>
+                                                <td style="padding:0.40rem;padding-bottom:0.0 ">
+                                                    <p class="report-well" t-field="line.price_subtotal"
+                                                       style="text-align: right; width: 100px; word-wrap:break-all;margin-bottom: 0px;"/>
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+
+                                                <td/>
+                                                <td/>
+                                                <td/>
+                                                <td/>
+                                                <td/>
+                                                <td/>
+                                                <td/>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="page-break-inside: avoid;">
+                        <div class="container-fluid triple_block  report-container" style="padding-right:15px">
+                            <div class="row">
+                                <div class="col-8" style="border-left: 1px solid #4a5057;">
+                                    <div class="t_block mt8 mb8"/>
+                                </div>
+                                <div class="col-2 color-copy"
+                                     style="  border: 1px solid #4a5057;border-bottom:none;border-right:none;  padding:0.0rem; border-top:none;height:50px; ">
+                                    <div style="text-align: center;">
+                                        <font style="color: rgb(66, 66, 66); font-size: 12px;">รวมมูลค่าสินค้า</font>
+                                    </div>
+                                    <div style="text-align: center;">
+                                        <font style="color: rgb(66, 66, 66); font-size: 12px;">TOTAL</font>
+                                    </div>
+                                    <div class="mb8 mt8 t_block"/>
+                                </div>
+                                <div class="col-2"
+                                     style="  border: 1px solid #4a5057;border-top:none;border-bottom:none; ">
+                                    <br/>
+                                    <p class="report-well" t-field="doc.amount_untaxed"
+                                       style="text-align: right; width: 9sem; margin-bottom: 0px;"/>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-8" style="border-left: 1px solid #4a5057;">
+                                    <div class="t_block mt8 mb8"/>
+                                </div>
+                                <div class="col-2 color-copy"
+                                     style="  border: 1px solid #4a5057;border-bottom:none;border-right:none; padding:0.0rem;">
+                                    <div style="text-align: center;">
+                                        <font style="color: rgb(66, 66, 66); font-size: 12px;">ภาษีมูลค่าเพิ่มอัตรา
+                                        </font>
+                                        <t t-foreach="doc.tax_invoice_ids" t-as="line">
+
+
+                                            <br/>
+                                            <span class="report-well" t-field="line.tax_line_id.description"/>
+
+                                        </t>
+                                    </div>
+                                    <!--                                    <div style="text-align: center;">-->
+                                    <!--                                        <font style="color: rgb(66, 66, 66); font-size: 12px;">TAX RATE</font>-->
+                                    <!--                                    </div>-->
+                                    <div class="mb8 mt8 t_block"/>
+                                </div>
+                                <div class="col-2"
+                                     style="text-align: right; border-top: 1px solid #4a5057; border-right: 1px solid #4a5057; border-left: 1px solid #4a5057; border-image: initial; border-bottom: none; padding-right: 9px;">
+                                    <br/>
+                                    <t t-foreach="doc.amount_by_group" t-as="line">
+
+                                        <span class="o_default_snippet_text report-well" t-esc="line[1]"/> ฿
+                                        <br/>
+                                    </t>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6 color-copy"
+                                     style=" border: 1px solid #4a5057;border-bottom-left-radius:10px; padding:0.0rem; text-align:center;  padding-top:15px;">
+                                    <span style="font-size: 15px;" t-esc="doc.baht_to_text(doc.amount_total)"/>
+                                    <!--              <t t-foreach="docs" t-as="o" style="">-->
+                                    <!--                <t t-set="currency" t-value="o.currency_id" style=""/>-->
+                                    <!--                <t t-esc="currency.amount_to_text(doc.amount_total)" style=""/>-->
+                                    <!--              </t>-->
+                                </div>
+                                <div class="col-2" style="border-bottom:1px solid #4a5057;">
+
+                                </div>
+                                <div class="col-2 color-copy"
+                                     style="  border: 1px solid #4a5057;black;border-right:none;black; padding:0.0rem;">
+                                    <div style="text-align: center;">
+                                        <font style="color: rgb(66, 66, 66); font-size: 12px;">ยอดรวม</font>
+                                    </div>
+                                    <div style="text-align: center;">
+                                        <font style="color: rgb(66, 66, 66); font-size: 12px;">GRAND TOTAL</font>
+                                    </div>
+                                    <div class="mb8 mt8 t_block"/>
+                                </div>
+                                <div class="col-2"
+                                     style="  border: 1px solid #4a5057; border-bottom-right-radius:10px;">
+                                    <br/>
+                                    <p class="report-well" t-field="doc.amount_total"
+                                       style="text-align: right; width: 9em; margin-bottom: 0px;"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="page-break-inside: avoid;">
+                        <div class="container-fluid single_block mt16 mb16 report-container padding2">
+                            <div class="row">
+                                <div class="col-8 "
+                                     style="padding-bottom: 10px;padding-right: 15px;padding-left: 15px;  ">
+                                    <div class="row"
+                                         style="padding-bottom: 10px;padding-right: 16px;padding-left: 0px;">
+                                        <div class="col-12 "
+                                             style="   border: 1px solid #4a5057;     border-radius:10px; height: 110px">
+                                                                                        <span class="report-well" t-field="doc.branch_id.note_tax"/>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-7" style="     padding-left: 0px;  ">
+                                            <div style="border: 1px solid #4a5057;border-radius:10px;padding-bottom: 10px;padding-left: 10px;padding-right: 10px;padding-top: 6px; ">
+                                                <div style="text-align: center;">
+                                                    <span style="background-color: transparent; color: rgb(66, 66, 66); font-size: 12px;   ">
+                                                        ได้ตรวจรับสินค้าตามรายการข้างต้นโดยถูกต้องเรียบร้อยแล้ว
+                                                    </span>
+                                                </div>
+                                                <br/>
+                                                <br/>
+                                                <br/>
+                                                <br/>
+                                                <span style="background-color: transparent; color: rgb(66, 66, 66); font-size: 12px;  font-weight: bold;">
+                                                    ผู้รับของ......................................................................วันที่...............................................
+                                                </span>
+                                                <br style="background-color: rgb(255, 255, 255); color: rgb(73, 80, 87); font-size: 12px;"/>
+
+
+                                                <div style="text-align: center;">
+                                                    <span style="background-color: transparent; color: rgb(66, 66, 66); font-size: 12px;">
+                                                        (ลงลายมือชื่อและประทับตรา)
+                                                    </span>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-5" style="     padding-left: 0px;  ">
+                                            <div style="border: 1px solid #4a5057;border-radius:10px;padding-top: 10px;padding-left: 20px;padding-bottom: 6px;padding-right: 10px;  ">
+                                                <br/>
+                                                <font style="background-color: transparent; color: rgb(66, 66, 66); font-size: 12px;  font-weight: bold;">
+                                                    ผู้ตรวจสอบ.............................................................................
+                                                </font>
+
+                                                <br/>
+                                                <br/>
+                                                <br/>
+                                                <br/>
+                                                <font style="background-color: transparent; color: rgb(66, 66, 66); font-size: 12px;">
+                                                    <span style="background-color: transparent; color: rgb(66, 66, 66);  font-weight: bold;">
+                                                        ผู้ส่งของ...................................................................................
+                                                    </span>
+                                                    <br style="color: rgb(33, 37, 41); font-size: 14px;"/>
+                                                    <span style="background-color: transparent; color: rgb(66, 66, 66);">
+                                                        วันที่ส่งของ
+                                                    </span>
+
+                                                </font>
+                                            </div>
+                                        </div>
+                                        <br style="background-color: rgb(255, 255, 255);"/>
+                                        <br style="background-color: rgb(255, 255, 255);"/>
+                                        <br style="background-color: rgb(255, 255, 255);"/>
+                                        <span style="background-color: transparent; color: rgb(66, 66, 66); font-size: 12px;">
+                                            <br/>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-4" style="padding-right: 0px;padding-left: 0px;  ">
+                                    <div style="border: 1px solid #4a5057;border-radius:10px;padding-bottom: 3px;">
+                                        <div style="text-align: center;  ">
+                                            <font style="color: rgb(66, 66, 66); font-size: 12px;">
+                                                <br/>
+                                            </font>
+                                            <font style="color: rgb(66, 66, 66); font-size: 12px;">ในนาม (For)</font>
+                                        </div>
+                                        <div>
+                                            <div style="text-align: center;">
+                                                <font style="color: rgb(66, 66, 66); font-size: 12px;  font-weight: bold;">
+                                                    <span class="report-well" t-field="doc.branch_id.company_id"/>
+                                                    <br/>
+                                                             <span class="report-well" t-field="doc.branch_id.company_eng"/>
+                                                </font>
+
+                                            </div>
+                                            <div style="text-align: center;">
+                                                <br/>
+                                                <br/>
+                                                <br/>
+                                                <br/>
+                                                <br/>
+                                                <br/>
+                                                <br/>
+                                                <br/>
+                                            </div>
+                                            <div>
+                                                <div style="text-align: center;">
+                                                    <font style="color: rgb(66, 66, 66); font-size: 12px;padding-bottom: 2px;">
+                                                        ..............................................................................................................................................
+                                                    </font>
+
+                                                    <br/>
+
+                                                    <font style="color: rgb(66, 66, 66); font-size: 12px;">
+                                                        <span style="background-color: rgb(255, 255, 255); color: rgb(66, 66, 66);">
+                                                            ผู้มีอํานาจลงนาม/Authorized Signature
+                                                        </span>
+                                                        <br/>
+                                                    </font>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </template>
+
+    </data>
+</odoo>
+

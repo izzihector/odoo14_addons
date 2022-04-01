@@ -1,0 +1,18 @@
+<odoo>
+    <data>
+        <template id="account_reports_backend_inherit_test" inherit_id="web.assets_backend" active="True">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" type="text/scss"
+                      href="/div_search_template/static/src/scss/account_report_inherit.css"/>
+            </xpath>
+        </template>
+
+          <template id="account_reports_backend" inherit_id="web.assets_backend" active="True">
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="/div_search_template/static/src/js/account_report_div.js"/>
+            </xpath>
+        </template>
+
+
+    </data>
+</odoo>

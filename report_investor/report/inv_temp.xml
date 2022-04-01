@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <template id="report_inv_form">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.basic_layout">
+                    <div class="page">
+                        <table width="100%" border="1">
+                            <tr>
+                                <td>
+                                    <t
+                                            t-call="report_investor.inv_header_form"
+                                    />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Title</td>
+                            </tr>
+                            <tr>
+                                <td>Detail</td>
+                            </tr>
+                            <tr>
+                                <td>Footer</td>
+                            </tr>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>

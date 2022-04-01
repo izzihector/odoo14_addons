@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="website_confi_setting" model="ir.ui.view">
+        <field name="name">Google reCaptcha Setting</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="website.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('app_settings_block')]//div[@id='website_selection_settings']" position="after">
+                <h2>reCaptcha Configuration</h2>
+                <div class="row mt16 o_settings_container">
+                    <div class="col-12 col-lg-6 o_setting_box">
+                        <div class="o_setting_left_pane"/>
+                        <div class="o_setting_right_pane">
+                            <span class="o_form_label">reCaptcha Site Key</span>
+                            <div class="text-muted">
+                                <field name="captcha_sitekey" placeholder="Site Key"/>
+                            </div>    
+                            <span class="o_form_label">reCaptcha Secret Key</span>
+                            <div class="text-muted">
+                                <field name="captcha_secretkey" placeholder="Secret Key"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+
+                        <div class=" o_setting_box" id="google_analytics_setting">
+                            <div class="o_setting_left_pane">
+                                <field name="login_page"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="login_page"/>
+                            </div>
+                        </div>
+                        <div class="o_setting_box" id="google_analytics_setting">
+                            <div class="o_setting_left_pane">
+                                <field name="sign_up"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="sign_up"/>
+                            </div>
+                        </div>
+                        <div class="o_setting_box" id="google_analytics_setting">
+                            <div class="o_setting_left_pane">
+                                <field name="reset_password"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="reset_password"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

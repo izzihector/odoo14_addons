@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="supplier_seq" model="ir.sequence">
+            <field name="name">supplier_seq</field>
+            <field name="code">supplier.seq</field>
+            <field name="active">TRUE</field>
+            <field name="padding">4</field>
+        </record>
+    </data>
+</odoo>

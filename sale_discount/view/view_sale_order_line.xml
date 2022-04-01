@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <record id="record_sale" model="ir.ui.view"> 
+        <field name="name">sale_discount</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+        
+        <xpath expr="//field[@name='order_line']/tree/field[@name='tax_id']" position="after">
+            <field name="discount_type"/>
+        </xpath>      
+
+            <xpath expr="//field[@name='order_line']/tree/field[@name='discount']" position="attributes">
+                <attribute name="string">Discount</attribute>
+            </xpath>            
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+        <template id="search_template_date_filter_thai_test">
+
+
+            <!--         ADD               -->
+<!--            <button type="button" class="o_dropdown_toggler_btn btn btn-secondary dropdown-toggle"-->
+<!--                    data-toggle="dropdown">-->
+<!--                <span class="fa fa-money"/>-->
+<!--                DIV:-->
+<!--                <t t-set="div_value">1</t>-->
+
+<!--                <t t-foreach="options['div']" t-as="a">-->
+
+<!--                    <t t-if="a['selected'] == True">-->
+<!--                        <t t-set="div_value" t-value="''"/>-->
+<!--                        <t t-esc="a['name']"/>-->
+<!--                    </t>-->
+<!--                </t>-->
+
+<!--                <t t-esc="div_value"/>-->
+<!--            </button>-->
+<!--            <div class="dropdown-menu o_filter_menu" role="menu">-->
+<!--                <a role="menuitem" class="dropdown-item js_account_report_choice_filter" t-att-title="div1000"-->
+<!--                   t-att-data-id="1000" data-filter="div">-->
+<!--                    1:1000-->
+<!--                </a>-->
+<!--                <a role="menuitem" class="dropdown-item js_account_report_choice_filter" t-att-title="div10000"-->
+<!--                   t-att-data-id="10000" data-filter="div">-->
+<!--                    1:10000-->
+<!--                </a>-->
+<!--                <a role="menuitem" class="dropdown-item js_account_report_choice_filter" t-att-title="div100000"-->
+<!--                   t-att-data-id="100000" data-filter="div">-->
+<!--                    1:100000-->
+<!--                </a>-->
+<!--                <a role="menuitem" class="dropdown-item js_account_report_choice_filter" t-att-title="div1000000"-->
+<!--                   t-att-data-id="1000000" data-filter="div">-->
+<!--                    1:1000000-->
+<!--                </a>-->
+<!--            </div>-->
+
+
+        </template>
+
+<!--        <template id="search_template_date_filter_thai">-->
+<!--            <button type="button" class="o_dropdown_toggler_btn btn btn-secondary dropdown-toggle"-->
+<!--                    data-toggle="dropdown">-->
+<!--                <span class="fa fa-calendar" title="Dates" role="img" aria-label="Dates"/>-->
+<!--                <t t-if="options['date'].get('string') and options['date'].get('filter') != 'custom'">-->
+<!--                    <t t-esc="options['date']['string']"/>-->
+<!--                </t>-->
+<!--                <t t-if="options['date'].get('filter') == 'custom'">-->
+<!--                    <t t-if="options['date']['mode'] == 'single'">Date:-->
+<!--                        <span class="js_format_date">-->
+<!--                            <t t-esc="options['date']['date_to']"/>-->
+<!--                        </span>-->
+<!--                    </t>-->
+<!--                    <t t-if="options['date']['mode'] == 'range'">From:-->
+<!--                        <span class="js_format_date">-->
+<!--                            <t t-esc="options['date']['date_from']"/>-->
+<!--                        </span>-->
+<!--                        <br/>-->
+<!--                        <span class="o_reports_date_to">to:-->
+<!--                            <span class="js_format_date">-->
+<!--                                <t t-esc="options['date']['date_to']"/>-->
+<!--                            </span>-->
+<!--                        </span>-->
+<!--                    </t>-->
+<!--                </t>-->
+<!--            </button>-->
+<!--            <div class="dropdown-menu o_filter_menu" role="menu">-->
+<!--                <t t-if="options['date']['mode'] == 'single'">-->
+<!--                    <a role="menuitem" class="dropdown-item js_account_report_date_filter" title="Today"-->
+<!--                       data-filter="today">Today-->
+<!--                    </a>-->
+<!--                    <a role="menuitem" class="dropdown-item js_account_report_date_filter" title="End of Last Month"-->
+<!--                       data-filter="last_month">End of Last Month-->
+<!--                    </a>-->
+<!--                    <a role="menuitem" class="dropdown-item js_account_report_date_filter" title="End of Last Quarter"-->
+<!--                       data-filter="last_quarter">End of Last Quarter-->
+<!--                    </a>-->
+<!--                    <a role="menuitem" class="dropdown-item js_account_report_date_filter"-->
+<!--                       title="End of Last Financial Year" data-filter="last_year">End of Last Financial Year-->
+<!--                    </a>-->
+
+
+<!--                </t>-->
+<!--                <t t-if="options['date']['mode'] == 'range'">-->
+<!--                    <a role="menuitem" class="dropdown-item js_account_report_date_filter" title="This Month"-->
+<!--                       data-filter="this_month">This Month-->
+<!--                    </a>-->
+<!--                    <a role="menuitem" class="dropdown-item js_account_report_date_filter" title="This Quarter"-->
+<!--                       data-filter="this_quarter">This Quarter-->
+<!--                    </a>-->
+<!--                    <a role="menuitem" class="dropdown-item js_account_report_date_filter" title="This Financial Year"-->
+<!--                       data-filter="this_year">This Financial Year-->
+<!--                    </a>-->
+<!--                    <div role="separator" class="dropdown-divider"></div>-->
+<!--                    <a role="menuitem" class="dropdown-item js_account_report_date_filter" title="Last Month"-->
+<!--                       data-filter="last_month">Last Month-->
+<!--                    </a>-->
+<!--                    <a role="menuitem" class="dropdown-item js_account_report_date_filter" title="Last Quarter"-->
+<!--                       data-filter="last_quarter">Last Quarter-->
+<!--                    </a>-->
+<!--                    <a role="menuitem" class="dropdown-item js_account_report_date_filter" title="Last Financial Year"-->
+<!--                       data-filter="last_year">Last Financial Year-->
+<!--                    </a>-->
+<!--                </t>-->
+<!--                <div role="separator" class="dropdown-divider"></div>-->
+<!--                <a role="menuitem" class="dropdown-item js_foldable_trigger o_closed_menu"-->
+<!--                   data-filter='custom_filter_date'>Custom-->
+<!--                </a>-->
+<!--                <div class="o_foldable_menu o_closed_menu o_account_report_search" data-filter='custom_filter_date'>-->
+<!--                    <t t-if="options['date']['mode'] == 'range'">-->
+<!--                        <label class="custom-date" for="date_from">Start Date :</label>-->
+<!--                        <div class="form-group custom-date">-->
+<!--                            <div class='o_datepicker js_account_reports_datetimepicker'-->
+<!--                                 t-att-data-default-value="options['date']['date_from']">-->
+<!--                                <input type='text' class="o_datepicker_input" name="date_from"/>-->
+<!--                                <span class="o_datepicker_button"/>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </t>-->
+<!--                    <label class="custom-date" for="date_to" t-if="options['date']['mode'] == 'single'">End Date :-->
+<!--                    </label>-->
+<!--                    <label class="custom-date" for="date_to" t-if="options['date']['mode'] == 'range'">Date :</label>-->
+<!--                    <div class="form-group custom-date">-->
+<!--                        <div class='o_datepicker js_account_reports_datetimepicker'-->
+<!--                             t-att-data-default-value="options['date']['date_to']">-->
+<!--                            <input type='text' class="o_datepicker_input" name="date_to"/>-->
+<!--                            <span class="o_datepicker_button"/>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <button type="button" class="btn btn-primary js_account_report_date_filter" data-filter="custom">-->
+<!--                        Apply-->
+<!--                    </button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </template>-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- TO BE REMOVED IN MASTER -->
+        <!-- Bank reconciliation report: Custom templates to get a not-editable date filter -->
+
+        <!-- TO BE REMOVED IN MASTER -->
+
+    </data>
+</odoo>

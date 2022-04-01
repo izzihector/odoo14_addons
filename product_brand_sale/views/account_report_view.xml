@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_account_financial_report_form_inherit" model="ir.ui.view">
+            <field name="name">view.account.financial.report.form.inherit</field>
+            <field name="model">account.financial.html.report</field>
+            <field name="inherit_id" ref="account_reports.view_account_financial_report_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='unfold_all_filter']" position="after">
+                    <field name="show_brand_filter"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

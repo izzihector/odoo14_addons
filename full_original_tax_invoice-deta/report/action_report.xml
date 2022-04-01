@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+
+        <report
+                id="action_report_full_original_invoice_custom"
+                string="Full Original tax invoice"
+                model="account.move"
+                report_type="qweb-html"
+                file="full_original_tax_invoice.report_invoice_custom_view"
+                name="full_original_tax_invoice.report_invoice_custom_view"
+                print_report_name="'%s-%s' % (object.name, object.id)"
+                paperformat="full_original_tax_invoice.paperformat_full_invoice_custom_original_report"
+        />
+
+
+        <template id="report_invoice_custom_view">
+
+
+            <t t-call="web.html_container">
+                <div class="article o_report_layout_boxed" t-att-data-oe-model="o and o._name"
+                     t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
+                    <t t-foreach="docs" t-as="doc">
+                        <t t-if="doc.move_type == 'out_invoice' and doc.state != 'draft'">
+                            <t t-call="full_original_tax_invoice.external_layout_full_invoice_original">
+                                <!--                       <t t-call="web.external_layout_boxed">-->
+                                <t t-if="'partner_id' in doc.fields_get()">
+
+                                    <t t-call="full_original_tax_invoice.full-invoice-original"
+                                       t-lang="doc.partner_id.lang"/>
+                                </t>
+                                <t t-if="'partner_id' not in doc.fields_get()">
+                                    <t t-call="full_original_tax_invoice.full-invoice-original"/>
+                                </t>
+                            </t>
+                        </t>
+                    </t>
+                </div>
+            </t>
+
+
+        </template>
+
+        <!--     ===========                 add designer id content       ================              -->
+
+
+    </data>
+</odoo>

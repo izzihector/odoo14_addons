@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_pdc_account_payment,access_pdc_account_payment,model_account_pdc_payment,base.group_user,1,1,1,1
+access_pdc_account_payment_register,access_pdc_account_payment_register,model_account_pdc_payment_register,base.group_user,1,1,1,1

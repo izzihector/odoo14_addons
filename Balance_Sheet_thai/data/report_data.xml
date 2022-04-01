@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="account_financial_report_balancesheet0_test" model="account.financial.html.report">
+            <field name="name">รายงานงบดุล</field>
+            <field name="date_range" eval="False"/>
+            <field name="analytic" eval="True"/>
+            <field name="unfold_all_filter" eval="True"/>
+            <field name="show_journal_filter" eval="True"/>
+            <field name='parent_id' ref='account.account_reports_legal_statements_menu'/>
+        </record>
+
+    </data>
+</odoo>

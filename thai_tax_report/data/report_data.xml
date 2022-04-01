@@ -1,0 +1,19 @@
+<odoo>
+    <record id="action_report_tax_report_html" model="ir.actions.client">
+        <field name="name">TAX Report</field>
+        <field name="tag">thai_tax_report_backend</field>
+        <field name="context" eval="{'active_model': 'report.tax.report'}"/>
+    </record>
+    <record id="action_tax_report_pdf_thai" model="ir.actions.report">
+        <field name="name">TAX Report PDF</field>
+        <field name="model">report.tax.report</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">thai_tax_report.report_tax_report_pdf_thai</field>
+        <field name="report_file">thai_tax_report.report_tax_report_pdf_thai</field>
+        <field
+                name="print_report_name"
+        >'TAX Report - [%s]' % object.date_range_id.display_name
+        </field>
+        <field name="paperformat_id" ref="thai_tax_report.paperformat_tax_report"/>
+    </record>
+</odoo>

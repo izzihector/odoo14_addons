@@ -1,0 +1,2038 @@
+<!DOCTYPE html>
+<!-- saved from url=(0097)http://10.211.55.10:8069/web#action=320&model=account.journal&view_type=kanban&cids=1&menu_id=143 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>Accounting Dashboard - Odoo</title>
+    <link type="image/x-icon" rel="shortcut icon" href="http://10.211.55.10:8069/web/image/res.company/1/favicon/">
+
+    <script id="web.layout.odooscript" type="text/javascript">
+                    var odoo = {
+                        csrf_token: "4f336c2282274762862cb921252c07ab41a7855fo1657266911",
+                        debug: "1",
+                    };
+                </script>
+
+
+    <script type="text/javascript">
+                    odoo.session_info = {"uid": 2, "is_system": true, "is_admin": true, "user_context": {"lang": "en_US", "tz": "Asia/Bangkok", "uid": 2}, "db": "scgltus", "server_version": "14.0", "server_version_info": [14, 0, 0, "final", 0, ""], "name": "Administrator", "username": "tus@scgl.co.th", "partner_display_name": "Administrator", "company_id": 1, "partner_id": 3, "web.base.url": "http://10.211.55.10:8069", "active_ids_limit": 20000, "user_companies": {"current_company": [1, "My Company"], "allowed_companies": [[1, "My Company"]]}, "currencies": {"1": {"symbol": "\u20ac", "position": "after", "digits": [69, 2]}, "137": {"symbol": "\u0e3f", "position": "after", "digits": [69, 2]}, "2": {"symbol": "$", "position": "before", "digits": [69, 2]}}, "show_effect": "True", "display_switch_company_menu": false, "cache_hashes": {"load_menus": "4213408996446136ca09beaa28ba377c44f46043423458dc241e95b3a51882d1", "qweb": "424e59ef654f890104b528fe1d144e135fafb8909671f254bf64423a58911679", "translations": "5227498d9df4b403b0244c75aac21e0c091e50ce"}, "user_id": [2], "max_time_between_keys_in_ms": 55, "web_tours": [], "notification_type": "email", "odoobot_initialized": true};
+                    odoo.reloadMenus = () => fetch(`/web/webclient/load_menus/${odoo.session_info.cache_hashes.load_menus}`).then(res => res.json());
+                    odoo.loadMenusPromise = odoo.reloadMenus();
+                </script>
+    <link type="text/css" rel="stylesheet" href="./Accounting Dashboard - Odoo_files/web.assets_common.css"
+          data-asset-xmlid="web.assets_common" data-asset-version="bc52326">
+    <link href="./Accounting Dashboard - Odoo_files/css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="./Accounting Dashboard - Odoo_files/web.assets_backend.css"
+          data-asset-xmlid="web.assets_backend" data-asset-version="466b773">
+    <script type="text/javascript" src="./Accounting Dashboard - Odoo_files/web.assets_common.js"
+            data-asset-xmlid="web.assets_common" data-asset-version="bc52326"></script>
+    <script type="text/javascript" src="./Accounting Dashboard - Odoo_files/web.assets_backend.js"
+            data-asset-xmlid="web.assets_backend" data-asset-version="466b773"></script>
+    <script type="text/javascript" src="./Accounting Dashboard - Odoo_files/web.assets_backend_prod_only.js"
+            data-asset-xmlid="web.assets_backend_prod_only" data-asset-version="7e9ee61"></script>
+
+
+    <script type="text/javascript" src="./Accounting Dashboard - Odoo_files/en_US"></script><style type="text/css">/* Chart.js */
+/*
+ * DOM element rendering detection
+ * https://davidwalsh.name/detect-node-insertion
+ */
+@keyframes chartjs-render-animation {
+	from { opacity: 0.99; }
+	to { opacity: 1; }
+}
+
+.chartjs-render-monitor {
+	animation: chartjs-render-animation 0.001s;
+}
+
+/*
+ * DOM element resizing detection
+ * https://github.com/marcj/css-element-queries
+ */
+.chartjs-size-monitor,
+.chartjs-size-monitor-expand,
+.chartjs-size-monitor-shrink {
+	position: absolute;
+	direction: ltr;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	overflow: hidden;
+	pointer-events: none;
+	visibility: hidden;
+	z-index: -1;
+}
+
+.chartjs-size-monitor-expand > div {
+	position: absolute;
+	width: 1000000px;
+	height: 1000000px;
+	left: 0;
+	top: 0;
+}
+
+.chartjs-size-monitor-shrink > div {
+	position: absolute;
+	width: 200%;
+	height: 200%;
+	left: 0;
+	top: 0;
+}
+</style><script type="text/javascript" src="./Accounting Dashboard - Odoo_files/Chart.js"></script><style
+            type="text/css">/* Chart.js */
+/*
+ * DOM element rendering detection
+ * https://davidwalsh.name/detect-node-insertion
+ */
+@keyframes chartjs-render-animation {
+	from { opacity: 0.99; }
+	to { opacity: 1; }
+}
+
+.chartjs-render-monitor {
+	animation: chartjs-render-animation 0.001s;
+}
+
+/*
+ * DOM element resizing detection
+ * https://github.com/marcj/css-element-queries
+ */
+.chartjs-size-monitor,
+.chartjs-size-monitor-expand,
+.chartjs-size-monitor-shrink {
+	position: absolute;
+	direction: ltr;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	overflow: hidden;
+	pointer-events: none;
+	visibility: hidden;
+	z-index: -1;
+}
+
+.chartjs-size-monitor-expand > div {
+	position: absolute;
+	width: 1000000px;
+	height: 1000000px;
+	left: 0;
+	top: 0;
+}
+
+.chartjs-size-monitor-shrink > div {
+	position: absolute;
+	width: 200%;
+	height: 200%;
+	left: 0;
+	top: 0;
+}
+</style></head>
+    <body class="o_web_client"><header>
+        <nav class="o_main_navbar">
+            <ul class="o_menu_apps"><li class="dropdown">
+                <a class="full" data-toggle="dropdown" data-display="static" href="http://10.211.55.10:8069/web#"
+                   accesskey="h">
+                    <i class="fa fa-th-large"></i>
+                </a>
+                <div class="dropdown-menu" role="menu">
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=90" class="dropdown-item o_app"
+                       data-menu-id="90" data-menu-xmlid="mail.menu_root_discuss" data-action-id="113">
+                        Discuss
+                    </a>
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=230" class="dropdown-item o_app"
+                       data-menu-id="230" data-menu-xmlid="contacts.menu_contacts" data-action-id="361">
+                        Contacts
+                    </a>
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=277" class="dropdown-item o_app"
+                       data-menu-id="277" data-menu-xmlid="sale.sale_menu_root" data-action-id="425">
+                        Sales
+                    </a>
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=255" class="dropdown-item o_app"
+                       data-menu-id="255" data-menu-xmlid="point_of_sale.menu_point_root" data-action-id="405">
+                        Point of Sale
+                    </a>
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=210" class="dropdown-item o_app"
+                       data-menu-id="210" data-menu-xmlid="purchase.menu_purchase_root" data-action-id="348">
+                        Purchase
+                    </a>
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=105" class="dropdown-item o_app"
+                       data-menu-id="105" data-menu-xmlid="stock.menu_stock_root" data-action-id="210">
+                        Inventory
+                    </a>
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=246" class="dropdown-item o_app"
+                       data-menu-id="246" data-menu-xmlid="utm.menu_link_tracker_root" data-action-id="373">
+                        Link Tracker
+                    </a>
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=143" class="dropdown-item o_app"
+                       data-menu-id="143" data-menu-xmlid="account.menu_finance" data-action-id="445">
+                        Accounting
+                    </a>
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=5" class="dropdown-item o_app"
+                       data-menu-id="5" data-menu-xmlid="base.menu_management" data-action-id="35">
+                        Apps
+                    </a>
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=4" class="dropdown-item o_app"
+                       data-menu-id="4" data-menu-xmlid="base.menu_administration" data-action-id="87">
+                        Settings
+                    </a>
+
+                </div>
+            </li></ul>
+            <a class="o_menu_brand" role="button" style="">Accounting</a>
+            <ul class="o_menu_sections" role="menu" style=""><li>
+
+                <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=308&amp;action=445" data-menu="308"
+                   data-action-model="ir.actions.client" data-action-id="445"
+                   data-menu-xmlid="base_accounting_kit.menu_accounting_dashboard" class="o_menu_entry_lvl_1"
+                   data-toggle="collapse" data-target="#o_navbar_collapse.in">
+                    <span>Dashboard</span>
+                </a>
+
+            </li><li class="nav-item">
+
+                <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=144&amp;action=320" data-menu="144"
+                   data-action-model="ir.actions.act_window" data-action-id="320"
+                   data-menu-xmlid="account.menu_board_journal_1" class="o_menu_entry_lvl_1 nav-link"
+                   data-toggle="collapse" data-target="#o_navbar_collapse.in">
+                    <span>Overview</span>
+                </a>
+
+            </li><li class="nav-item">
+                <a href="http://10.211.55.10:8069/web#" class="dropdown-toggle o-no-caret o_menu_header_lvl_1 nav-link"
+                   data-menu-xmlid="account.menu_finance_receivables" data-toggle="dropdown" data-display="static"
+                   role="button" aria-expanded="false">
+                    Customers
+                </a>
+                <div class="dropdown-menu" role="menu">
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=146&amp;action=276" data-menu="146"
+                       data-action-model="ir.actions.act_window" data-action-id="276"
+                       data-menu-xmlid="account.menu_action_move_out_invoice_type"
+                       class="dropdown-item o_menu_entry_lvl_2" data-toggle="collapse"
+                       data-target="#o_navbar_collapse.in">
+                        <span>Invoices</span>
+                    </a>
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=147&amp;action=277" data-menu="147"
+                       data-action-model="ir.actions.act_window" data-action-id="277"
+                       data-menu-xmlid="account.menu_action_move_out_refund_type"
+                       class="dropdown-item o_menu_entry_lvl_2" data-toggle="collapse"
+                       data-target="#o_navbar_collapse.in">
+                        <span>Credit Notes</span>
+                    </a>
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=149&amp;action=255" data-menu="149"
+                       data-action-model="ir.actions.act_window" data-action-id="255"
+                       data-menu-xmlid="account.menu_action_account_payments_receivable"
+                       class="dropdown-item o_menu_entry_lvl_2" data-toggle="collapse"
+                       data-target="#o_navbar_collapse.in">
+                        <span>Payments</span>
+                    </a>
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=316&amp;action=449" data-menu="316"
+                       data-action-model="ir.actions.act_window" data-action-id="449"
+                       data-menu-xmlid="base_accounting_kit.customer_statements_menu"
+                       class="dropdown-item o_menu_entry_lvl_2" data-toggle="collapse"
+                       data-target="#o_navbar_collapse.in">
+                        <span>Follow-up Reports</span>
+                    </a>
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=150&amp;action=312" data-menu="150"
+                       data-action-model="ir.actions.act_window" data-action-id="312"
+                       data-menu-xmlid="account.product_product_menu_sellable" class="dropdown-item o_menu_entry_lvl_2"
+                       data-toggle="collapse" data-target="#o_navbar_collapse.in">
+                        <span>Products</span>
+                    </a>
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=151&amp;action=287" data-menu="151"
+                       data-action-model="ir.actions.act_window" data-action-id="287"
+                       data-menu-xmlid="account.menu_account_customer" class="dropdown-item o_menu_entry_lvl_2"
+                       data-toggle="collapse" data-target="#o_navbar_collapse.in">
+                        <span>Customers</span>
+                    </a>
+
+
+                </div>
+            </li><li class="nav-item">
+                <a href="http://10.211.55.10:8069/web#" class="dropdown-toggle o-no-caret o_menu_header_lvl_1 nav-link"
+                   data-menu-xmlid="account.menu_finance_payables" data-toggle="dropdown" data-display="static"
+                   role="button" aria-expanded="false">
+                    Vendors
+                </a>
+                <div class="dropdown-menu" role="menu">
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=153&amp;action=278" data-menu="153"
+                       data-action-model="ir.actions.act_window" data-action-id="278"
+                       data-menu-xmlid="account.menu_action_move_in_invoice_type"
+                       class="dropdown-item o_menu_entry_lvl_2" data-toggle="collapse"
+                       data-target="#o_navbar_collapse.in">
+                        <span>Bills</span>
+                    </a>
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=154&amp;action=279" data-menu="154"
+                       data-action-model="ir.actions.act_window" data-action-id="279"
+                       data-menu-xmlid="account.menu_action_move_in_refund_type"
+                       class="dropdown-item o_menu_entry_lvl_2" data-toggle="collapse"
+                       data-target="#o_navbar_collapse.in">
+                        <span>Refunds</span>
+                    </a>
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=156&amp;action=256" data-menu="156"
+                       data-action-model="ir.actions.act_window" data-action-id="256"
+                       data-menu-xmlid="account.menu_action_account_payments_payable"
+                       class="dropdown-item o_menu_entry_lvl_2" data-toggle="collapse"
+                       data-target="#o_navbar_collapse.in">
+                        <span>Payments</span>
+                    </a>
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=157&amp;action=313" data-menu="157"
+                       data-action-model="ir.actions.act_window" data-action-id="313"
+                       data-menu-xmlid="account.product_product_menu_purchasable"
+                       class="dropdown-item o_menu_entry_lvl_2" data-toggle="collapse"
+                       data-target="#o_navbar_collapse.in">
+                        <span>Products</span>
+                    </a>
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=158&amp;action=288" data-menu="158"
+                       data-action-model="ir.actions.act_window" data-action-id="288"
+                       data-menu-xmlid="account.menu_account_supplier" class="dropdown-item o_menu_entry_lvl_2"
+                       data-toggle="collapse" data-target="#o_navbar_collapse.in">
+                        <span>Vendors</span>
+                    </a>
+
+
+                </div>
+            </li><li class="nav-item">
+                <a href="http://10.211.55.10:8069/web#" class="dropdown-toggle o-no-caret o_menu_header_lvl_1 nav-link"
+                   data-menu-xmlid="account.menu_finance_entries" data-toggle="dropdown" data-display="static"
+                   role="button" aria-expanded="false">
+                    Accounting
+                </a>
+                <div class="dropdown-menu" role="menu">
+
+
+                    <div class="dropdown-header o_menu_header_lvl_2">
+                        <span>Miscellaneous</span>
+                    </div>
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=161&amp;action=275" data-menu="161"
+                       data-action-model="ir.actions.act_window" data-action-id="275"
+                       data-menu-xmlid="account.menu_action_move_journal_line_form"
+                       class="dropdown-item o_menu_entry_lvl_3" data-toggle="collapse"
+                       data-target="#o_navbar_collapse.in">
+                        <span>Journal Entries</span>
+                    </a>
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=162&amp;action=274" data-menu="162"
+                       data-action-model="ir.actions.act_window" data-action-id="274"
+                       data-menu-xmlid="account.menu_action_account_moves_all" class="dropdown-item o_menu_entry_lvl_3"
+                       data-toggle="collapse" data-target="#o_navbar_collapse.in">
+                        <span>Journal Items</span>
+                    </a>
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=244&amp;action=363" data-menu="244"
+                       data-action-model="ir.actions.act_window" data-action-id="363"
+                       data-menu-xmlid="l10n_th_tax_invoice.menu_action_tax_invoice"
+                       class="dropdown-item o_menu_entry_lvl_3" data-toggle="collapse"
+                       data-target="#o_navbar_collapse.in">
+                        <span>Tax Invoices</span>
+                    </a>
+
+
+                    <div class="dropdown-header o_menu_header_lvl_2">
+                        <span>Journals</span>
+                    </div>
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=164&amp;action=267" data-menu="164"
+                       data-action-model="ir.actions.act_window" data-action-id="267"
+                       data-menu-xmlid="account.menu_action_account_moves_journal_sales"
+                       class="dropdown-item o_menu_entry_lvl_3" data-toggle="collapse"
+                       data-target="#o_navbar_collapse.in">
+                        <span>Sales</span>
+                    </a>
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=165&amp;action=268" data-menu="165"
+                       data-action-model="ir.actions.act_window" data-action-id="268"
+                       data-menu-xmlid="account.menu_action_account_moves_journal_purchase"
+                       class="dropdown-item o_menu_entry_lvl_3" data-toggle="collapse"
+                       data-target="#o_navbar_collapse.in">
+                        <span>Purchases</span>
+                    </a>
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=166&amp;action=269" data-menu="166"
+                       data-action-model="ir.actions.act_window" data-action-id="269"
+                       data-menu-xmlid="account.menu_action_account_moves_journal_bank_cash"
+                       class="dropdown-item o_menu_entry_lvl_3" data-toggle="collapse"
+                       data-target="#o_navbar_collapse.in">
+                        <span>Bank and Cash</span>
+                    </a>
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=167&amp;action=270" data-menu="167"
+                       data-action-model="ir.actions.act_window" data-action-id="270"
+                       data-menu-xmlid="account.menu_action_account_moves_journal_misc"
+                       class="dropdown-item o_menu_entry_lvl_3" data-toggle="collapse"
+                       data-target="#o_navbar_collapse.in">
+                        <span>Miscellaneous</span>
+                    </a>
+
+
+                    <div class="dropdown-header o_menu_header_lvl_2">
+                        <span>Ledgers</span>
+                    </div>
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=169&amp;action=271" data-menu="169"
+                       data-action-model="ir.actions.act_window" data-action-id="271"
+                       data-menu-xmlid="account.menu_action_account_moves_ledger_general"
+                       class="dropdown-item o_menu_entry_lvl_3" data-toggle="collapse"
+                       data-target="#o_navbar_collapse.in">
+                        <span>General Ledger</span>
+                    </a>
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=170&amp;action=272" data-menu="170"
+                       data-action-model="ir.actions.act_window" data-action-id="272"
+                       data-menu-xmlid="account.menu_action_account_moves_ledger_partner"
+                       class="dropdown-item o_menu_entry_lvl_3" data-toggle="collapse"
+                       data-target="#o_navbar_collapse.in">
+                        <span>Partner Ledger</span>
+                    </a>
+
+
+                    <div class="dropdown-header o_menu_header_lvl_2">
+                        <span>Management</span>
+                    </div>
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=253&amp;action=383" data-menu="253"
+                       data-action-model="ir.actions.act_window" data-action-id="383"
+                       data-menu-xmlid="base_account_budget.menu_act_budget_view"
+                       class="dropdown-item o_menu_entry_lvl_3" data-toggle="collapse"
+                       data-target="#o_navbar_collapse.in">
+                        <span>Budgets</span>
+                    </a>
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=318&amp;action=452" data-menu="318"
+                       data-action-model="ir.actions.act_window" data-action-id="452"
+                       data-menu-xmlid="base_accounting_kit.menu_action_account_asset_asset_form"
+                       class="dropdown-item o_menu_entry_lvl_3" data-toggle="collapse"
+                       data-target="#o_navbar_collapse.in">
+                        <span>Assets</span>
+                    </a>
+
+
+                    <div class="dropdown-header o_menu_header_lvl_2">
+                        <span>Generate Entries</span>
+                    </div>
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=317&amp;action=450" data-menu="317"
+                       data-action-model="ir.actions.act_window" data-action-id="450"
+                       data-menu-xmlid="base_accounting_kit.menu_asset_depreciation_confirmation_wizard"
+                       class="dropdown-item o_menu_entry_lvl_3" data-toggle="collapse"
+                       data-target="#o_navbar_collapse.in">
+                        <span>Generate Assets Entries</span>
+                    </a>
+
+
+                    <div class="dropdown-header o_menu_header_lvl_2">
+                        <span>Actions</span>
+                    </div>
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=326&amp;action=460" data-menu="326"
+                       data-action-model="ir.actions.act_window" data-action-id="460"
+                       data-menu-xmlid="base_accounting_kit.menu_lock_dates" class="dropdown-item o_menu_entry_lvl_3"
+                       data-toggle="collapse" data-target="#o_navbar_collapse.in">
+                        <span>Lock Dates</span>
+                    </a>
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=174&amp;action=317" data-menu="174"
+                       data-action-model="ir.actions.act_window" data-action-id="317"
+                       data-menu-xmlid="account.menu_action_tax_adjustment" class="dropdown-item o_menu_entry_lvl_3"
+                       data-toggle="collapse" data-target="#o_navbar_collapse.in">
+                        <span>Tax Adjustments</span>
+                    </a>
+
+
+                </div>
+            </li><li class="nav-item">
+                <a href="http://10.211.55.10:8069/web#" class="dropdown-toggle o-no-caret o_menu_header_lvl_1 nav-link"
+                   data-menu-xmlid="account.menu_finance_reports" data-toggle="dropdown" data-display="static"
+                   role="button" aria-expanded="false">
+                    Reporting
+                </a>
+                <div class="dropdown-menu" role="menu">
+
+
+                    <div class="dropdown-header o_menu_header_lvl_2">
+                        <span>Management</span>
+                    </div>
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=177&amp;action=315" data-menu="177"
+                       data-action-model="ir.actions.act_window" data-action-id="315"
+                       data-menu-xmlid="account.menu_action_account_invoice_report_all"
+                       class="dropdown-item o_menu_entry_lvl_3" data-toggle="collapse"
+                       data-target="#o_navbar_collapse.in">
+                        <span>Invoice Analysis</span>
+                    </a>
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=254&amp;action=384" data-menu="254"
+                       data-action-model="ir.actions.act_window" data-action-id="384"
+                       data-menu-xmlid="base_account_budget.menu_act_crossovered_budget_lines_view"
+                       class="dropdown-item o_menu_entry_lvl_3" data-toggle="collapse"
+                       data-target="#o_navbar_collapse.in">
+                        <span>Budgets</span>
+                    </a>
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=334&amp;action=468" data-menu="334"
+                       data-action-model="ir.actions.act_window" data-action-id="468"
+                       data-menu-xmlid="base_accounting_kit.menu_action_asset_asset_report"
+                       class="dropdown-item o_menu_entry_lvl_3" data-toggle="collapse"
+                       data-target="#o_navbar_collapse.in">
+                        <span>Assets</span>
+                    </a>
+
+
+                    <div class="dropdown-header o_menu_header_lvl_2">
+                        <span>Audit Reports</span>
+                    </div>
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=325&amp;action=459" data-menu="325"
+                       data-action-model="ir.actions.act_window" data-action-id="459"
+                       data-menu-xmlid="base_accounting_kit.menu_tax_report" class="dropdown-item o_menu_entry_lvl_3"
+                       data-toggle="collapse" data-target="#o_navbar_collapse.in">
+                        <span>Tax Report</span>
+                    </a>
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=329&amp;action=463" data-menu="329"
+                       data-action-model="ir.actions.act_window" data-action-id="463"
+                       data-menu-xmlid="base_accounting_kit.menu_print_journal" class="dropdown-item o_menu_entry_lvl_3"
+                       data-toggle="collapse" data-target="#o_navbar_collapse.in">
+                        <span>Journals Audit</span>
+                    </a>
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=245&amp;action=367" data-menu="245"
+                       data-action-model="ir.actions.act_window" data-action-id="367"
+                       data-menu-xmlid="l10n_th_tax_report.menu_tax_report" class="dropdown-item o_menu_entry_lvl_2"
+                       data-toggle="collapse" data-target="#o_navbar_collapse.in">
+                        <span>Thai Tax Report</span>
+                    </a>
+
+
+                    <div class="dropdown-header o_menu_header_lvl_2">
+                        <span>Dynamic Financial Reports</span>
+                    </div>
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=336&amp;action=481" data-menu="336"
+                       data-action-model="ir.actions.client" data-action-id="481"
+                       data-menu-xmlid="dynamic_accounts_report.menu_general_ledger"
+                       class="dropdown-item o_menu_entry_lvl_3" data-toggle="collapse"
+                       data-target="#o_navbar_collapse.in">
+                        <span>General Ledger</span>
+                    </a>
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=337&amp;action=482" data-menu="337"
+                       data-action-model="ir.actions.client" data-action-id="482"
+                       data-menu-xmlid="dynamic_accounts_report.menu_trial_balance"
+                       class="dropdown-item o_menu_entry_lvl_3" data-toggle="collapse"
+                       data-target="#o_navbar_collapse.in">
+                        <span>Trial Balance</span>
+                    </a>
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=338&amp;action=483" data-menu="338"
+                       data-action-model="ir.actions.client" data-action-id="483"
+                       data-menu-xmlid="dynamic_accounts_report.menu_partner_ledger"
+                       class="dropdown-item o_menu_entry_lvl_3" data-toggle="collapse"
+                       data-target="#o_navbar_collapse.in">
+                        <span>Partner Ledger</span>
+                    </a>
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=339&amp;action=484" data-menu="339"
+                       data-action-model="ir.actions.client" data-action-id="484"
+                       data-menu-xmlid="dynamic_accounts_report.menu_report_ageing"
+                       class="dropdown-item o_menu_entry_lvl_3" data-toggle="collapse"
+                       data-target="#o_navbar_collapse.in">
+                        <span>Partner Ageing</span>
+                    </a>
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=340&amp;action=485" data-menu="340"
+                       data-action-model="ir.actions.client" data-action-id="485"
+                       data-menu-xmlid="dynamic_accounts_report.menu_report_daybook"
+                       class="dropdown-item o_menu_entry_lvl_3" data-toggle="collapse"
+                       data-target="#o_navbar_collapse.in">
+                        <span>Day Book</span>
+                    </a>
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=341&amp;action=486" data-menu="341"
+                       data-action-model="ir.actions.client" data-action-id="486"
+                       data-menu-xmlid="dynamic_accounts_report.menu_bank_book" class="dropdown-item o_menu_entry_lvl_3"
+                       data-toggle="collapse" data-target="#o_navbar_collapse.in">
+                        <span>Bank Book</span>
+                    </a>
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=342&amp;action=487" data-menu="342"
+                       data-action-model="ir.actions.client" data-action-id="487"
+                       data-menu-xmlid="dynamic_accounts_report.menu_cash_book" class="dropdown-item o_menu_entry_lvl_3"
+                       data-toggle="collapse" data-target="#o_navbar_collapse.in">
+                        <span>Cash Book</span>
+                    </a>
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=343&amp;action=488" data-menu="343"
+                       data-action-model="ir.actions.client" data-action-id="488"
+                       data-menu-xmlid="dynamic_accounts_report.menu_balance_sheet_report"
+                       class="dropdown-item o_menu_entry_lvl_3" data-toggle="collapse"
+                       data-target="#o_navbar_collapse.in">
+                        <span>Balance Sheet</span>
+                    </a>
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=344&amp;action=489" data-menu="344"
+                       data-action-model="ir.actions.client" data-action-id="489"
+                       data-menu-xmlid="dynamic_accounts_report.menu_profit_and_loss_report"
+                       class="dropdown-item o_menu_entry_lvl_3" data-toggle="collapse"
+                       data-target="#o_navbar_collapse.in">
+                        <span>Profit and Loss</span>
+                    </a>
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=345&amp;action=490" data-menu="345"
+                       data-action-model="ir.actions.client" data-action-id="490"
+                       data-menu-xmlid="dynamic_accounts_report.menu_cash_flow" class="dropdown-item o_menu_entry_lvl_3"
+                       data-toggle="collapse" data-target="#o_navbar_collapse.in">
+                        <span>Cash Flow Statements</span>
+                    </a>
+
+
+                </div>
+            </li><li class="nav-item">
+                <a href="http://10.211.55.10:8069/web#" class="dropdown-toggle o-no-caret o_menu_header_lvl_1 nav-link"
+                   data-menu-xmlid="account.menu_finance_configuration" data-toggle="dropdown" data-display="static"
+                   role="button" aria-expanded="false">
+                    Configuration
+                </a>
+                <div class="dropdown-menu" role="menu">
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=180&amp;action=319" data-menu="180"
+                       data-action-model="ir.actions.act_window" data-action-id="319"
+                       data-menu-xmlid="account.menu_account_config" class="dropdown-item o_menu_entry_lvl_2"
+                       data-toggle="collapse" data-target="#o_navbar_collapse.in">
+                        <span>Settings</span>
+                    </a>
+
+
+                    <div class="dropdown-header o_menu_header_lvl_2">
+                        <span>Invoicing</span>
+                    </div>
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=182&amp;action=300" data-menu="182"
+                       data-action-model="ir.actions.act_window" data-action-id="300"
+                       data-menu-xmlid="account.menu_action_payment_term_form" class="dropdown-item o_menu_entry_lvl_3"
+                       data-toggle="collapse" data-target="#o_navbar_collapse.in">
+                        <span>Payment Terms</span>
+                    </a>
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=183&amp;action=326" data-menu="183"
+                       data-action-model="ir.actions.act_window" data-action-id="326"
+                       data-menu-xmlid="account.menu_action_incoterm_open" class="dropdown-item o_menu_entry_lvl_3"
+                       data-toggle="collapse" data-target="#o_navbar_collapse.in">
+                        <span>Incoterms</span>
+                    </a>
+
+
+                    <div class="dropdown-header o_menu_header_lvl_2">
+                        <span>Banks</span>
+                    </div>
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=185&amp;action=303" data-menu="185"
+                       data-action-model="ir.actions.server" data-action-id="303"
+                       data-menu-xmlid="account.menu_action_account_bank_journal_form"
+                       class="dropdown-item o_menu_entry_lvl_3" data-toggle="collapse"
+                       data-target="#o_navbar_collapse.in">
+                        <span>Add a Bank Account</span>
+                    </a>
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=186&amp;action=298" data-menu="186"
+                       data-action-model="ir.actions.act_window" data-action-id="298"
+                       data-menu-xmlid="account.action_account_reconcile_model_menu"
+                       class="dropdown-item o_menu_entry_lvl_3" data-toggle="collapse"
+                       data-target="#o_navbar_collapse.in">
+                        <span>Reconciliation Models</span>
+                    </a>
+
+
+                    <div class="dropdown-header o_menu_header_lvl_2">
+                        <span>Accounting</span>
+                    </div>
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=188&amp;action=290" data-menu="188"
+                       data-action-model="ir.actions.act_window" data-action-id="290"
+                       data-menu-xmlid="account.menu_action_account_form" class="dropdown-item o_menu_entry_lvl_3"
+                       data-toggle="collapse" data-target="#o_navbar_collapse.in">
+                        <span>Chart of Accounts</span>
+                    </a>
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=189&amp;action=299" data-menu="189"
+                       data-action-model="ir.actions.act_window" data-action-id="299"
+                       data-menu-xmlid="account.menu_action_tax_form" class="dropdown-item o_menu_entry_lvl_3"
+                       data-toggle="collapse" data-target="#o_navbar_collapse.in">
+                        <span>Taxes</span>
+                    </a>
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=190&amp;action=292" data-menu="190"
+                       data-action-model="ir.actions.act_window" data-action-id="292"
+                       data-menu-xmlid="account.menu_action_account_journal_form"
+                       class="dropdown-item o_menu_entry_lvl_3" data-toggle="collapse"
+                       data-target="#o_navbar_collapse.in">
+                        <span>Journals</span>
+                    </a>
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=193&amp;action=286" data-menu="193"
+                       data-action-model="ir.actions.act_window" data-action-id="286"
+                       data-menu-xmlid="account.menu_action_account_fiscal_position_form"
+                       class="dropdown-item o_menu_entry_lvl_3" data-toggle="collapse"
+                       data-target="#o_navbar_collapse.in">
+                        <span>Fiscal Positions</span>
+                    </a>
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=194&amp;action=293" data-menu="194"
+                       data-action-model="ir.actions.act_window" data-action-id="293"
+                       data-menu-xmlid="account.menu_action_account_journal_group_list"
+                       class="dropdown-item o_menu_entry_lvl_3" data-toggle="collapse"
+                       data-target="#o_navbar_collapse.in">
+                        <span>Journal Groups</span>
+                    </a>
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=309&amp;action=446" data-menu="309"
+                       data-action-model="ir.actions.act_window" data-action-id="446"
+                       data-menu-xmlid="base_accounting_kit.menu_account_financial_reports_tree"
+                       class="dropdown-item o_menu_entry_lvl_3" data-toggle="collapse"
+                       data-target="#o_navbar_collapse.in">
+                        <span>Account Reports</span>
+                    </a>
+
+
+                    <div class="dropdown-header o_menu_header_lvl_2">
+                        <span>Payments</span>
+                    </div>
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=206&amp;action=335" data-menu="206"
+                       data-action-model="ir.actions.act_window" data-action-id="335"
+                       data-menu-xmlid="payment.payment_acquirer_menu" class="dropdown-item o_menu_entry_lvl_3"
+                       data-toggle="collapse" data-target="#o_navbar_collapse.in">
+                        <span>Payment Acquirers</span>
+                    </a>
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=208&amp;action=338" data-menu="208"
+                       data-action-model="ir.actions.act_window" data-action-id="338"
+                       data-menu-xmlid="payment.payment_token_menu" class="dropdown-item o_menu_entry_lvl_3"
+                       data-toggle="collapse" data-target="#o_navbar_collapse.in">
+                        <span>Saved Payment Data</span>
+                    </a>
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=209&amp;action=339" data-menu="209"
+                       data-action-model="ir.actions.act_window" data-action-id="339"
+                       data-menu-xmlid="payment.payment_icon_menu" class="dropdown-item o_menu_entry_lvl_3"
+                       data-toggle="collapse" data-target="#o_navbar_collapse.in">
+                        <span>Payment Icons</span>
+                    </a>
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=314&amp;action=447" data-menu="314"
+                       data-action-model="ir.actions.act_window" data-action-id="447"
+                       data-menu-xmlid="base_accounting_kit.account_recurring_payments_child1"
+                       class="dropdown-item o_menu_entry_lvl_3" data-toggle="collapse"
+                       data-target="#o_navbar_collapse.in">
+                        <span>Recurring Templates</span>
+                    </a>
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=207&amp;action=336" data-menu="207"
+                       data-action-model="ir.actions.act_window" data-action-id="336"
+                       data-menu-xmlid="payment.payment_transaction_menu" class="dropdown-item o_menu_entry_lvl_3"
+                       data-toggle="collapse" data-target="#o_navbar_collapse.in">
+                        <span>Payment Transactions</span>
+                    </a>
+
+
+                    <div class="dropdown-header o_menu_header_lvl_2">
+                        <span>Management</span>
+                    </div>
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=315&amp;action=448" data-menu="315"
+                       data-action-model="ir.actions.act_window" data-action-id="448"
+                       data-menu-xmlid="base_accounting_kit.account_followup_menu"
+                       class="dropdown-item o_menu_entry_lvl_3" data-toggle="collapse"
+                       data-target="#o_navbar_collapse.in">
+                        <span>Follow-up Levels</span>
+                    </a>
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=197&amp;action=137" data-menu="197"
+                       data-action-model="ir.actions.act_window" data-action-id="137"
+                       data-menu-xmlid="account.menu_product_product_categories"
+                       class="dropdown-item o_menu_entry_lvl_3" data-toggle="collapse"
+                       data-target="#o_navbar_collapse.in">
+                        <span>Product Categories</span>
+                    </a>
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=199&amp;action=328" data-menu="199"
+                       data-action-model="ir.actions.act_window" data-action-id="328"
+                       data-menu-xmlid="account.menu_configure_tax_report" class="dropdown-item o_menu_entry_lvl_3"
+                       data-toggle="collapse" data-target="#o_navbar_collapse.in">
+                        <span>Tax Report</span>
+                    </a>
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=252&amp;action=382" data-menu="252"
+                       data-action-model="ir.actions.act_window" data-action-id="382"
+                       data-menu-xmlid="base_account_budget.menu_budget_post_form"
+                       class="dropdown-item o_menu_entry_lvl_3" data-toggle="collapse"
+                       data-target="#o_navbar_collapse.in">
+                        <span>Budgetary Positions</span>
+                    </a>
+
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#menu_id=320&amp;action=453" data-menu="320"
+                       data-action-model="ir.actions.act_window" data-action-id="453"
+                       data-menu-xmlid="base_accounting_kit.menu_action_account_asset_asset_list_normal_purchase"
+                       class="dropdown-item o_menu_entry_lvl_3" data-toggle="collapse"
+                       data-target="#o_navbar_collapse.in">
+                        <span>Asset Types</span>
+                    </a>
+
+
+                </div>
+            </li></ul>
+            <ul class="o_menu_systray" role="menu"><li class="o_debug_manager" role="menuitem">
+
+                <a role="button" href="http://10.211.55.10:8069/web#" class="o_debug_mode" title="Open Developer Tools"
+                   aria-label="Open Developer Tools" data-debug-mode="1" data-toggle="dropdown" aria-expanded="false"
+                   tabindex="-1" data-display="static">
+                    <span class="fa fa-bug"></span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right o_debug_dropdown" role="menu">
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#" data-action="perform_js_tests"
+                       class="dropdown-item">Run JS Tests</a>
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#" data-action="perform_js_mobile_tests"
+                       class="dropdown-item">Run JS Mobile Tests</a>
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#" data-action="perform_click_everywhere_test"
+                       class="dropdown-item">Run Click Everywhere Test</a>
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#" data-action="perform_pos_js_tests"
+                       class="dropdown-item">Run Point of Sale JS Tests</a>
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#" data-action="select_view"
+                       class="dropdown-item">Open View</a>
+
+                    <a href="http://10.211.55.10:8069/web#" class="dropdown-item" data-action="consume_tours">Disable
+                        Tours</a>
+                    <a href="http://10.211.55.10:8069/web#" class="dropdown-item" data-action="start_tour">Start
+                        Tour</a>
+
+
+                    <div class="dropdown-divider" role="separator"></div>
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#" data-action="edit"
+                       data-model="ir.actions.client" data-id="481" class="dropdown-item">Edit Action</a>
+
+
+                    <div class="dropdown-divider o_debug_leave_section" role="separator"></div>
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#" data-action="split_assets"
+                       class="dropdown-item o_debug_split_assets">Activate Assets Debugging</a>
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#" data-action="tests_assets"
+                       class="dropdown-item">Activate Tests Assets Debugging</a>
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#" data-action="regenerateAssets"
+                       class="dropdown-item">Regenerate Assets Bundles</a>
+                    <a role="menuitem" href="http://10.211.55.10:8069/web/become" class="dropdown-item">Become
+                        Superuser</a>
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#" data-action="leave_debug_mode"
+                       class="dropdown-item">Leave the Developer Tools</a>
+                </div>
+            </li><li class="o_MessagingMenu o-mobile"><a href="http://10.211.55.10:8069/web#" title="Conversations"
+                                                         role="button" aria-expanded="false" aria-haspopup="true"
+                                                         class="o_MessagingMenu_toggler o-no-notification"><i role="img"
+                                                                                                              aria-label="Messages"
+                                                                                                              class="o_MessagingMenu_icon fa fa-comments"></i></a></li><li
+                    class="o_mail_systray_item o_no_notification">
+                <a class="dropdown-toggle o-no-caret" data-toggle="dropdown" data-display="static" aria-expanded="false"
+                   title="Activities" href="http://10.211.55.10:8069/web#" role="button">
+                    <i class="fa fa-clock-o" role="img" aria-label="Activities"></i> <span
+                        class="o_notification_counter badge badge-pill">0</span>
+                </a>
+                <div class="o_mail_systray_dropdown dropdown-menu dropdown-menu-right" role="menu">
+                    <div class="o_mail_systray_dropdown_items">
+
+
+                        <div class="dropdown-item-text text-center o_no_activity">
+                            <span>No activities planned.</span>
+                        </div>
+
+
+                    </div>
+                </div>
+            </li><li class="o_user_menu">
+                <a role="button" class="dropdown-toggle o-no-caret" data-toggle="dropdown" data-display="static"
+                   aria-expanded="false" href="http://10.211.55.10:8069/web#">
+                    <img class="rounded-circle oe_topbar_avatar" src="./Accounting Dashboard - Odoo_files/image"
+                         alt="User">
+                    <span class="oe_topbar_name">Administrator (scgltus)</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" role="menu">
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#" data-menu="documentation"
+                       class="dropdown-item">Documentation</a>
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#" data-menu="support" class="dropdown-item">
+                        Support</a>
+
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#" data-menu="shortcuts"
+                       class="dropdown-item d-none d-md-inline-block">Shortcuts</a>
+                    <div role="separator" class="dropdown-divider"></div>
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#" data-menu="settings" class="dropdown-item">
+                        Preferences</a>
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#" data-menu="account" class="dropdown-item">My
+                        Odoo.com account</a>
+                    <a role="menuitem" href="http://10.211.55.10:8069/web#" data-menu="logout" class="dropdown-item">Log
+                        out</a>
+
+                </div>
+            </li></ul>
+        </nav>
+    </header>
+
+
+        <div class="o_loading" style="display: none;">Loading (1)</div><div class="o_action_manager"><div>
+            <div>
+                <div class="filter_view_tb">
+                    <div>
+                        <h1>
+                            General Ledger
+                        </h1>
+
+                    </div>
+                    <div class="" style="position: relative;">
+                        <div class="sub_container_left">
+                            <div class="report_print">
+                                <button type="button" class="btn btn-primary" id="pdf"
+                                        style="height:25px;position: relative;color:white;background-color: #00A0AD;border-color: #00A0AD;">
+                                    Print (PDF)
+                                </button>
+                                <button type="button" class="btn btn-primary" id="xlsx"
+                                        style="height:25px;position: relative;color:white;background-color: #00A0AD;border-color: #00A0AD;">
+                                    Export (XLSX)
+                                </button>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="sub_container_right"
+                             style="width:50%;height:3%;right:0px;top:0px;position: absolute;">
+                            <div class="" style="right:80x;">
+
+                                <br>
+                                <div class="row" style="right:80px;top:0px;position: absolute;width:50;">
+                                    <div class="time_range" style="">
+                                        <a type="button" class="dropdown-toggle" data-toggle="dropdown"
+                                           aria-expanded="false">
+                                            <span class="fa fa-calendar" title="Dates" role="img"
+                                                  aria-label="Dates"></span>
+                                            Date Range
+                                        </a>
+                                        <div class="dropdown-menu" role="menu">
+                                            <div class="">
+                                                <label class="" for="date_from">Start Date :</label>
+                                                <div class="">
+                                                    <div class="" aria-atomic="true" id="">
+                                                        <input type="date" id="date_from">
+                                                    </div>
+                                                </div>
+                                                <label class="" for="date_to">End Date :</label>
+                                                <div class="">
+                                                    <div class="" aria-atomic="true" id="">
+                                                        <input type="date" id="date_to">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="journals_filter" style="">
+                                        <a type="button" class="dropdown-toggle" data-toggle="dropdown">
+                                            <span class="fa fa-book"></span>
+                                            Journals:
+                                        </a>
+                                        <div class="select2-container select2-container-multi dropdown-menu journals"
+                                             id="s2id_autogen9" style=""><ul class="select2-choices"><li
+                                                class="select2-search-field"><label for="s2id_autogen10"
+                                                                                    class="select2-offscreen"></label>    <input
+                                                type="text" autocomplete="off" autocorrect="off" autocapitalize="off"
+                                                spellcheck="false" class="select2-input select2-default"
+                                                id="s2id_autogen10" style="width: 193px;" placeholder=""></li></ul><div
+                                                class="select2-drop select2-drop-multi select2-display-none"><ul
+                                                class="select2-results"><li class="select2-no-results">No matches
+                                            found</li></ul></div></div><select class="dropdown-menu  journals"
+                                                                               name="states[]" multiple="multiple"
+                                                                               tabindex="-1" style="display: none;">
+
+
+                                        <option value="1">
+                                            Customer Invoices
+                                        </option>
+
+                                        <option value="2">
+                                            Vendor Bills
+                                        </option>
+
+                                        <option value="3">
+                                            Miscellaneous Operations
+                                        </option>
+
+                                        <option value="6">
+                                            Inventory Valuation
+                                        </option>
+
+                                        <option value="4">
+                                            Exchange Difference
+                                        </option>
+
+                                        <option value="8">
+                                            Bank
+                                        </option>
+
+                                        <option value="7">
+                                            Cash
+                                        </option>
+
+                                        <option value="5">
+                                            Cash Basis Taxes
+                                        </option>
+
+                                        <option value="9">
+                                            Point of Sale
+                                        </option>
+
+                                    </select>
+                                        <span id="journal_res"></span>
+                                    </div>
+
+                                    <div class="accounts_filter">
+                                        <a type="button" class="dropdown-toggle" data-toggle="dropdown">
+                                            <span class="fa fa-book"></span>
+                                            Accounts:
+                                        </a>
+                                        <div class="select2-container select2-container-multi dropdown-menu account"
+                                             id="s2id_autogen11" style=""><ul class="select2-choices"><li
+                                                class="select2-search-field"><label for="s2id_autogen12"
+                                                                                    class="select2-offscreen"></label>    <input
+                                                type="text" autocomplete="off" autocorrect="off" autocapitalize="off"
+                                                spellcheck="false" class="select2-input select2-default"
+                                                id="s2id_autogen12" style="width: 193px;" placeholder=""></li></ul><div
+                                                class="select2-drop select2-drop-multi select2-display-none"><ul
+                                                class="select2-results"><li class="select2-no-results">No matches
+                                            found</li></ul></div></div><select class="dropdown-menu account"
+                                                                               name="states[]" multiple="multiple"
+                                                                               tabindex="-1" style="display: none;">
+
+                                        <option value="32">
+                                            Cash
+                                        </option>
+
+                                        <option value="33">
+                                            Outstanding Receipts
+                                        </option>
+
+                                        <option value="34">
+                                            Outstanding Payments
+                                        </option>
+
+                                        <option value="29">
+                                            Bank Suspense Account
+                                        </option>
+
+                                        <option value="35">
+                                            Bank
+                                        </option>
+
+                                        <option value="36">
+                                            Outstanding Receipts
+                                        </option>
+
+                                        <option value="37">
+                                            Outstanding Payments
+                                        </option>
+
+                                        <option value="2">
+                                            Account Receivable
+                                        </option>
+
+                                        <option value="4">
+                                            Outstanding Cheques
+                                        </option>
+
+                                        <option value="3">
+                                            Account Receivable (PoS)
+                                        </option>
+
+                                        <option value="5">
+                                            Inventory
+                                        </option>
+
+                                        <option value="6">
+                                            Accumulated Depreciation - Building
+                                        </option>
+
+                                        <option value="7">
+                                            Accumulated Depreciation - Equipment
+                                        </option>
+
+                                        <option value="8">
+                                            Input VAT
+                                        </option>
+
+                                        <option value="9">
+                                            Withholding Income Tax
+                                        </option>
+
+                                        <option value="1">
+                                            Liquidity Transfer
+                                        </option>
+
+                                        <option value="10">
+                                            Account Payable
+                                        </option>
+
+                                        <option value="11">
+                                            Accrued Expenses
+                                        </option>
+
+                                        <option value="12">
+                                            Uninvoiced Receipts
+                                        </option>
+
+                                        <option value="13">
+                                            Loans
+                                        </option>
+
+                                        <option value="14">
+                                            Output VAT
+                                        </option>
+
+                                        <option value="15">
+                                            Withholding Tax
+                                        </option>
+
+                                        <option value="16">
+                                            Capital Stock
+                                        </option>
+
+                                        <option value="17">
+                                            Retained Earnings
+                                        </option>
+
+                                        <option value="18">
+                                            Dividends
+                                        </option>
+
+                                        <option value="19">
+                                            Income Summary
+                                        </option>
+
+                                        <option value="20">
+                                            Income
+                                        </option>
+
+                                        <option value="21">
+                                            Gain Account
+                                        </option>
+
+                                        <option value="22">
+                                            Cost of Revenue
+                                        </option>
+
+                                        <option value="23">
+                                            Salary
+                                        </option>
+
+                                        <option value="24">
+                                            Rent
+                                        </option>
+
+                                        <option value="25">
+                                            Office Expenses
+                                        </option>
+
+                                        <option value="26">
+                                            Interest expenses
+                                        </option>
+
+                                        <option value="27">
+                                            Income tax expenses
+                                        </option>
+
+                                        <option value="28">
+                                            Loss Account
+                                        </option>
+
+                                        <option value="30">
+                                            Cash Difference Loss
+                                        </option>
+
+                                        <option value="31">
+                                            Cash Difference Gain
+                                        </option>
+
+                                        <option value="38">
+                                            Undistributed Profits/Losses
+                                        </option>
+
+                                    </select>
+                                        <span id="acc_res"></span>
+                                    </div>
+
+                                    <div class="analytics_filter">
+                                        <a type="button" class="dropdown-toggle" data-toggle="dropdown">
+                                            <span class="fa fa-book"></span>
+                                            Analytic Accounts:
+                                        </a>
+                                        <div class="select2-container select2-container-multi dropdown-menu analytics"
+                                             id="s2id_autogen13" style=""><ul class="select2-choices"><li
+                                                class="select2-search-field"><label for="s2id_autogen14"
+                                                                                    class="select2-offscreen"></label>    <input
+                                                type="text" autocomplete="off" autocorrect="off" autocapitalize="off"
+                                                spellcheck="false" class="select2-input select2-default"
+                                                id="s2id_autogen14" style="width: 193px;" placeholder=""></li></ul><div
+                                                class="select2-drop select2-drop-multi select2-display-none"><ul
+                                                class="select2-results"><li class="select2-no-results">No matches
+                                            found</li></ul></div></div><select class="dropdown-menu analytics"
+                                                                               name="states[]" multiple="multiple"
+                                                                               tabindex="-1" style="display: none;">
+
+                                    </select>
+                                        <span id="analytic_res"></span>
+                                    </div>
+
+                                    <div class="analytic_tags_filter">
+                                        <a type="button" class="dropdown-toggle" data-toggle="dropdown">
+                                            <span class="fa fa-book"></span>
+                                            Analytic Tags:
+                                        </a>
+                                        <div class="select2-container select2-container-multi dropdown-menu analytic_tags"
+                                             id="s2id_autogen15" style=""><ul class="select2-choices"><li
+                                                class="select2-search-field"><label for="s2id_autogen16"
+                                                                                    class="select2-offscreen"></label>    <input
+                                                type="text" autocomplete="off" autocorrect="off" autocapitalize="off"
+                                                spellcheck="false" class="select2-input select2-default"
+                                                id="s2id_autogen16" style="width: 193px;" placeholder=""></li></ul><div
+                                                class="select2-drop select2-drop-multi select2-display-none"><ul
+                                                class="select2-results"><li class="select2-no-results">No matches
+                                            found</li></ul></div></div><select class="dropdown-menu analytic_tags"
+                                                                               name="states[]" multiple="multiple"
+                                                                               tabindex="-1" style="display: none;">
+
+                                    </select>
+                                        <span id="analytic_tag_res"></span>
+                                    </div>
+
+
+                                    <div class="search-Target-move" style="">
+                                        <a type="button" class="dropdown-toggle" data-toggle="dropdown">
+                                            <span class="fa fa-filter"></span>
+                                            Target Move:
+                                        </a>
+                                        <select id="entries" class="dropdown-menu target_move" name="states[]">
+
+                                            <option value="all">All Entries</option>
+                                            <option value="posted">Posted Entries</option>
+                                        </select>
+                                        <span id="post_res"></span>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div style="">
+                                <button type="button" id="apply_filter" class="btn btn-primary"
+                                        style="top:0px;height:25px;right:0px;position: absolute;color:white;background-color: #00A0AD;border-color: #00A0AD;">
+                                    Apply
+                                </button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div>
+                <div class="table_view_tb" style="right:20px;">
+                    <div>
+                        <div class="table_main_view">
+                            <table cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th colspan="6">Account</th>
+                                        <th class="mon_fld">Debit</th>
+                                        <th class="mon_fld">Credit</th>
+                                        <th class="mon_fld">Balance</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+
+                                    <tr style="border: 1.5px solid black;" class="gl-line" data-toggle="collapse"
+                                        data-account-id="36" data-target=".a36" aria-expanded="true">
+                                        <td colspan="6" style="border: 0px solid black;">
+                                            <i class="fa fa-caret-down" role="img" aria-label="Unfolded"
+                                               title="Unfolded"></i>
+                                            <span>
+                                                111003
+                                                -
+                                                Outstanding Receipts
+                                            </span>
+                                        </td>
+
+
+                                        <td class="mon_fld">
+
+                                            428.55
+                                            ฿
+
+                                        </td>
+                                        <td class="mon_fld">
+
+                                            <span>-</span>
+
+                                        </td>
+                                        <td class="mon_fld">
+
+                                            428.55
+                                            ฿
+
+                                        </td>
+
+
+                                    </tr>
+
+                                    <tr class="a36 collapse show" style="">
+                                        <td colspan="10">
+                                            <ul>
+                                            </ul>
+                                            <div class="gl-table-div">
+                                                <table class="table table-sm o_main_table"
+                                                       style="border: 0px solid black;display compact;">
+                                                    <thead>
+                                                        <tr style="">
+                                                            <th>Date</th>
+                                                            <th>JRNL</th>
+                                                            <th>Partner</th>
+                                                            <th>Move</th>
+                                                            <th>Entry Label</th>
+                                                            <th class="mon_fld">Debit</th>
+                                                            <th class="mon_fld">Credit</th>
+                                                            <th class="mon_fld">Balance</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+
+
+                                                        <tr>
+                                                            <td>
+
+                                                                <div class="dropdown dropdown-toggle">
+                                                                    <a data-toggle="dropdown"
+                                                                       href="http://10.211.55.10:8069/web#">
+                                                                        <span class="caret"></span>
+                                                                        <span>
+                                                                            2021-07-08
+                                                                        </span>
+                                                                    </a>
+                                                                    <ul class="dropdown-menu" role="menu"
+                                                                        aria-labelledby="dropdownMenu">
+                                                                        <li>
+                                                                            <a class="view-account-move" tabindex="-1"
+                                                                               href="http://10.211.55.10:8069/web#"
+                                                                               data-move-id="3"
+                                                                               style="background-color: rgb(0, 237, 232); font-weight: bold;">
+                                                                                View Source move
+
+                                                                            </a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+
+                                                            </td>
+                                                            <td>
+                                                                BNK1
+                                                            </td>
+                                                            <td>
+                                                                My Company
+                                                            </td>
+                                                            <td style="">
+                                                                BNK1/2021/07/0001
+                                                            </td>
+                                                            <td style="">
+                                                                Customer Payment 428.55 ฿ - My Company - 07/08/2021
+                                                            </td>
+
+                                                            <td style="" class="amt">
+
+                                                                428.55
+                                                                ฿
+
+                                                            </td>
+                                                            <td style="" class="amt">
+
+                                                                <span>-</span>
+
+                                                            </td>
+                                                            <td style="" class="amt">
+
+                                                                428.55
+                                                                ฿
+
+                                                            </td>
+
+
+                                                        </tr>
+
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+
+                                    <tr style="border: 1.5px solid black;" class="gl-line collapsed"
+                                        data-toggle="collapse" data-account-id="2" data-target=".a2"
+                                        aria-expanded="false">
+                                        <td colspan="6" style="border: 0px solid black;">
+                                            <i class="fa fa-caret-down" role="img" aria-label="Unfolded"
+                                               title="Unfolded"></i>
+                                            <span>
+                                                120000
+                                                -
+                                                Account Receivable
+                                            </span>
+                                        </td>
+
+
+                                        <td class="mon_fld">
+
+                                            428.55
+                                            ฿
+
+                                        </td>
+                                        <td class="mon_fld">
+
+                                            428.55
+                                            ฿
+
+                                        </td>
+                                        <td class="mon_fld">
+
+                                            <span>-</span>
+
+                                        </td>
+
+
+                                    </tr>
+
+                                    <tr class="a2 collapse" style="">
+                                        <td colspan="10">
+                                            <ul>
+                                            </ul>
+                                            <div class="gl-table-div">
+                                                <table class="table table-sm o_main_table"
+                                                       style="border: 0px solid black;display compact;">
+                                                    <thead>
+                                                        <tr style="">
+                                                            <th>Date</th>
+                                                            <th>JRNL</th>
+                                                            <th>Partner</th>
+                                                            <th>Move</th>
+                                                            <th>Entry Label</th>
+                                                            <th class="mon_fld">Debit</th>
+                                                            <th class="mon_fld">Credit</th>
+                                                            <th class="mon_fld">Balance</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+
+
+                                                        <tr>
+                                                            <td>
+
+                                                                <div class="dropdown dropdown-toggle">
+                                                                    <a data-toggle="dropdown"
+                                                                       href="http://10.211.55.10:8069/web#">
+                                                                        <span class="caret"></span>
+                                                                        <span>
+                                                                            2021-07-08
+                                                                        </span>
+                                                                    </a>
+                                                                    <ul class="dropdown-menu" role="menu"
+                                                                        aria-labelledby="dropdownMenu">
+                                                                        <li>
+                                                                            <a class="view-account-move" tabindex="-1"
+                                                                               href="http://10.211.55.10:8069/web#"
+                                                                               data-move-id="3"
+                                                                               style="background-color: rgb(0, 237, 232); font-weight: bold;">
+                                                                                View Source move
+
+                                                                            </a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+
+                                                            </td>
+                                                            <td>
+                                                                BNK1
+                                                            </td>
+                                                            <td>
+                                                                My Company
+                                                            </td>
+                                                            <td style="">
+                                                                BNK1/2021/07/0001
+                                                            </td>
+                                                            <td style="">
+                                                                Customer Payment 428.55 ฿ - My Company - 07/08/2021
+                                                            </td>
+
+                                                            <td style="" class="amt">
+
+                                                                <span>-</span>
+
+                                                            </td>
+                                                            <td style="" class="amt">
+
+                                                                428.55
+                                                                ฿
+
+                                                            </td>
+                                                            <td style="" class="amt">
+
+                                                                -428.55
+                                                                ฿
+
+                                                            </td>
+
+
+                                                        </tr>
+
+
+                                                        <tr>
+                                                            <td>
+
+                                                                <div class="dropdown dropdown-toggle">
+                                                                    <a data-toggle="dropdown"
+                                                                       href="http://10.211.55.10:8069/web#">
+                                                                        <span class="caret"></span>
+                                                                        <span>
+                                                                            2021-07-08
+                                                                        </span>
+                                                                    </a>
+                                                                    <ul class="dropdown-menu" role="menu"
+                                                                        aria-labelledby="dropdownMenu">
+                                                                        <li>
+                                                                            <a class="view-account-move" tabindex="-1"
+                                                                               href="http://10.211.55.10:8069/web#"
+                                                                               data-move-id="2">
+                                                                                View Source move
+
+                                                                            </a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+
+                                                            </td>
+                                                            <td>
+                                                                INV
+                                                            </td>
+                                                            <td>
+                                                                My Company
+                                                            </td>
+                                                            <td style="">
+                                                                INV/2021/07/0001
+                                                            </td>
+                                                            <td style="">
+                                                                INV/2021/07/0001
+                                                            </td>
+
+                                                            <td style="" class="amt">
+
+                                                                428.55
+                                                                ฿
+
+                                                            </td>
+                                                            <td style="" class="amt">
+
+                                                                <span>-</span>
+
+                                                            </td>
+                                                            <td style="" class="amt">
+
+                                                                <span>-</span>
+
+                                                            </td>
+
+
+                                                        </tr>
+
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+
+                                    <tr style="border: 1.5px solid black;" class="gl-line collapsed"
+                                        data-toggle="collapse" data-account-id="8" data-target=".a8"
+                                        aria-expanded="false">
+                                        <td colspan="6" style="border: 0px solid black;">
+                                            <i class="fa fa-caret-down" role="img" aria-label="Unfolded"
+                                               title="Unfolded"></i>
+                                            <span>
+                                                151000
+                                                -
+                                                Input VAT
+                                            </span>
+                                        </td>
+
+
+                                        <td class="mon_fld">
+
+                                            0.7
+                                            ฿
+
+                                        </td>
+                                        <td class="mon_fld">
+
+                                            <span>-</span>
+
+                                        </td>
+                                        <td class="mon_fld">
+
+                                            0.7
+                                            ฿
+
+                                        </td>
+
+
+                                    </tr>
+
+                                    <tr class="a8 collapse" style="">
+                                        <td colspan="10">
+                                            <ul>
+                                            </ul>
+                                            <div class="gl-table-div">
+                                                <table class="table table-sm o_main_table"
+                                                       style="border: 0px solid black;display compact;">
+                                                    <thead>
+                                                        <tr style="">
+                                                            <th>Date</th>
+                                                            <th>JRNL</th>
+                                                            <th>Partner</th>
+                                                            <th>Move</th>
+                                                            <th>Entry Label</th>
+                                                            <th class="mon_fld">Debit</th>
+                                                            <th class="mon_fld">Credit</th>
+                                                            <th class="mon_fld">Balance</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+
+
+                                                        <tr>
+                                                            <td>
+
+                                                                <div class="dropdown dropdown-toggle">
+                                                                    <a data-toggle="dropdown"
+                                                                       href="http://10.211.55.10:8069/web#">
+                                                                        <span class="caret"></span>
+                                                                        <span>
+                                                                            2021-07-08
+                                                                        </span>
+                                                                    </a>
+                                                                    <ul class="dropdown-menu" role="menu"
+                                                                        aria-labelledby="dropdownMenu">
+                                                                        <li>
+                                                                            <a class="view-account-move" tabindex="-1"
+                                                                               href="http://10.211.55.10:8069/web#"
+                                                                               data-move-id="1"
+                                                                               style="background-color: rgb(0, 237, 232); font-weight: bold;">
+                                                                                View Source move
+
+                                                                            </a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+
+                                                            </td>
+                                                            <td>
+                                                                BILL
+                                                            </td>
+                                                            <td>
+                                                                My Company
+                                                            </td>
+                                                            <td style="">
+                                                                BILL/2021/07/0001
+                                                            </td>
+                                                            <td style="">
+                                                                Input VAT 7%
+                                                            </td>
+
+                                                            <td style="" class="amt">
+
+                                                                0.7
+                                                                ฿
+
+                                                            </td>
+                                                            <td style="" class="amt">
+
+                                                                <span>-</span>
+
+                                                            </td>
+                                                            <td style="" class="amt">
+
+                                                                0.7
+                                                                ฿
+
+                                                            </td>
+
+
+                                                        </tr>
+
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+
+                                    <tr style="border: 1.5px solid black;" class="gl-line collapsed"
+                                        data-toggle="collapse" data-account-id="10" data-target=".a10"
+                                        aria-expanded="false">
+                                        <td colspan="6" style="border: 0px solid black;">
+                                            <i class="fa fa-caret-down" role="img" aria-label="Unfolded"
+                                               title="Unfolded"></i>
+                                            <span>
+                                                210100
+                                                -
+                                                Account Payable
+                                            </span>
+                                        </td>
+
+
+                                        <td class="mon_fld">
+
+                                            <span>-</span>
+
+                                        </td>
+                                        <td class="mon_fld">
+
+                                            10.7
+                                            ฿
+
+                                        </td>
+                                        <td class="mon_fld">
+
+                                            -10.7
+                                            ฿
+
+                                        </td>
+
+
+                                    </tr>
+
+                                    <tr class="a10 collapse" style="">
+                                        <td colspan="10">
+                                            <ul>
+                                            </ul>
+                                            <div class="gl-table-div">
+                                                <table class="table table-sm o_main_table"
+                                                       style="border: 0px solid black;display compact;">
+                                                    <thead>
+                                                        <tr style="">
+                                                            <th>Date</th>
+                                                            <th>JRNL</th>
+                                                            <th>Partner</th>
+                                                            <th>Move</th>
+                                                            <th>Entry Label</th>
+                                                            <th class="mon_fld">Debit</th>
+                                                            <th class="mon_fld">Credit</th>
+                                                            <th class="mon_fld">Balance</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+
+
+                                                        <tr>
+                                                            <td>
+
+                                                                <div class="dropdown dropdown-toggle">
+                                                                    <a data-toggle="dropdown"
+                                                                       href="http://10.211.55.10:8069/web#">
+                                                                        <span class="caret"></span>
+                                                                        <span>
+                                                                            2021-07-08
+                                                                        </span>
+                                                                    </a>
+                                                                    <ul class="dropdown-menu" role="menu"
+                                                                        aria-labelledby="dropdownMenu">
+                                                                        <li>
+                                                                            <a class="view-account-move" tabindex="-1"
+                                                                               href="http://10.211.55.10:8069/web#"
+                                                                               data-move-id="1"
+                                                                               style="background-color: rgb(0, 237, 232); font-weight: bold;">
+                                                                                View Source move
+
+                                                                            </a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+
+                                                            </td>
+                                                            <td>
+                                                                BILL
+                                                            </td>
+                                                            <td>
+                                                                My Company
+                                                            </td>
+                                                            <td style="">
+                                                                BILL/2021/07/0001
+                                                            </td>
+                                                            <td style="">
+
+                                                            </td>
+
+                                                            <td style="" class="amt">
+
+                                                                <span>-</span>
+
+                                                            </td>
+                                                            <td style="" class="amt">
+
+                                                                10.7
+                                                                ฿
+
+                                                            </td>
+                                                            <td style="" class="amt">
+
+                                                                -10.7
+                                                                ฿
+
+                                                            </td>
+
+
+                                                        </tr>
+
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+
+                                    <tr style="border: 1.5px solid black;" class="gl-line" data-toggle="collapse"
+                                        data-account-id="14" data-target=".a14">
+                                        <td colspan="6" style="border: 0px solid black;">
+                                            <i class="fa fa-caret-down" role="img" aria-label="Unfolded"
+                                               title="Unfolded"></i>
+                                            <span>
+                                                231000
+                                                -
+                                                Output VAT
+                                            </span>
+                                        </td>
+
+
+                                        <td class="mon_fld">
+
+                                            <span>-</span>
+
+                                        </td>
+                                        <td class="mon_fld">
+
+                                            28.05
+                                            ฿
+
+                                        </td>
+                                        <td class="mon_fld">
+
+                                            -28.05
+                                            ฿
+
+                                        </td>
+
+
+                                    </tr>
+
+                                    <tr class="collapse a14">
+                                        <td colspan="10">
+                                            <ul>
+                                            </ul>
+                                        </td>
+                                    </tr>
+
+
+                                    <tr style="border: 1.5px solid black;" class="gl-line" data-toggle="collapse"
+                                        data-account-id="20" data-target=".a20">
+                                        <td colspan="6" style="border: 0px solid black;">
+                                            <i class="fa fa-caret-down" role="img" aria-label="Unfolded"
+                                               title="Unfolded"></i>
+                                            <span>
+                                                410000
+                                                -
+                                                Income
+                                            </span>
+                                        </td>
+
+
+                                        <td class="mon_fld">
+
+                                            <span>-</span>
+
+                                        </td>
+                                        <td class="mon_fld">
+
+                                            400.5
+                                            ฿
+
+                                        </td>
+                                        <td class="mon_fld">
+
+                                            -400.5
+                                            ฿
+
+                                        </td>
+
+
+                                    </tr>
+
+                                    <tr class="collapse a20">
+                                        <td colspan="10">
+                                            <ul>
+                                            </ul>
+                                        </td>
+                                    </tr>
+
+
+                                    <tr style="border: 1.5px solid black;" class="gl-line" data-toggle="collapse"
+                                        data-account-id="22" data-target=".a22">
+                                        <td colspan="6" style="border: 0px solid black;">
+                                            <i class="fa fa-caret-down" role="img" aria-label="Unfolded"
+                                               title="Unfolded"></i>
+                                            <span>
+                                                510000
+                                                -
+                                                Cost of Revenue
+                                            </span>
+                                        </td>
+
+
+                                        <td class="mon_fld">
+
+                                            10
+                                            ฿
+
+                                        </td>
+                                        <td class="mon_fld">
+
+                                            <span>-</span>
+
+                                        </td>
+                                        <td class="mon_fld">
+
+                                            10
+                                            ฿
+
+                                        </td>
+
+
+                                    </tr>
+
+                                    <tr class="collapse a22">
+                                        <td colspan="10">
+                                            <ul>
+                                            </ul>
+                                        </td>
+                                    </tr>
+
+
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="o_DialogManager"></div><div class="o_ChatWindowManager"></div><span role="status"
+                                                                                                    aria-live="polite"
+                                                                                                    class="select2-hidden-accessible"></span></body></html>

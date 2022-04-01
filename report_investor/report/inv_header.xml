@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <template id="inv_header_form">
+        <div class="row">
+            <div class="col-2">
+                <img src='static/photo/download.png' class="img-responsive" />
+            </div>
+            <div class="col-6">
+                <strong>
+                    <span t-esc="o.company_id.name" />  
+                </strong>
+                <div>
+                    <strong>INVESTOR CLUB ASSOCIATION</strong>
+                </div>
+                <div>
+                    <span t-esc="o.company_id.street" />
+                    <span t-esc="o.company_id.street2" />
+                </div>
+                <div>
+                    โทรศัพท์ <span t-esc="o.company_id.phone" />
+                    <span t-esc="o.company_id.website" />
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="center">
+                    <strong>ใบแจ้งหนี้</strong>
+                </div>
+                <div>
+                    <strong>เลขประจำตัวผู้เสียภาษีอากร<span
+              t-esc="o.company_id.vat"
+            /></strong>
+                    <strong>เลขประจำตัวผู้เสียภาษีอากรผู้รับบริการ<span
+              t-esc="o.partner_id.vat"
+            /></strong>
+                </div>
+            </div>
+
+            
+        </div>
+    </template>
+
+</odoo>

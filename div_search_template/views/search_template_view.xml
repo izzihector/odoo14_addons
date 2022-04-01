@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="search_template_date_filter_thai">
+        <!--         ADD               -->
+
+        <button type="button" class="o_dropdown_toggler_btn btn btn-secondary dropdown-toggle"
+                data-toggle="dropdown">
+            <span class="fa fa-money"/>
+            DIV
+            <t t-set="div_value">1:</t>
+
+            <t t-foreach="options['div']" t-as="a">
+
+                <t t-if="a['selected'] == True">
+                    <t t-set="div_value" t-value="''"/>
+                    <t t-esc="a['name']"/>
+                </t>
+            </t>
+
+            <t t-esc="div_value"/>
+
+
+        </button>
+
+
+        <div class="dropdown-menu o_filter_menu" role="menu">
+            <t t-foreach="options['div']" t-as="a">
+
+                <a class="div_search_template dropdown-item js_account_report_choice_filter_div_1"
+                   t-att-title="a.get('name')"
+                   t-att-data-id="a.get('id')" data-filter="div">
+                    <t t-esc="a.get('name')"/>
+                </a>
+            </t>
+
+
+        </div>
+
+
+    </template>
+
+    <template id="search_template_inherit_main_table_header" inherit_id="Balance_Sheet_thai.main_template_thai">
+
+        <xpath expr="//div[@class='border_line']" position="after">
+
+            <div class="align">
+                <span class="align" style="border-bottom: 1px solid #495057;">
+                    <t t-foreach="options['div']" t-as="a">
+                        <t t-if="a.get('selected') == True">
+                            (<t t-esc="a.get('name')"/>)
+                        </t>
+                    </t>
+                </span>
+            </div>
+        </xpath>
+
+    </template>
+
+
+    <template id="search_template_inherit_div" inherit_id="account_reports.search_template">
+        <xpath expr="//div[@class='btn-group o_dropdown o_account_reports_filter_bool']" position="after">
+            <div class="btn-group o_dropdown o_account_reports_filter_div"
+                 t-if="options.get('div') != None">
+                <t t-call="div_search_template.search_template_date_filter_thai"/>
+            </div>
+        </xpath>
+    </template>
+</odoo>
+
+

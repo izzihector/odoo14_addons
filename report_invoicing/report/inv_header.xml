@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <template id="inv_header_form">
+        <link
+      rel="stylesheet"
+      href="report_invoicing/static/src/css/report_style.css"
+    />
+        <div class="row">
+            <div class="col-2">
+                <img src='static/src/photo/ic_logo.png' class="img-responsive" />
+            </div>
+            <div class="col-6">
+                <strong>
+                    <span t-esc="o.company_id.name" />
+                </strong>
+                <div>
+                    <strong>INVESTOR CLUB ASSOCIATION</strong>
+                </div>
+                <div>
+                    <span t-esc="o.company_id.street" />
+                    <span t-esc="o.company_id.street2" />
+                </div>
+                <div>
+                    โทรศัพท์ <span t-esc="o.company_id.phone" />
+                    <span t-esc="o.company_id.website" />
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="a">
+                    <strong>ใบแจ้งหนี้</strong>
+                </div>
+                <div class="b">
+                    <strong>เลขประจำตัวผู้เสียภาษีอากร<span
+              t-esc="o.company_id.vat"
+            /></strong>
+                    </div>
+                    <div class="b">
+                    <strong>เลขประจำตัวผู้เสียภาษีอากรผู้รับบริการ<span
+              t-esc="o.partner_id.vat"
+            /></strong>
+                </div>
+            </div>
+
+
+        </div>
+    </template>
+
+</odoo>
+

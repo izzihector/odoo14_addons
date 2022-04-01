@@ -1,0 +1,29 @@
+<odoo>
+    <template
+            id="assets_backend"
+            name="thai_tax_report assets"
+            inherit_id="web.assets_backend"
+    >
+        <xpath expr="." position="inside">
+            <link
+                    href="/thai_tax_report/static/src/css/report.css"
+                    rel="stylesheet"/>
+            <script
+                    type="text/javascript"
+                    src="/thai_tax_report/static/src/js/thai_tax_report_backend.js"/>
+        </xpath>
+    </template>
+
+    <template id="thai_tax_report.report_buttons" inherit_id="l10n_th_tax_report.report_buttons">
+        <xpath expr="//div[@class='button_row']" position="inside">
+            <button class="o_l10n_th_tax_report_print_thai btn btn-sm oe_button">
+                <span class="fa fa-print"/>
+                PrintThai
+            </button>
+        </xpath>
+
+
+    </template>
+
+
+</odoo>

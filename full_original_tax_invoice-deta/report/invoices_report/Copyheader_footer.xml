@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data>
+
+        <!--     ===========                 add designer id header and Footer       ================              -->
+
+
+        <template id="external_layout_full_copy_invoice_custom">
+            <t t-call="full_original_tax_invoice.external_layout_full_copy_invoice_header_custom"/>
+            <t t-raw="0"/>
+            <t t-call="full_original_tax_invoice.external_layout_footer_IC_custom_test"/>
+        </template>
+
+        <template id="external_layout_full_copy_invoice_header_custom">
+
+            <div class="header" t-att-style="report_header_style">
+                <style>
+                    .color{
+                    background-color:<t t-esc="doc.company_id.primary_color"/>;
+                    }
+                    .font{
+                    font-family:<t t-esc="doc.company_id.font"/>;
+                    }
+                </style>
+
+                <div class="row font">
+                    <link rel="stylesheet" href="/full_original_tax_invoice/static/src/css/color.css"/>
+                    <link rel="stylesheet" href="/full_original_tax_invoice/static/src/css/my_style.css"/>
+                    <div class="col-12" style=" padding-right: 0px;  ">
+                        <div>
+                            <div class="row">
+                                <div class="col-2 text-center"
+                                     style="text-center; padding-top: 15px; padding-bottom: 7px;">
+                                    <img t-if="doc.company_id.logo" t-att-src="image_data_uri(doc.company_id.logo)"
+                                         style="width:140px"/>
+                                </div>
+                                <div class="col-10 text-left">
+                                    <span class="report-well" t-field="doc.company_id.name"
+                                          style="background-color: transparent; color: rgb(0, 0, 0);  font-size: 25px;"/>
+
+                                    <!--                                    <span class="report-well" t-field="doc.branch_id.company_eng"-->
+                                    <!--                                          style="background-color: transparent; color: rgb(0, 0, 0); font-size: 20px;"/>-->
+                                    <div>
+                                        <span style="color: rgb(66, 66, 66); font-size: 15px;"
+                                              t-field="doc.branch_id.address"/>
+                                        <span style="color: rgb(66, 66, 66); font-size: 15px;"
+                                              t-field="doc.branch_id.telephone_no"/>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-12" style="height: 15px;">
+
+                </div>
+
+
+                <div class="container-fluid triple_block font report-container" style="padding-left: 0px; ">
+
+                    <div class="container-fluid single_block  report-container">
+                        <div class="row">
+                            <div class="col-8" style="border: 1px solid #4a5057; border-radius:10px; ">
+                                <div class="t_block  mb8">
+                                    <div>
+                                        <span style="background-color: transparent; color: rgb(66, 66, 66); font-size: 12px;">
+                                            นามผู้ซื้อ (Bill To):
+                                        </span>
+                                        <br style="background-color: rgb(255, 255, 255);"/>
+                                        <span class="report-well" t-field="doc.partner_id.name"
+                                              style="background-color: transparent; color: rgb(66, 66, 66); font-size: 12px;"/>
+                                        <br/>
+                                        <span class="report-well" t-field="doc.partner_id.street"
+                                              style="background-color: transparent; color: rgb(66, 66, 66); font-size: 12px;"/>
+                                        <span class="report-well" t-field="doc.partner_id.street2"
+                                              style="background-color: transparent; color: rgb(66, 66, 66); font-size: 12px;"/>
+                                        <span class="o_default_snippet_text report-well"
+                                              t-field="doc.partner_id.city"
+                                              style="background-color: transparent; color: rgb(66, 66, 66); font-size: 12px;"/>
+                                        <span class="report-well" t-field="doc.partner_id.zip"
+                                              style="background-color: transparent; color: rgb(66, 66, 66); font-size: 12px;"/>
+                                        <br/>
+                                        <span style="background-color: transparent; color: rgb(66, 66, 66); font-size: 12px;">
+                                            เลขประจำตัวผู้เสียภาษีอากร:
+                                        </span>
+                                        <span class="report-well" t-field="doc.partner_id.vat"
+                                              style="background-color: transparent; color: rgb(66, 66, 66); font-size: 12px;"/>
+                                        <br/>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4"
+                                 style="border: 1px solid #4a5057;border-radius:10px;left: 15px;">
+                                <div>
+                                    <div>
+                                        <span style="font-size: 20px;">ต้นฉบับใบเสร็จรับเงิน/ใบกำกับภาษี</span>
+                                    </div>
+                                    <div>
+                                        <span style="font-size: 20px;">เลขที่</span>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+
+        </template>
+
+        <template id="external_layout_footer_IC_custom_test">
+
+            <div class="o_boxed_footwer">
+                <div class="footer" style="text-align: right; font-family:Prompt;">
+
+
+                    <div class="container-fluid triple_block  report-container">
+                        <div class="container-fluid triple_block  report-container">
+                            <div class="col-12" style="text-align: left;">
+                                <span>
+                                    ใบเสร็จรับเงินฉบับนี้จะสมบูรณ์ต่อเมื่อผู้รับเงินลงลายมือชื่อ
+                                    และเมื่อเช็คของท่านเรียกเก็บจากธนาคารได้เรียบร้อยแล้ว
+                                </span>
+
+                            </div>
+                            <div class="col-12" style="height:  100px"></div>
+                            <div class="row col-12">
+                                <div class="col-6" style="text-align:center">
+                                    <div>
+                                        <span>
+                                            .............................................................................................................
+                                        </span>
+                                    </div>
+
+                                    <span>
+                                        ผู้ชำระเงิน
+                                    </span>
+
+                                </div>
+                                <div class="col-6" style="text-align:center">
+                                    <div>
+                                        <span>
+                                            .............................................................................................................
+                                        </span>
+                                    </div>
+                                    <span>
+                                        ผู้รับเงิน
+                                    </span>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div style="text-align: right;">
+                            <span>เจ้าหน้าทีธนาคาร-ผู้รับ</span>
+                            <span>..............................</span>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </template>
+
+
+    </data>
+</odoo>

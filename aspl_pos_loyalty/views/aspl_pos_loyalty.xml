@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- vim:fdn=3:-->
+<odoo>
+    <template id="assets" inherit_id="point_of_sale.assets">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/aspl_pos_loyalty/static/src/js/loyalty_config.js"></script>
+            <script type="text/javascript" src="/aspl_pos_loyalty/static/src/js/OrderWidget.js"></script>
+            <script type="text/javascript" src="/aspl_pos_loyalty/static/src/js/PaymentScreen.js"></script>
+            <script type="text/javascript" src="/aspl_pos_loyalty/static/src/js/OrderReceipt.js"></script>
+            <script type="text/javascript" src="/aspl_pos_loyalty/static/src/js/RedeemLoyaltyPointsPopup.js"></script>
+<!--            <script type="text/javascript" src="/aspl_pos_loyalty/static/src/js/pos.js"></script>-->
+            <link type="text/css" rel="stylesheet" href="/aspl_pos_loyalty/static/src/css/pos.css"/>
+        </xpath>
+    </template>
+</odoo>

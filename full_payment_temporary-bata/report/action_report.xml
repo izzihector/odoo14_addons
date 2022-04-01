@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+
+
+        <report
+                id="action_report_full_payment_custom_temporary"
+                string="Full payment Custom temporary"
+                model="account.payment"
+                report_type="qweb-html"
+                file="full_payment_temporary.report_payment_custom_view"
+                name="full_payment_temporary.report_payment_custom_view"
+                print_report_name="'%s-%s' % (object.name, object.id)"
+                paperformat="full_payment_temporary.paperformat_full_payment_temporary_report"
+
+        />
+        <template id="report_payment_custom_view">
+
+            <t t-call="web.html_container">
+                <div class="article o_report_layout_boxed" t-att-data-oe-model="o and o._name"
+                     t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
+                    <t t-foreach="docs" t-as="doc">
+
+                        <t t-call="full_payment_temporary.external_layout_full_payment_custom_temporary">
+                            <!--                       <t t-call="web.external_layout_boxed">-->
+                            <t t-if="'partner_id' in doc.fields_get()">
+                                <t t-call="full_payment_temporary.full_payment_custom_temporary"
+                                   t-lang="doc.partner_id.lang"/>
+                            </t>
+                            <t t-if="'partner_id' not in doc.fields_get()">
+                                <t t-call="full_payment_temporary.full_payment_custom_temporary"/>
+                            </t>
+
+                        </t>
+
+
+                    </t>
+                </div>
+            </t>
+
+
+        </template>
+
+
+        <!--     ===========                 add designer id content       ================              -->
+
+
+    </data>
+</odoo>

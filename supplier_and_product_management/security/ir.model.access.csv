@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_supplier_group,access_supplier_group,model_supplier_group,purchase.group_purchase_manager,1,1,1,1
+access_supplier_category,access_supplier_category,model_supplier_category,purchase.group_purchase_manager,1,1,1,1
+access_supplier_type,access_supplier_type,model_supplier_type,purchase.group_purchase_manager,1,1,1,1
+access_res_partner,access_res_partner,model_res_partner,purchase.group_purchase_manager,1,1,1,1
+access_supplier_compute,access_supplier_compute,model_supplier_compute,purchase.group_purchase_manager,1,1,1,1

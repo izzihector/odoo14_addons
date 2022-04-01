@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+
+    <record id="product_category_scroll_view" model="ir.ui.view">
+        <field name="name">product_category_scroll_view</field>
+        <field name="model">product.category</field>
+        <field name="inherit_id" ref="product.product_category_list_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree" position="attributes">
+                <attribute name="class">horizontal_scroll_bar</attribute>
+            </xpath>
+        </field>
+    </record>
+    <record id="uom_product_uom_categ_tree_view_scroll_view" model="ir.ui.view">
+        <field name="name">uom_product_uom_categ_tree_view_scroll_view</field>
+        <field name="model">uom.category</field>
+        <field name="inherit_id" ref="uom.product_uom_categ_tree_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree" position="attributes">
+                <attribute name="class">horizontal_scroll_bar</attribute>
+            </xpath>
+        </field>
+    </record>
+    <record id="uom_product_uom_tree_view_scroll_view" model="ir.ui.view">
+        <field name="name">uom_product_uom_tree_view_scroll_view</field>
+        <field name="model">uom.uom</field>
+        <field name="inherit_id" ref="uom.product_uom_tree_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree" position="attributes">
+                <attribute name="class">horizontal_scroll_bar</attribute>
+            </xpath>
+        </field>
+    </record>
+
+
+    <template id="horizontal_scroll" name="account assets" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <link rel="stylesheet" type="text/css" href="/product_views_inherit/static/src/css/style_view.css"/>
+        </xpath>
+
+    </template>
+
+
+    <!--     <record id="uom_category_scroll_view" model="ir.ui.view">-->
+    <!--            <field name="name">uom_category_scroll_view</field>-->
+    <!--            <field name="model">uom.category</field>-->
+    <!--            <field name="inherit_id" ref="uom.product_uom_categ_tree_view"/>-->
+    <!--            <field name="arch" type="xml">-->
+    <!--                <xpath expr="//tree" position="attributes">-->
+    <!--                    <attribute name="class" add="horizontal-scroll"/>-->
+    <!--                </xpath>-->
+    <!--            </field>-->
+    <!--    </record>-->
+
+</odoo>

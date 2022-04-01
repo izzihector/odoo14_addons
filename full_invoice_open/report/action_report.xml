@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <report
+                id="action_report_full_original_invoice_custom"
+                string="Full invoice open"
+                model="account.move"
+                report_type="qweb-pdf"
+                file="full_invoice_open.report_invoice_custom_view"
+                name="full_invoice_open.report_invoice_custom_view"
+                print_report_name="'%s-%s' % (object.name, object.id)"
+                paperformat="full_invoice_open.paperformat_full_invoice_custom_report"
+
+        />
+
+
+    </data>
+</odoo>

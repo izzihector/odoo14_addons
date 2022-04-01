@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!--menu view-->
+    <record id="polling_view" model="ir.ui.view">
+        <field name="name">Polling view</field>
+        <field name="model">pooling.qt</field>
+        <field name="arch" type="xml">
+            <form class="oe_form_polling">
+                <sheet>
+                    <group class="main_polling">
+                        <group class="group_details">
+                            <field name="No" class="oe_inline"/>
+                            <field name="CertNo" class="oe_inline"/>
+                            <field name="RequestNumber" class="oe_inline"/>
+                            <field name="RequestDate" class="oe_inline"/>
+                            <field name="RequestName" class="oe_inline"/>
+                            <field name="RequestType" class="oe_inline"/>
+                            <field name="ApprovedNumber" class="oe_inline"/>
+                            <field name="ApprovedDate" class="oe_inline"/>
+                            <field name="RegisterID" class="oe_inline"/>
+                        </group>
+                        <group class="group_details_two">
+                            <field name="TaxID" class="oe_inline"/>
+                            <field name="Username" class="oe_inline"/>
+                            <field name="ComCode" class="oe_inline"/>
+                            <field name="InvoiceNumber" class="oe_inline"/>
+                            <field name="InvoiceDate" class="oe_inline"/>
+                            <field name="ItemNumber" class="oe_inline"/>
+                            <field name="Month" class="oe_inline"/>
+                            <field name="Year" class="oe_inline"/>
+                            <field name="User" class="oe_inline"/>
+                            <field name="user_ref" class="oe_inline"/>
+                            <field name="Send" class="oe_inline"/>
+                            <field name="Receipt" class="oe_inline"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_polling_view" model="ir.actions.act_window">
+        <field name="name">Polling Action</field>
+        <field name="res_model">pooling.qt</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.ui.view" id="polling_view_tree">
+        <field name="name">Polling view</field>
+        <field name="model">pooling.qt</field>
+        <field name="arch" type="xml">
+            <tree class="oe_form_polling">
+                <field name="No" class="oe_inline" optional="show"/>
+                <field name="CertNo" class="oe_inline" optional="hide"/>
+                <field name="RequestNumber" class="oe_inline" optional="show"/>
+                <field name="RequestDate" class="oe_inline" optional="hide"/>
+                <field name="RequestName" class="oe_inline" optional="show"/>
+                <field name="RequestType" class="oe_inline" optional="show"/>
+                <field name="ApprovedNumber" class="oe_inline" optional="show"/>
+                <field name="ApprovedDate" class="oe_inline" optional="show"/>
+                <field name="RegisterID" class="oe_inline" optional="hide"/>
+                <field name="TaxID" class="oe_inline" optional="show"/>
+                <field name="Username" class="oe_inline" optional="show"/>
+                <field name="ComCode" class="oe_inline" optional="hide"/>
+                <field name="InvoiceNumber" class="oe_inline" optional="hide"/>
+                <field name="InvoiceDate" class="oe_inline" optional="hide"/>
+                <field name="ItemNumber" class="oe_inline" optional="hide"/>
+                <field name="Month" class="oe_inline" optional="hide"/>
+                <field name="Year" class="oe_inline" optional="hide"/>
+                <field name="User" class="oe_inline" optional="hide"/>
+                <field name="user_ref" optional="hide"/>
+                <field name="Send" class="oe_inline" optional="hide"/>
+                <field name="Receipt" class="oe_inline" optional="hide"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="action_polling_to_qt" model="ir.actions.server">
+        <field name="name">To Quotation</field>
+        <field name="type">ir.actions.server</field>
+        <field name="model_id" ref="model_pooling_qt"/>
+        <field name="binding_model_id" ref="model_pooling_qt"/>
+        <field name="state">code</field>
+        <field name="code">
+            if record:
+                action = record.action_create_to_qt()
+        </field>
+    </record>
+
+
+    <menuitem name="Pooling" id="main_polling_view" action="action_polling_view" sequence="0"
+              parent="sale.sale_order_menu"/>
+</odoo>
+

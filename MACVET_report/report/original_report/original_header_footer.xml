@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <template id="external_layout_full_original_header_footer_custom">
+            <t t-call="MACVET_report.external_layout_original_header_custom"/>
+            <t t-raw="0"/>
+            <t t-call="MACVET_report.external_layout_footer_custom"/>
+        </template>
+
+        <template id="external_layout_original_header_custom">
+
+            <div class="header" t-att-style="report_header_style">
+                <style>
+
+                    .font{
+                    font-family:<t t-esc="doc.company_id.font"/>;
+                    }
+                </style>
+                <div class="row font">
+                    <link rel="stylesheet" href="/MACVET_report/static/src/css/color.css"/>
+                    <link rel="stylesheet" href="/MACVET_report/static/src/css/my_style.css"/>
+                    <div class="col-9" style=" padding-right: 0px;  ">
+                        <div class="row">
+                            <div class="col-3">
+                                <img t-if="doc.company_id.logo" t-att-src="image_data_uri(doc.company_id.logo)"
+                                     alt="Logo" style="width:160px"/>
+                            </div>
+                            <div class="col-9" style="padding-top:10px;     padding-right: 0px;     padding-left: 0px;">
+                                <span class="report-well" t-field="doc.company_id.name"
+                                      style="background-color: transparent; color: rgb(0, 0, 0);  font-size: 25px;"/>
+                                <br/>
+                                <!--                                <span class="report-well" t-field="doc.branch_id.company_eng"-->
+                                style="background-color: transparent; color: rgb(0, 0, 0); font-size: 20px;"/>
+                                <br/>
+                                <font style="color: rgb(66, 66, 66); font-size: 12px;">เลขประจำตัวผู้เสียภาษี</font>
+                                <span class="report-well" t-field="doc.company_id.vat"
+                                      style="background-color: transparent; color: rgb(66, 66, 66); font-size: 10px;"/>
+                                <br/>
+                                <div class="row">
+                                    <div class="col-3" style="     padding-right: 0px; ">
+
+
+                                        <span style="color: rgb(66, 66, 66); font-size: 10px;"
+                                              t-field="doc.branch_id.branch_code"/>
+
+                                    </div>
+                                    <div class="col-9"
+                                         style=" padding-right: 0px;  padding-left: 0px; text-align: left;  ">
+
+
+                                        <span style="color: rgb(66, 66, 66); font-size: 10px;"
+                                              t-field="doc.branch_id.address"/>
+                                        <br/>
+
+
+                                        <!--                                        <span style="color: rgb(66, 66, 66); font-size: 10px;"-->
+                                        <!--                                              t-field="doc.branch_id.address_eng"/>-->
+                                        <br/>
+                                        <span style="font-size:12px">Tel.:</span>
+                                        <span style="color: rgb(66, 66, 66); font-size: 10px;"
+                                              t-field="doc.branch_id.telephone_no"/>
+                                    </div>
+                                </div>
+                                <br/>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-3 " style="     padding-top: 15px; ">
+                        <div class="t_block  mb8 ">
+                            <div style="text-align: center; padding:0.0rem;">
+                                <div style="">
+                                    <div class="color-original"
+                                         style="border-radius:10px;border-radius: 10px;border-style: hidden; box-shadow: 0 0 0 1px black;">
+                                        <font style="color: rgb(0, 0, 0); font-size: 13px;">
+                                            <br/>
+                                        </font>
+                                        <font style="color: rgb(0, 0, 0); font-size: 20px; ">ต้นฉบับ ใบแจ้งหนี้</font>
+                                        <font style="color: rgb(0, 0, 0); font-size: 13px;  "><br/>ORIGINAL INVOICE
+                                            <br/>
+                                        </font>
+                                        <br/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </template>
+
+
+        <template id="external_layout_footer_custom">
+            <div class="o_boxed_footwer">
+                <div class="footer" style="text-align: right; font-family:Prompt;">
+                    <span>หน้าที่</span>
+                    <span class="page"/>/
+                    <span class="topage"/>
+                </div>
+            </div>
+        </template>
+
+        <!--     ===========                 add designer id header and Footer       ================              -->
+
+
+    </data>
+</odoo>
+

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<odoo>
+
+    <data>
+
+        <record model="ir.ui.view" id="sale_order_view_inherit">
+            <field name="name">sale.order.view.inherit1</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@class='oe_subtotal_footer oe_right']//field[@name='amount_tax']"
+                       position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//group[@class='oe_subtotal_footer oe_right']//field[@name='amount_tax']"
+                       position="after">
+                    <field name="amount_by_group" widget="tax-group-custom-field" nolabel="1" colspan="2"
+                           attrs="{'invisible': [('amount_tax', '=', 0)]}"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

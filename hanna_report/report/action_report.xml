@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+
+        <report
+                id="action_report_full_original_invoice_custom"
+                string="Full Invoices"
+                model="account.move"
+                report_type="qweb-pdf"
+                file="hanna_report.report_invoice_custom_view"
+                name="hanna_report.report_invoice_custom_view"
+                print_report_name="'%s-%s' % (object.name, object.id)"
+                paperformat="hanna_report.paperformat_full_invoice_custom_report"
+
+        />
+
+
+
+
+        <template id="report_invoice_custom_view">
+
+
+                <t t-call="web.html_container">
+                <div class="article o_report_layout_boxed" t-att-data-oe-model="o and o._name"
+                     t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
+                    <t t-foreach="docs" t-as="doc">
+
+                           <t t-call="hanna_report.external_layout_full_invoice_custom2">
+                            <!--                       <t t-call="web.external_layout_boxed">-->
+                            <t t-if="'partner_id' in doc.fields_get()">
+                                <t t-call="hanna_report.full-invoice-custom_document"
+                                   t-lang="doc.partner_id.lang"/>
+                            </t>
+                            <t t-if="'partner_id' not in doc.fields_get()">
+                                <t t-call="hanna_report.full-invoice-custom_document"/>
+                            </t>
+                        </t>
+
+
+                    </t>
+                </div>
+            </t>
+
+
+
+
+
+        </template>
+
+        <!--     ===========                 add designer id content       ================              -->
+
+
+    </data>
+</odoo>

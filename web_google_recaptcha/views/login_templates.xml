@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<!-- #========================================Login=================================== -->
+
+    <template id="login_recaptch" inherit_id="web.login">
+        <div class="form-group field-password" position="after">
+            <center>
+                <script type="text/javascript" src="https://www.google.com/recaptcha/api.js"></script>
+                <script>
+                	function recaptchaCallback() {
+                    	$('#submitBtn').removeAttr('disabled');
+                    	console.log("Checkbox checked..!")
+                    };
+                </script>
+                <t t-if="website.login_page">
+				<div class="g-recaptcha" t-att-data-sitekey="website.captcha_sitekey" data-callback="recaptchaCallback" />
+                </t>
+                <br/>
+            </center>
+            <t t-if="website.login_page">
+            <t t-if="website.captcha_sitekey">
+            	<button type="submit" class="btn btn-primary btn-block" style="height:35px;width:100%" disabled="True" id="submitBtn" value="Submit"> 
+            		Submit
+				</button>
+            </t>
+            </t>
+            <t t-else="">
+            	<button type="submit" class="btn btn-primary btn-block" style="height:35px;width:100%" id="submitBtn" value="Submit"> 
+            		Submit
+            	</button>
+            </t>
+			<div class="justify-content-between mt-2 d-flex small">
+               <a t-if="signup_enabled" t-attf-href="/web/signup?{{ keep_query() }}">Don't have an account?</a>
+               <a t-if="reset_password_enabled" t-attf-href="/web/reset_password?{{ keep_query() }}">Reset Password</a>
+           </div>
+        </div>
+        <div t-attf-class="clearfix oe_login_buttons text-center mb-1 {{'pt-2' if form_small else 'pt-3'}}" position="replace">
+            <br/>
+            <t t-if="debug">
+                <button type="submit" name="redirect" value="/web/become" class="btn btn-link btn-sm btn-block">Log in as superuser</button>
+            </t>
+            <div class="o_login_auth"/>
+        </div>
+    </template>
+
+
+<!-- #========================================Reset Password=================================== -->
+
+    <template id="reset_password_recaptch" inherit_id="auth_signup.reset_password">
+        <div class="form-group field-login" position="after">
+            <center>
+                <script type="text/javascript" src="https://www.google.com/recaptcha/api.js"></script>
+                <script>
+                    function recaptchaCallback() {
+                        $('#submitBtn').removeAttr('disabled');
+                        console.log("Checkbox checked..!")
+                    };
+                </script>
+                <t t-if="website.reset_password">
+                <div class="g-recaptcha" t-att-data-sitekey="website.captcha_sitekey" data-callback="recaptchaCallback" />
+                </t>
+                <br/>
+            </center>
+            <t t-if="website.reset_password">
+            <t t-if="website.captcha_sitekey">
+                <button type="submit" class="btn btn-primary btn-block" style="height:35px;width:100%" disabled="True" id="submitBtn" value="Submit"> 
+                    Submit
+                </button>
+            </t>
+            </t>
+            <t t-else="">
+                <button type="submit" class="btn btn-primary btn-block" style="height:35px;width:100%" id="submitBtn" value="Submit"> 
+                    Submit
+                </button>
+            </t>
+        </div>
+        <div class="clearfix oe_login_buttons" position="replace">
+            <br/>
+            <div class="d-flex justify-content-between align-items-center small mt-2">
+                <a t-if="not token" t-attf-href="/web/login?{{ keep_query() }}">Back to Login</a>
+                <a t-if="invalid_token" href="/web/login">Back to Login</a>
+            </div>
+            <div class="o_login_auth"/>
+        </div>
+    </template>
+
+
+<!-- #========================================Sign up=================================== -->
+
+    <template id="signup_recaptch" inherit_id="auth_signup.signup">
+        <div class="text-center oe_login_buttons pt-3" position="before">
+            <center>
+                <script type="text/javascript" src="https://www.google.com/recaptcha/api.js"></script>
+                <script>
+                    function recaptchaCallback() {
+                        $('#submitBtn').removeAttr('disabled');
+                        console.log("Checkbox checked..!")
+                    };
+                </script>
+                <t t-if="website.sign_up">
+                <div class="g-recaptcha" t-att-data-sitekey="website.captcha_sitekey" data-callback="recaptchaCallback" />
+                </t>
+                <br/>
+            </center>
+            <t t-if="website.sign_up">
+            <t t-if="website.captcha_sitekey">
+                <button type="submit" class="btn btn-primary btn-block" style="height:35px;width:100%" disabled="True" id="submitBtn" value="Submit"> 
+                    Submit
+                </button>
+            </t>
+            </t>
+            <t t-else="">
+                <button type="submit" class="btn btn-primary btn-block" style="height:35px;width:100%" id="submitBtn" value="Submit"> 
+                    Submit
+                </button>
+            </t>
+        </div>
+        <div class="text-center oe_login_buttons pt-3" position="replace">
+            <br/>
+            <a t-attf-href="/web/login?{{ keep_query() }}" class="btn btn-link btn-sm" role="button">Already have an account?</a>
+            <div class="o_login_auth"/>
+        </div>
+    </template>
+</odoo>

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <template id="footnotes_template">
+            <t t-foreach="footnotes" t-as="footnote">
+            </t>
+        </template>
+
+        <template id="line_caret_options">
+            <li t-if="line['caret_options'] == 'account.tax'">
+                <a role="menuitem" tabindex="-1" t-att-data-id="line['id']" action="open_tax" class="dropdown-item">
+                    Audit
+                </a>
+            </li>
+            <li t-if="line['caret_options'] == 'account.tax.report.line'">
+                <a role="menuitem" tabindex="-1" t-att-data-id="line['id']" action="tax_tag_template_open_aml"
+                   class="dropdown-item">Audit
+                </a>
+            </li>
+            <li t-if="line['caret_options'] == 'tax.report.line'">
+                <a role="menuitem" tabindex="-1" t-att-data-id="line['id']" action="open_tax_report_line"
+                   class="dropdown-item">Audit
+                </a>
+            </li>
+            <li t-if="line['caret_options'] == 'account.analytic.account'">
+                <a role="menuitem" tabindex="-1" t-att-data-id="line['id']" action="open_analytic_entries"
+                   class="dropdown-item">Analytic Entries
+                </a>
+            </li>
+        </template>
+
+        <template id="filter_info_template">
+        </template>
+
+        <template id="main_table_header">
+            <thead class="o_account_reports_header_hierarchy">
+                <t t-foreach="lines.get('columns_header')" t-as="header_line">
+                    <tr>
+                        <t t-foreach="header_line" t-as="cell">
+                            <th t-att-class="'o_account_report_column_header ' + (cell.get('class', ''))"
+                                t-att-colspan="cell.get('colspan')"
+
+                                t-att-data-toggle="cell.get('data-toggle')">
+                                <t t-call="{{cell.get('template', 'account_reports.cell_template')}}"/>
+                            </th>
+                        </t>
+                    </tr>
+                </t>
+            </thead>
+        </template>
+
+        <template id="main_template_thai">
+            <div class='o_account_reports_body'>
+                <div id="warnings_div">
+                    <div class="alert alert-info text-center mb-0 no_print"
+                         t-if="not options.get('all_entries') and options.get('unposted_in_period')">
+                        <span>There are <a action="open_unposted_moves">unposted Journal Entries</a> prior or included
+                            in this period
+                        </span>
+                    </div>
+                </div>
+                <div class="o_account_reports_page o_account_reports_no_print">
+                    <t t-if="options.get('type') == 'th'">
+                        <div class="o_account_reports_header_thai" style="text-align: center;">
+                            <div class="print_only">
+                                <t t-call="Balance_Sheet_thai.filter_info_template"/>
+                            </div>
+                            <dr/>
+                            <div>
+                                <span class="print_only" style="">
+                                    <t t-esc="report.get('company_name')"/>
+                                </span>
+                            </div>
+                            <div>
+                                <span class="print_only" style="">งบแสดงฐานะการเงิน</span>
+                            </div>
+                            <div>
+                                <span class="print_only">
+                                    ณ วันที่
+                                    <t t-esc="options['date']['string']"/>
+                                </span>
+                            </div>
+                            <br/>
+                            <t t-call="Balance_Sheet_thai.filter_info_template"/>
+                        </div>
+                        <div class="border_line" style="border-bottom: 1px solid #495057;"></div>
+
+
+
+
+
+                    </t>
+                    <t t-else="">
+                        <div id="test" class="o_account_reports_header">
+                            <div class="print_only">
+                                <h2>
+                                    <t t-esc="report.get('name')"></t>
+                                </h2>
+                            </div>
+                            <t t-call="account_reports.filter_info_template"/>
+                        </div>
+
+
+                    </t>
+                    <div class="o_account_reports_summary"/>
+                    <div class="table-responsive">
+                        <table class="o_account_reports_table table-hover">
+                            <t t-call="{{model._get_templates()['main_table_header_template']}}"/>
+                            <tbody>
+                                <t t-if="lines.get('lines')">
+                                    <t t-call="{{model._get_templates()['line_template']}}"/>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="js_account_report_footnotes"/>
+                </div>
+            </div>
+        </template>
+
+
+        <!-- stylesheets -->
+        <template id="assets_financial_report">
+            <t t-call="web._assets_helpers"/>
+            <t t-call="web._assets_bootstrap"/>
+            <link rel="stylesheet" type="text/scss" href="/web/static/src/scss/fonts.scss"/>
+            <link rel="stylesheet" type="text/scss"
+                  href="/Balance_Sheet_thai/static/src/scss/account_financial_report.scss"/>
+            <link rel="stylesheet" type="text/scss"
+                  href="/Balance_Sheet_thai/static/src/scss/account_report_print.scss"/>
+        </template>
+
+        <!-- This template is only used when printing a financial report to a PDF output -->
+        <template id="print_template_thai">
+            <t t-raw="'&lt;base href=%s&gt;' % base_url"/>
+            <html>
+                <head>
+                    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+                    <t t-call-assets="Balance_Sheet_thai.assets_financial_report" t-js="False"/>
+
+
+                </head>
+
+                <body class="o_account_reports_body_print_thai">
+
+                    <div class="foot">งบการเงินนี้ไดรับอนุมัติจากที่ประชุมสามัญผูถือหุน
+                        ครั้งที่............เมื่อวันที่...............
+                    </div>
+                    <div class="foot">
+                        <span class="padding">ลงชื่อ..................................กรรมการ</span>
+                        <span class="padding2">ลงชื่อ..................................กรรมการ</span>
+                    </div>
+
+                </body>
+
+            </html>
+        </template>
+
+
+    </data>
+</odoo>
+

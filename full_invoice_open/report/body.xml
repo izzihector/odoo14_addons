@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <template id="report_invoice_custom_view">
+            <t t-call="web.html_container">
+                <!--               <t t-foreach="docs" t-as="doc">-->
+                <t t-set="doc" t-value="docs[0]"/>
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h3>
+                            <strong>ใบวางบิล:
+
+                            </strong>
+                        </h3>
+                        <div class="row mt64">
+                            <div class="col-6" t-if="doc.invoice_date">
+                                <strong>Payment Date:</strong>
+                                <span t-field="doc.invoice_date"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6" t-if="doc.partner_id">
+                                <t>
+                                    <strong>Customer:</strong>
+                                </t>
+                                <!--                                <t t-if="doc.partner_type == 'supplier'">-->
+                                <!--                                    <strong>Vendor:</strong>-->
+                                <!--                                </t>-->
+                                <span t-field="doc.partner_id"/>
+                            </div>
+                            <div class="col-6">
+                                <strong>Payment Method:</strong>
+                                <!--                                <span t-field="doc.payment_method_id.name"/>-->
+                            </div>
+                        </div>
+                        <div class="row mb64">
+                            <div class="col-6">
+                                <strong>Payment Amount:</strong>
+                                <!--                                <span t-field="doc.amount_total_signed"-->
+                                <!--                                      t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>-->
+                            </div>
+                            <div class="col-6">
+                                <strong>Memo:</strong>
+                                <!--                                <span t-field="doc.communication"/>-->
+                            </div>
+                        </div>
+                        <table class="table-sm" style="table-layout: fixed; height:530px; width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <span>Invoice Date</span>
+                                    </th>
+                                    <th>
+                                        <span>Invoice Number</span>
+                                    </th>
+                                    <th class="text-right">
+                                        <span>Original Amount</span>
+                                    </th>
+                                    <th class="text-right">
+                                        <span>Amount Paid</span>
+                                    </th>
+                                    <th class="text-right">
+                                        <span>Balance</span>
+                                    </th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <t t-set="total" t-value="0.0"/>
+
+                                <t t-foreach="docs" t-as="o">
+
+                                    <t t-set="total" t-value="total + o.amount_residual"/>
+
+                                    <tr>
+                                        <td style="border-bottom:0px; padding:0.20rem;  height:2px;">
+                                            <span t-field="o.invoice_date"/>
+                                        </td>
+
+                                        <td style="border-bottom:0px; padding:0.20rem; height:2px;">
+                                            <span t-field="o.name"/>
+                                        </td>
+                                        <td style="border-bottom:0px; padding:0.20rem; height:2px;"
+                                            class="text-right">
+                                            <span t-field="o.amount_total"/>
+                                        </td>
+                                        <td style="border-bottom:0px; padding:0.20rem; height:2px;"
+                                            class="text-right">
+
+                                        </td>
+                                        <td style="border-bottom:0px; padding:0.20rem; height:2px;"
+                                            class="text-right">
+                                            <span t-field="o.amount_residual"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                                <tr>
+                                    <td/>
+                                    <td/>
+                                    <td/>
+                                    <td/>
+                                    <td/>
+                                </tr>
+
+
+                            </tbody>
+
+                        </table>
+                        <br/>
+                        <div style="text-align:right">
+                            <span>Total</span>
+                            <span>
+                                <t t-esc="'{0:,.2f}'.format(total)+' ฿'"
+                                />
+                            </span>
+
+
+                        </div>
+
+                        <div style="height:50px">
+
+                        </div>
+                        <div style="page-break-after:always">
+
+                            <div class="row" style="">
+                                <div class="col-6" style="text-align:left; left:70px">
+                                    <p>
+                                        ผู้รับวางบิล..........................................
+                                    </p>
+                                    <p>
+                                        วันที่รับวางบิล..........................................
+                                    </p>
+                                    <p>
+                                        วันที่นัดรับเช็ค..........................................
+                                    </p>
+                                </div>
+                                <div class="col-6" style="text-align:right; right:70px">
+
+                                    <p style="padding-top: 74px;">
+                                        ผู้วางบิล..........................................
+                                    </p>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </t>
+
+            </t>
+        </template>
+
+
+        <!--     ===========                 add designer id body       ================              -->
+
+
+    </data>
+</odoo>
+
+
+
+

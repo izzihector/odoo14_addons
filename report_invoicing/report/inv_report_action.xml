@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+    <report
+      id="action_inv_form_report"
+      string="Invoicing Draft Form"
+      model="account.move"
+      report_type="qweb-html"
+      file="report_invoicing.report_inv_form"
+      name="report_invoicing.report_inv_form"
+      print_report_name="'%s - %s' % (object.name, object.id)"
+      paperformat="report_invoicing.paperformat_full_form"
+    />
+
+
+</data>
+</odoo>

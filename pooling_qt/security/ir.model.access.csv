@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_pooling_qt,access.pooling.qt,model_pooling_qt,,1,1,1,1
+access_pooling_qt_wizard,access.pooling.qt.wizard,model_pooling_qt_wizard,,1,1,1,1
+

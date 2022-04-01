@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+
+
+
+        <report
+                id="action_report_full_quotation_custom"
+                string="full_quotation"
+                model="sale.order"
+                report_type="qweb-pdf"
+                file="full_quotation.report_invoice_custom_view"
+                name="full_quotation.report_invoice_custom_view"
+                print_report_name="'%s-%s' % (object.name, object.id)"
+                paperformat="full_quotation.paperformat_full_quotation_report"
+
+        />
+
+
+        <template id="report_invoice_custom_view">
+            <t t-call="web.html_container">
+                <div class="article o_report_layout_boxed" t-att-data-oe-model="o and o._name"
+                     t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
+                    <t t-foreach="docs" t-as="doc">
+                        <t t-call="full_quotation.external_layout_full_invoice_custom">
+                            <!--                       <t t-call="web.external_layout_boxed">-->
+                            <t t-if="'partner_id' in doc.fields_get()">
+                                <t t-call="full_quotation.full-invoice-custom_document"
+                                   t-lang="doc.partner_id.lang"/>
+                            </t>
+                            <t t-if="'partner_id' not in doc.fields_get()">
+                                <t t-call="full_quotation.full-invoice-custom_document"/>
+                            </t>
+                        </t>
+                    </t>
+                </div>
+            </t>
+            <!--            <t t-call="web.html_container">-->
+            <!--                <div class="article o_report_layout_boxed" t-att-data-oe-model="o and o._name"-->
+            <!--                     t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">-->
+            <!--                    <t t-foreach="docs" t-as="doc">-->
+            <!--                        -->
+            <!--                            <t t-call="full_quotation.external_layout_full_copy_quotation_custom">-->
+            <!--                                &lt;!&ndash;                            <t t-call="web.external_layout_boxed">&ndash;&gt;-->
+            <!--                                <t t-if="'partner_id' in doc.fields_get()">-->
+            <!--                                    <t t-call="full_quotation.full-Copy-invoice-custom_document"-->
+            <!--                                       t-lang="doc.partner_id.lang"/>-->
+            <!--                                </t>-->
+            <!--                                <t t-if="'partner_id' not in doc.fields_get()">-->
+            <!--                                    <t t-call="full_quotation.full-Copy-invoice-custom_document"/>-->
+            <!--                                </t>-->
+            <!--                            </t>-->
+            <!--                        -->
+
+            <!--                    </t>-->
+            <!--                </div>-->
+            <!--            </t>-->
+
+
+        </template>
+
+        <!--     ===========                 add designer id content       ================              -->
+
+
+    </data>
+</odoo>

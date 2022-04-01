@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <template id="full-invoice-custom_document">
+            <t t-if="'partner_id' in doc.fields_get()">
+                <t t-set="doc" t-value="doc.with_context({'lang':doc.partner_id.lang})"/>
+            </t>
+            <div class="page">
+                <link rel="stylesheet" href="/hanna_report/static/src/css/color.css"/>
+                <link rel="stylesheet" href="/hanna_report/static/src/css/my_style.css"/>
+                <div class="oe_structure font">
+                    <div class="container-fluid single_block mt16  report-container "
+                         style=" padding-left: 0px; padding-right: 0px; ">
+                        <div class="row">
+                            <div class="col-md-12 col-xs-12"
+                                 style="padding-bottom:0px   ;  padding-left: 0px;     padding-right: 0px; ">
+                                <div class=" mt8 s_block">
+                                    <t t-set="i" t-value="1"/>
+                                    <table class="report-well table table-borderless table-invoice  "
+                                           style="border:none; page-break-inside: avoid;">
+                                        <thead style="border:none;">
+                                            <tr style="height:30px; border:none; ">
+                                                <td style=" padding:0.0rem;; width:80px;  border:none">
+                                                    <font style="color:rgb(0,0,0); font-size: 12px;"></font>
+                                                    <br/>
+                                                    <font style="color:rgb(0,0,0); font-size: 12px;"></font>
+                                                </td>
+                                                <td style=" padding:0.0rem; width:530px; border:none;">
+                                                    <span style="background-color: transparent; color:rgb(0,0,0); font-size: 12px;"></span>
+                                                    <br/>
+                                                    <font style="color:rgb(0,0,0); font-size: 12px;"></font>
+                                                </td>
+                                                <td style=" padding:0.0rem;; width:80px; border:none;">
+                                                    <span style="background-color: transparent; color:rgb(0,0,0); font-size: 12px;"></span>
+                                                    <br/>
+                                                    <font style="color:rgb(0,0,0); font-size: 12px;"></font>
+                                                </td>
+                                                <td style=" padding:0.0rem;  width:130px; border:none;">
+                                                    <span style="background-color: transparent; color:rgb(0,0,0); font-size: 12px;"></span>
+                                                    <br/>
+                                                    <font style="color:rgb(0,0,0); font-size: 12px;"></font>
+                                                    <br/>
+                                                </td>
+                                                <td style=" padding:0.0rem;border:none; border:none ">
+                                                    <font style="color:rgb(0,0,0); font-size: 12px;"></font>
+                                                    <br/>
+                                                    <font style="color:rgb(0,0,0); font-size: 12px;"></font>
+                                                </td>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="invoice_tbody">
+                                            <t t-set="current_subtotal" t-value="0"/>
+                                            <t t-set="lines"
+                                               t-value="doc.invoice_line_ids.sorted(key=lambda l: (-l.sequence, l.date, l.move_name, -l.id), reverse=True)"/>
+
+                                            <t t-foreach="lines" t-as="line">
+                                                <tr t-att-class="'o_line_note' if line.display_type == 'line_note' else ''"
+
+                                                    style="height:10px; page-break-after:always ">
+
+                                                    <t t-if="line.display_type == 'line_section'">
+                                                        <td style=" padding:0.0rem; padding-left:10px; text-align: left;"
+                                                            colspan="5">
+                                                            <span  t-field="line.name"  style="padding-left:15px;"/>
+                                                        </td>
+
+                                                    </t>
+                                                    <t t-if="line.display_type == 'line_note'">
+                                                        <td style=" padding:0.0rem; padding-left:10px;  text-align: left;"
+                                                            colspan="5">
+                                                            <span t-field="line.name" style="padding-left:15px;" />
+                                                        </td>
+                                                    </t>
+                                                    <t t-if="not line.display_type">
+                                                        <td style="border-right:none;padding-top: 0px;border:none;padding-left: 0px;padding-right: 5px; ">
+                                                            <font style="font-size: 12px;padding-right: 5px; color:rgb(0,0,0);"
+                                                                  t-esc="i"/>
+                                                            <t t-set="i" t-value="i+1"/>
+                                                        </td>
+                                                        <td style="padding:0.20rem; padding-bottom:0.0;border:none; ">
+                                                            <p class="report-well product" t-field="line.product_id"
+                                                               style="text-align:left; width: 450px; word-wrap:break-all; font-size: 12px; color:rgb(0,0,0);  "/>
+                                                        </td>
+                                                        <td style="padding:0.20rem; padding-bottom:0.0;border:none; ">
+                                                            <p class="report-well" t-field="line.quantity"
+                                                               style="text-align: right; width: 60px; word-wrap:break-all;margin-bottom: 0px;  font-size: 12px;color:rgb(0,0,0);  "/>
+                                                        </td>
+                                                        <td style="padding:0.40rem; padding-bottom:0.0;border:none; ">
+                                                            <p class="report-well" t-field="line.price_unit"
+                                                               style="text-align: right; width: 140px; word-wrap:break-all;margin-bottom: 0px;color:rgb(0,0,0);    font-size: 12px; padding-right: 25px"/>
+                                                        </td>
+                                                        <td style="padding:0.40rem;padding-bottom:0.0;border:none; ">
+                                                            <p class="report-well" t-field="line.price_subtotal"
+                                                               style="text-align: right; width: 170px; word-wrap:break-all;margin-bottom: 0px;color:rgb(0,0,0);   font-size: 12px;"/>
+                                                        </td>
+                                                    </t>
+                                                </tr>
+                                            </t>
+                                            <tr>
+                                                <td style="border:none;"/>
+                                                <td style="border:none;"/>
+                                                <td style="border:none;"/>
+                                                <td style="border:none;"/>
+                                                <td style="border:none;"/>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </template>
+        <template id="full-Copy-invoice-custom_document">
+            <t t-if="'partner_id' in doc.fields_get()">
+                <t t-set="doc" t-value="doc.with_context({'lang':doc.partner_id.lang})"/>
+            </t>
+        </template>          <!--     ===========                 add designer id body       ================              -->
+    </data>
+</odoo>
