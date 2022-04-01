@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <template id="external_layout_full_quotation_custom">
+            <t t-call="report_quotation_test.external_layout_header_custom"/>
+            <t t-raw="0"/>
+            <t t-call="report_quotation_test.external_layout_footer_custom"/>
+        </template>
+        
+        <template id="external_layout_header_custom">
+                <div class="header" t-att-style="report_header_style">     
+                    <!-- ? Row Box รายละเอียด  -->
+                        <div class="row" style="font-family:Prompt;">    
+                            <!-- ? ไฟล์จะต้องเป็น type png  -->    
+                                <div class="col-2"> 
+                                    <img src="web/binary/company_logo" class="img-responsive"/>
+                                </div>
+                            <!-- ? ไฟล์จะต้องเป็น type png  -->
+                                <!-- ? Box 7 -->
+                                    <div class="col-7">
+                                        <strong>
+                                            <h1 ><span t-esc="doc.company_id.name"/></h1>
+                                        </strong>
+                                            <span t-esc="doc.company_id.street"/>
+                                            <span t-esc="doc.company_id.street2"/>
+                                                <br/>
+                                            <span t-if="doc.company_id.phone">เบอร์โทรติดต่อ
+                                                <span t-esc="doc.company_id.phone"/></span>
+                                                    <br/>                          
+                                                <span t-if="doc.company_id.email">อีเมล
+                                                    <span t-esc="doc.company_id.email"/></span>
+                                                        <br/>                 
+                                                <span t-if="doc.company_id.city">เมือง
+                                                    <span t-esc="doc.company_id.city"/></span>                         
+                                    </div>
+                                <!-- ? Box 7 -->
+                                    <!-- ? Box 3 -->
+                                        <div class="col-3">
+                                            <div style="border:2px  solid#4a5057;border-radius:10px 10px 10px 10px; text-align: center;">                                           
+                                                <h1>ใบแจ้งราคา</h1>
+                                            </div>                
+                                                <span t-if="doc.company_id.vat">เลขผู้เสียภาษี
+                                                    <span t-esc="doc.company_id.vat"/></span>
+                                                        <br/>
+                                                <span t-if="doc.partner_id.vat">เลขผู้เสียภาษีอากรผู้รับบริการ
+                                                    <span t-esc="doc.partner_id.vat"/></span>   
+                                        </div>
+                                <!-- ? Box 3 -->
+                        </div>
+                <!-- ? Row Box รายละเอียด  -->
+        <!-- ? New Row -->            
+                <div class="row" style="font-family:Prompt;">
+                    <!-- ? ที่อยู่   6 Box -->
+                        <div class="col-6">
+                            <div style="border:2px  solid#000000; 
+                                        border-radius:10px 10px 10px 10px;
+                                        padding-top: 3px;
+                                        height: 90px;
+                            ">
+                            <span style="padding-left: 10px;">
+                                <span t-if="doc.partner_id.email">อีเมล
+                                    <span t-esc="doc.partner_id.email"/></span>
+                                        </span>   
+                                            <br/>
+                            <span style="padding-left: 10px;">
+                                <span t-if="doc.partner_id.phone">เบอร์ติดต่อ
+                                    <span t-esc="doc.partner_id.phone"/></span>
+                                        </span>   
+                                            <br/>
+                            <span style="padding-left: 10px;">
+                                <span t-if="doc.partner_id.street">ที่อยู่
+                                    <span t-esc="doc.partner_id.street"/></span>
+                                        </span> 
+                            </div>
+                        </div>
+                    <!-- ? ที่อยู่   6 Box -->
+            <!-- ? รายละเอียด ใบชำระเงิน -->  
+                    <div class="col-6">
+                        <!--  ? Border Box  -->
+                            <div style="border:2px  solid#000000; 
+                                        border-radius:10px 10px 10px 10px;
+                                        height: 90px;
+                            ">
+                                <div class="row" style="font-family:Prompt;"> 
+                            <!-- ? New Row 4 Box -->
+                                    <div class="col-4" style="padding-right: 0px;">
+                                        <div style="border-bottom: 2px solid#000000; border-right: 2px solid#000000;">
+                                            <div style="text-align: center;">
+                                                <span>วันที่ลงใบ</span>
+                                            </div>
+                                        </div>
+                                        <div style="border-bottom: 2px solid#000000; border-right: 2px solid#000000;">
+                                            <div style="text-align: center;">
+                                                <span>วันที่สั่ง</span>
+                                            </div>
+                                        </div>
+                                        <div style="border-right: 2px solid#000000; padding-bottom: 12px;">
+                                            <div style="text-align: center;">
+                                                <span>กำหนดชำระเงิน</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                            <!-- ? New Row 4 Box -->
+
+                            <!-- ? New Row 8 Box -->
+                                    <div class="col-8" style="padding-left: 0px;">
+                                        <div style="border-bottom: 2px solid#000000;">
+                                            <div style="text-align: center;">
+                                                <span>วันที่ลงใบ</span>
+                                            </div>
+                                        </div>
+                                        <div style="border-bottom: 2px solid#000000;">
+                                            <div style="text-align: center;">
+                                                <span t-esc="doc.invoice_date"/>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div style="text-align: center;">
+                                                <span>วันที่ลงใบ</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                            <!-- ? New Row 8 Box -->       
+                                </div>
+                            </div>
+                        <!--  ? Border Box  -->
+                    </div>      
+                <!-- ? ที่อยู่   6 Box --> 
+        <!-- ? รายละเอียด ใบชำระเงิน -->                         
+        </div>
+<!-- ? New Row -->
+            </div>
+        </template>
+        <template id="external_layout_footer_custom">
+            <div class="o_boxed_footwer">
+                <div class="footer" style="font-family:Prompt;">
+                    
+                </div>
+            </div>
+        </template>
+    </data>
+</odoo>

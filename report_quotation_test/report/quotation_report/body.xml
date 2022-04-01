@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <template id="full_quotation_custom_document">
+            <link rel="stylesheet" href="/report_quotation_test/static/src/css/my_style.css"/>
+            <t t-if="'partner_id' in doc.fields_get()">
+                <t t-set="doc" t-value="doc.with_context({'lang':doc.partner_id.lang})"/>
+            </t>
+
+            <div class="page">
+                <div>
+                    <table class="table">
+                        <thead>
+                            <!-- * หัวข้อ รายการ -->
+                                <tr class="style_border" style="text-align: center;">
+                                    <td style="border-right: 2px solid#000000;">
+                                        รหัสสินค้า
+                                    </td>
+                                    <td style="border-right: 2px solid#000000;">
+                                        จำนวณ
+                                    </td>
+                                    <td style="border-right: 2px solid#000000;">
+                                        รายการ
+                                    </td>
+                                    <td style="border-right: 2px solid#000000;">
+                                        ราคาต่อหน่วย
+                                    </td>
+                                    <td style="border-right: 2px solid#000000;">
+                                        ส่วนลดต่อหน่วย
+                                    </td>
+                                    <td>
+                                        จำนวณเงิน
+                                    </td>
+                                </tr>
+                            <!-- * หัวข้อ รายการ -->
+                            <!-- * รายการจาก Product -->
+                                <tr  t-foreach="doc.invoice_line_ids" t-as="line">
+                                    <td style="border-right: 2px solid#000000;">
+                                        <span t-esc="line.product_id.default_code"></span>
+                                    </td>
+                                    <td style="border-right: 2px solid#000000; text-align: center;">
+                                        <span t-esc="line.quantity"></span>
+                                    </td>
+                                    <td style="border-right: 2px solid#000000; text-align: center;">
+                                        <span t-esc="line.product_id.name"></span>
+                                    </td>
+                                    <td style="border-right: 2px solid#000000; text-align: center;">
+                                        <span t-esc="line.price_unit"></span>
+                                    </td>
+                                    <td style="border-right: 2px solid#000000; text-align: center;">
+                                        <span></span>
+                                    </td>
+                                    <td style="border-right: 2px solid#000000; text-align: center;">
+                                        <span t-esc="line.price_subtotal"></span>
+                                    </td>
+                                </tr>
+                            
+                                <tr>
+                                    <tr>
+                                        <th colspan="2">
+                                            <p>หมายเหตุ</p>
+                                            <p>
+                                                <span>เรื่องประยุตเมื่อไรจะออกสักที่วะเยสแมร่ง</span>
+                                            </p>
+                                        </th>
+                                        <th>
+                                            <span></span>
+                                        </th>
+                                        <th colspan="2">
+                                            <p>
+                                                หมายเหตุ
+                                                <br/>
+                                                ภาษีมูลค่าเพิ่ม
+                                                <span>7%</span>
+                                                <br/>
+                                                รวมค่าใช้บริการรอบปัจจุปัน
+                                            </p>
+                                        </th>
+                                        <th>
+                                            <span></span>
+                                        </th>
+                                    </tr>
+                                </tr>
+                                <tr style="text-align: center;">
+                                    <th colspan="2">
+                                        <p>
+                                            สรุปยอดค่าบริการ
+                                            <br/>
+                                            <span>ทดสอบ</span>
+                                        </p>
+                                    </th>
+                                    <th colspan="1">
+                                        <p>
+                                            ยอดค้างชำระเดิม
+                                            <br/>
+                                            <span>ทดสอบค่า</span> 
+                                        </p>
+                                    </th>
+                                    <th colspan="2">
+                                        <p>
+                                            ค่าบริการรอบปัจจุบัน
+                                            <br/>
+                                            <span>ทดสอบค่า</span>
+                                        </p>
+                                    </th>
+                                    <th colspan="1">
+                                        <p>
+                                            รวมค่าสุทธิ
+                                            <br/>
+                                            <span>ทดสอบค่า</span>
+                                        </p>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th colspan="6">
+                                        <p>
+                                            สมาคม ได้รับยกเว้นไม่ต้องถูกหักภาษีเงินได้ ณ ที่จ่ายตามคำสั่งกรมสรรพากรที่
+                                            <span style="padding-left: 140px; padding-right: 0px;">เจ้าหน้าที่ธนาคาร-ผู้รับ............................</span>
+                                            <br/>
+                                            ทป.101.2544 ข้อ 12/1
+                                            (<span>2</span>)
+                                            <br/>
+                                            สมาคม ต้องขออภัย หากท่านชำระยอดค้างชำระเรียบร้อยแล้ว
+                                        </p>
+                                        <br/>
+                                        <p style="text-align: center;">
+                                            <i class="fa fa-apple"></i>
+                                            ..............................................................................(กรุณาอ่านคำแนะนำและรหัสค่าบริการด้านหลัง)..............................................................................
+                                            <i class="fa fa-apple"></i>
+                                        </p>
+                                        <p >                                                                                       
+                                            <span style="padding-left: 850px; padding-right: 0px;">ส่วนของธนาคาร</span>
+                                            <br/>
+                                            <span style="padding-left:710px; padding-right: 0px;">(โปรดเรียกเก็บค่าธรรมเนียมจากผู้ชำระ</span>
+                                        </p>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">
+                                        <i class="fa fa-cc-visa"></i>
+                                        <span>
+                                            บมจ.ธ.ไทยพาณิชย์ Comp Code: 0746(15 บาท/15 บาท
+                                        </span>
+                                            <br/>
+                                        <i class="fa fa-cc-paypal"></i>
+                                        <span>
+                                            บมจ.ธ.กรุงเทพๆ(Br.No.045)(15 บาท/25 บาท)
+                                        </span>
+                                            <br/>
+                                        <i class="fa fa-cc-mastercard"></i>
+                                        <span>
+                                            บมจ.กสิกรไทย Comp.Code: 33489(15 บาท/30 บาท)
+                                        </span>
+                                    </td>       
+                                    <td colspan="3" style="border-left: 1px solid#000000;">
+                                        <span>
+                                            สาขาที่รับฝาก.......................วันที่......../......../....................
+                                        </span>
+                                            <br/>
+                                        <span>
+                                            ชื่อลูกค้า/........................................
+                                            ................................................
+                                            ................................................
+                                        </span>
+                                            <br/>
+                                        <span>
+                                            รหัสลูก/CUSTOMER NO.(RFE.NO.1)...............................................
+                                        </span>
+                                        <span>
+                                            ชื่อผู้นำฝาก..................................................................
+                                        </span>
+                                        <span>
+                                            โทรศัพท์....................................................................
+                                        </span>
+                                    </td>                   
+                                </tr>
+                                <tr style="text-align: center;">
+                                    <th colspan="2">
+                                        <span>
+                                            หมายเลขเช็ค
+                                        </span>
+                                    </th>
+                                    <th colspan="2">
+                                        ชื่อธนาคารสาขา
+                                    </th>
+                                    <th colspan="1">
+                                        เช็คลงวันที่
+                                    </th>
+                                    <th colspan="1">    
+                                        จำนวนเงิน(บาท)  
+                                    </th>
+                                </tr>
+                                <tr style="padding-top: 15px; 
+                                    padding-bottom: 15px;
+                                    text-align: center;
+                                    ">
+                                    <td colspan="1" style="border-right: 1px solid#000000;">
+                                        <span>เงินสด/Cash</span>
+                                    </td>
+                                    <td colspan="4" style="border-right: 1px solid#000000;">
+                                        <span>จำนวนเงินเป็นตัวอักษร()</span>
+                                    </td>
+                                    <td colspan="1" style="border-right: 1px solid#000000;">
+                                        <span></span>
+                                    </td>
+                                </tr>
+                            <!-- * รายการจาก Product -->
+                        </thead>
+                    </table>
+                </div>
+            </div>
+
+
+        </template>
+
+
+
+
+
+
+    </data>
+</odoo>
